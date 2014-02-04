@@ -137,15 +137,35 @@
     
     [self.client grantAccess:self
                       toRole:roleName
+                  accessType:accessType
                   completion:completionBlock];
     
 }
 
 - (void) grantAccessToUser:(NSString *)username ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock {
-
+    
     [self.client grantAccess:self
                       toUser:username
+                  accessType:accessType
                   completion:completionBlock];
+    
+}
+
+- (void) revokeAccessToRole:(NSString *)roleName ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock {
+    
+    [self.client revokeAccess:self
+                       toRole:roleName
+                   accessType:accessType
+                   completion:completionBlock];
+    
+}
+
+- (void) revokeAccessToUser:(NSString *)username ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock {
+    
+    [self.client revokeAccess:self
+                       toUser:username
+                   accessType:accessType
+                   completion:completionBlock];
     
 }
 

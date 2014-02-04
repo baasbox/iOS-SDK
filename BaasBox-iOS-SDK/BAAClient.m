@@ -603,9 +603,9 @@ NSInteger const BAAPageLength = 50;
 
 #pragma mark - Acl
 
-- (void) grantAccess:(BAAFile *)file toRole:(NSString *)roleName completion:(BAAObjectResultBlock)completionBlock {
+- (void) grantAccess:(BAAFile *)file toRole:(NSString *)roleName accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock {
     
-    NSString *path = [NSString stringWithFormat:@"file/%@/read/role/%@", file.fileId, roleName];
+    NSString *path = [NSString stringWithFormat:@"file/%@/%@/role/%@", file.fileId, access, roleName];
     
     [self putPath:path
        parameters:nil
@@ -621,9 +621,9 @@ NSInteger const BAAPageLength = 50;
     
 }
 
-- (void) grantAccess:(BAAFile *)file toUser:(NSString *)username completion:(BAAObjectResultBlock)completionBlock {
+- (void) grantAccess:(BAAFile *)file toUser:(NSString *)username accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock {
 
-    NSString *path = [NSString stringWithFormat:@"file/%@/read/user/%@", file.fileId, username];
+    NSString *path = [NSString stringWithFormat:@"file/%@/%@/user/%@", file.fileId, access, username];
     
     [self putPath:path
        parameters:nil
@@ -636,6 +636,42 @@ NSInteger const BAAPageLength = 50;
               completionBlock(nil, error);
               
           }];
+    
+}
+
+- (void) revokeAccess:(BAAFile *)file toRole:(NSString *)roleName accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock {
+
+    NSString *path = [NSString stringWithFormat:@"file/%@/%@/role/%@", file.fileId, access, roleName];
+    
+    [self deletePath:path
+          parameters:nil
+             success:^(id responseObject) {
+                 
+                 completionBlock(file, nil);
+                 
+             } failure:^(NSError *error) {
+                 
+                 completionBlock(nil, error);
+                 
+             }];
+    
+}
+
+- (void) revokeAccess:(BAAFile *)file toUser:(NSString *)username accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock {
+
+    NSString *path = [NSString stringWithFormat:@"file/%@/%@/user/%@", file.fileId, access, username];
+    
+    [self deletePath:path
+          parameters:nil
+             success:^(id responseObject) {
+                 
+                 completionBlock(file, nil);
+                 
+             } failure:^(NSError *error) {
+                 
+                 completionBlock(nil, error);
+                 
+             }];
     
 }
 
