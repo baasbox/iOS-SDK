@@ -68,6 +68,7 @@
 
 // Acl
 - (void) grantAccess:(BAAFile *)file toRole:(NSString *)roleName completion:(BAAObjectResultBlock)completionBlock;
+- (void) grantAccess:(BAAFile *)file toUser:(NSString *)username completion:(BAAObjectResultBlock)completionBlock;
 
 extern NSString * const kAclAnonymousRole;
 extern NSString * const kAclRegisteredRole;

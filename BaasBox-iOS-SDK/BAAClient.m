@@ -621,6 +621,24 @@ NSInteger const BAAPageLength = 50;
     
 }
 
+- (void) grantAccess:(BAAFile *)file toUser:(NSString *)username completion:(BAAObjectResultBlock)completionBlock {
+
+    NSString *path = [NSString stringWithFormat:@"file/%@/read/user/%@", file.fileId, username];
+    
+    [self putPath:path
+       parameters:nil
+          success:^(id responseObject) {
+              
+              completionBlock(file, nil);
+              
+          } failure:^(NSError *error) {
+              
+              completionBlock(nil, error);
+              
+          }];
+    
+}
+
 
 #pragma mark - User methods
 

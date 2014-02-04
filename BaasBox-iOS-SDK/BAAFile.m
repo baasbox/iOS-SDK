@@ -135,9 +135,16 @@
 
 - (void) grantAccessToRole:(NSString *)roleName ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock {
     
-    
     [self.client grantAccess:self
                       toRole:roleName
+                  completion:completionBlock];
+    
+}
+
+- (void) grantAccessToUser:(NSString *)username ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock {
+
+    [self.client grantAccess:self
+                      toUser:username
                   completion:completionBlock];
     
 }

@@ -29,6 +29,7 @@
 - (void) stopFileLoading;
 - (void) uploadFileWithCompletion:(BAAObjectResultBlock)completionBlock;
 - (void) grantAccessToRole:(NSString *)roleName ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock;
+- (void) grantAccessToUser:(NSString *)username ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock;
 - (void) deleteFileWithCompletion:(BAABooleanResultBlock)completionBlock;
 
 @end
