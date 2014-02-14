@@ -9,6 +9,7 @@
 #import "BAAObject.h"
 #import "BAAGlobals.h"
 #import "BAAFile.h"
+#import "BaasBox.h"
 
 @interface BAAClient : NSObject
 

@@ -259,21 +259,21 @@ NSInteger const BAAPageLength = 50;
     }
     
     [self postPath:path
-       parameters:nil
-          success:^(id responseObject) {
-              
-              if (completionHander) {
-                  self.currentUser = nil;
-                  [self saveUserToDisk:self.currentUser];
-                  completionHander(YES, nil);
-              }
-              
-          } failure:^(NSError *error) {
-              
-              if (completionHander)
-                  completionHander(NO, error);
-              
-          }];
+        parameters:nil
+           success:^(id responseObject) {
+               
+               if (completionHander) {
+                   self.currentUser = nil;
+                   [self saveUserToDisk:self.currentUser];
+                   completionHander(YES, nil);
+               }
+               
+           } failure:^(NSError *error) {
+               
+               if (completionHander)
+                   completionHander(NO, error);
+               
+           }];
     
 }
 
