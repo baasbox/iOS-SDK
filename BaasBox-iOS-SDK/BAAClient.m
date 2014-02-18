@@ -5,7 +5,7 @@
 //  Copyright (c) 2013 Cesare Rocchi. All rights reserved.
 //
 
-#define VERSION @"0.7.3"
+#define VERSION @"0.7.4"
 
 #import "BAAClient.h"
 #import "BaasBox.h"
