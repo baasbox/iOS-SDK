@@ -997,8 +997,6 @@ NSInteger const BAAPageLength = 50;
     
 }
 
-
-
 #pragma mark - Push notifications
 
 - (void) askToEnablePushNotifications {
@@ -1017,7 +1015,7 @@ NSInteger const BAAPageLength = 50;
     
     self.currentUser.pushNotificationToken = [self convertTokenToDeviceID:tokenData];
     
-    NSString *path = [NSString stringWithFormat:@"push/device/%@/%@", @"ios", self.currentUser.pushNotificationToken];
+    NSString *path = [NSString stringWithFormat:@"push/enable/%@/%@", @"ios", self.currentUser.pushNotificationToken];
     
     [self putPath:path
        parameters:nil
