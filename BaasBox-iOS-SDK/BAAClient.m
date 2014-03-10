@@ -857,9 +857,14 @@ NSInteger const BAAPageLength = 50;
            success:^(id responseObject) {
 
                if (completion) {
+                   
                    BAAUser *user = [[BAAUser alloc] initWithDictionary:responseObject[@"data"]];
-                   if (user)
+                   
+                   if (user) {
+                       
                        completion(user, nil);
+                       
+                   }
                    
                }
                
@@ -881,8 +886,9 @@ NSInteger const BAAPageLength = 50;
                  
                  if (completion) {
                      NSString *res = responseObject[@"result"];
-                     if ([res isEqualToString:@"ok"])
+                     if ([res isEqualToString:@"ok"]) {
                          completion(YES, nil);
+                     }
                  }
                  
                  
@@ -893,6 +899,47 @@ NSInteger const BAAPageLength = 50;
                  
              }];
 
+}
+
+- (void) changeOldPassword:(NSString *)oldPassword
+             toNewPassword:(NSString *)newPassword
+                completion:(BAABooleanResultBlock)completion {
+    
+    [self putPath:@"me/password"
+       parameters:@{@"old": oldPassword, @"new": newPassword}
+          success:^(id responseObject) {
+              
+              if (completion) {
+                  
+                  NSString *res = responseObject[@"result"];
+                  
+                  if ([res isEqualToString:@"ok"]) {
+                      
+                      completion(YES, nil);
+                      
+                  } else {
+                      
+                      NSDictionary *userInfo = @{
+                                                 NSLocalizedDescriptionKey: responseObject[@"message"],
+                                                 NSLocalizedFailureReasonErrorKey: responseObject[@"message"],
+                                                 NSLocalizedRecoverySuggestionErrorKey: responseObject[@"message"]
+                                                 };
+                      NSError *error = [NSError errorWithDomain:@"com.baasbox.error"
+                                                           code:-52
+                                                       userInfo:userInfo];
+                      completion(NO, error);
+                      
+                  }
+              }
+              
+          } failure:^(NSError *error) {
+              
+              if (completion) {
+                  completion(NO, error);
+              }
+              
+          }];
+    
 }
 
 #pragma mark - Client methods

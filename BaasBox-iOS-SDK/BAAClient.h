@@ -73,6 +73,9 @@
 - (void) revokeAccess:(BAAFile *)file toRole:(NSString *)roleName accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock;
 - (void) revokeAccess:(BAAFile *)file toUser:(NSString *)username accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock;
 
+// Password
+- (void) changeOldPassword:(NSString *)oldPassword toNewPassword:(NSString *)newPassword completion:(BAABooleanResultBlock)completionBlock;
+
 extern NSString * const kAclAnonymousRole;
 extern NSString * const kAclRegisteredRole;
 extern NSString * const kAclAdministratorRole;

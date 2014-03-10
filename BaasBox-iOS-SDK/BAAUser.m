@@ -154,7 +154,6 @@
 - (void) loadFollowersWithCompletion:(BAAArrayResultBlock)completion {
 
     BAAClient *client = [BAAClient sharedClient];
-    
     [client loadFollowersOfUser:self
                       completion:^(NSArray *users, NSError *error) {
                           
@@ -188,6 +187,15 @@
                       completionBlock(success, error);
                   
               }];
+    
+}
+
+- (void) changeOldPassword:(NSString *)oldPassword toNewPassword:(NSString *)newPassword completionBlock:(BAABooleanResultBlock)completionBlock {
+
+    BAAClient *client = [BAAClient sharedClient];
+    [client changeOldPassword:oldPassword
+                toNewPassword:newPassword
+                   completion:completionBlock];
     
 }
 

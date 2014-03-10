@@ -31,4 +31,5 @@
 - (void) loadFollowersWithCompletion:(BAAArrayResultBlock)completion;
 + (void) followUser:(BAAUser *)user completion:(BAAObjectResultBlock)completionBlock;
 + (void) unfollowUser:(BAAUser *)user completion:(BAABooleanResultBlock)completionBlock;
+- (void) changeOldPassword:(NSString *)oldPassword toNewPassword:(NSString *)newPassword completionBlock:(BAABooleanResultBlock)completionBlock;
 @end
