@@ -23,13 +23,21 @@
 
 - (instancetype) initWithDictionary:(NSDictionary *)dict;
 - (NSString *) jsonString;
-+ (void) logoutWithCompletion:(BAABooleanResultBlock)completionBlock;
-+ (void) loadCurrentUserWithCompletion:(BAAObjectResultBlock)completionBlock;
+
+// load
++ (void) logoutWithCompletion:(BAABooleanResultBlock)completion;
++ (void) loadCurrentUserWithCompletion:(BAAObjectResultBlock)completion;
 + (void) loadUsersWithParameters:(NSDictionary *)parameters completion:(BAAArrayResultBlock)completionBlock;
 + (void) loadUserDetails:(NSString *)username completion:(BAAObjectResultBlock)completionBlock;
-- (void) loadFollowingWithCompletion:(BAAArrayResultBlock)completionBlock;
+
+// Follow/unfollow
+- (void) loadFollowingWithCompletion:(BAAArrayResultBlock)completion;
 - (void) loadFollowersWithCompletion:(BAAArrayResultBlock)completion;
 + (void) followUser:(BAAUser *)user completion:(BAAObjectResultBlock)completionBlock;
 + (void) unfollowUser:(BAAUser *)user completion:(BAABooleanResultBlock)completionBlock;
+
+// Password
 - (void) changeOldPassword:(NSString *)oldPassword toNewPassword:(NSString *)newPassword completionBlock:(BAABooleanResultBlock)completionBlock;
+- (void) resetPasswordWithCompletion:(BAABooleanResultBlock)completion;
+
 @end

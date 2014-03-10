@@ -75,6 +75,7 @@
 
 // Password
 - (void) changeOldPassword:(NSString *)oldPassword toNewPassword:(NSString *)newPassword completion:(BAABooleanResultBlock)completionBlock;
+- (void) resetPasswordForUser:(BAAUser *)user withCompletion:(BAABooleanResultBlock)completion;
 
 extern NSString * const kAclAnonymousRole;
 extern NSString * const kAclRegisteredRole;

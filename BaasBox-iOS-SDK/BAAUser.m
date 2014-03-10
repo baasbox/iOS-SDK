@@ -199,6 +199,14 @@
     
 }
 
+- (void) resetPasswordWithCompletion:(BAABooleanResultBlock)completion {
+
+    BAAClient *client = [BAAClient sharedClient];
+    [client resetPasswordForUser:self
+                  withCompletion:completion];
+    
+}
+
 
 #pragma mark - Helpers
 

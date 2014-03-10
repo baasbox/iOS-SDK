@@ -942,6 +942,46 @@ NSInteger const BAAPageLength = 50;
     
 }
 
+- (void) resetPasswordForUser:(BAAUser *)user withCompletion:(BAABooleanResultBlock)completion; {
+
+    NSString *path = [NSString stringWithFormat:@"user/%@/password/reset", user.username];
+    [self getPath:path
+       parameters:nil
+          success:^(id responseObject) {
+              
+              if (completion) {
+                  
+                  NSString *res = responseObject[@"result"];
+                  
+                  if ([res isEqualToString:@"ok"]) {
+                      
+                      completion(YES, nil);
+                      
+                  } else {
+                      
+                      NSDictionary *userInfo = @{
+                                                 NSLocalizedDescriptionKey: responseObject[@"message"],
+                                                 NSLocalizedFailureReasonErrorKey: responseObject[@"message"],
+                                                 NSLocalizedRecoverySuggestionErrorKey: responseObject[@"message"]
+                                                 };
+                      NSError *error = [NSError errorWithDomain:@"com.baasbox.error"
+                                                           code:-50
+                                                       userInfo:userInfo];
+                      completion(NO, error);
+                      
+                  }
+              }
+              
+          } failure:^(NSError *error) {
+              
+              if (completion) {
+                  completion(NO, error);
+              }
+              
+          }];
+    
+}
+
 #pragma mark - Client methods
 
 
