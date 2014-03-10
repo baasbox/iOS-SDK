@@ -52,7 +52,7 @@
 - (void) loadFiles:(BAAFile *)file withParams:(NSDictionary *) parameters completion:(BAAArrayResultBlock)completionBlock;
 - (NSURLSessionDataTask *) loadFileData:(BAAFile *)file completion:(void(^)(NSData *data, NSError *error))completionBlock;
 - (NSURLSessionDataTask *) loadFileData:(BAAFile *)file parameters:(NSDictionary *)parameters completion:(void(^)(NSData *data, NSError *error))completionBlock;
-- (void) uploadFile:(BAAFile *)file completion:(BAAObjectResultBlock)completionBlock;
+- (void) uploadFile:(BAAFile *)file withPermissions:(NSDictionary *)permissions completion:(BAAObjectResultBlock)completionBlock;
 - (void) deleteFile:(BAAFile *)file completion:(BAABooleanResultBlock)completionBlock;
 - (void) loadFileDetails:(NSString *)fileID completion:(BAAObjectResultBlock)completionBlock;
 

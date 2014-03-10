@@ -490,7 +490,7 @@ NSInteger const BAAPageLength = 50;
     
 }
 
-- (void) uploadFile:(BAAFile *)file completion:(BAAObjectResultBlock)completionBlock {
+- (void) uploadFile:(BAAFile *)file withPermissions:(NSDictionary *)permissions completion:(BAAObjectResultBlock)completionBlock {
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", self.baseURL, @"file"]]];
     
@@ -518,15 +518,15 @@ NSInteger const BAAPageLength = 50;
     [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"attachedData\"\r\n\r\n%@", jsonString] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     
-//    // ACL // TODO: finish this
-//    NSDictionary *acl =  @{@"read" : @{@"users" : @[], @"roles" : @[kAclRegisteredRole]},
-//                           @"update" : @{@"users" : @[], @"roles" : @[]},
-//                           @"delete" : @{@"users" : @[], @"roles" : @[]}
-//                           };
-//    NSData *aclData = [NSJSONSerialization dataWithJSONObject:acl options:0 error:&err];
-//    NSString *aclString = [[NSString alloc] initWithBytes:[aclData bytes] length:[aclData length] encoding:NSUTF8StringEncoding];
-//    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"acl\"\r\n\r\n%@", aclString] dataUsingEncoding:NSUTF8StringEncoding]];
-//    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    // ACL
+    if (permissions) {
+        
+        NSData *aclData = [NSJSONSerialization dataWithJSONObject:permissions options:0 error:&err];
+        NSString *aclString = [[NSString alloc] initWithBytes:[aclData bytes] length:[aclData length] encoding:NSUTF8StringEncoding];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"acl\"\r\n\r\n%@", aclString] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        
+    }
     
     [request setHTTPBody:body];
     
@@ -536,17 +536,26 @@ NSInteger const BAAPageLength = 50;
                          if (completionBlock) {
                              
                              NSHTTPURLResponse *res = (NSHTTPURLResponse*)response;
+                             NSDictionary *d = [NSJSONSerialization JSONObjectWithData:data
+                                                                               options:kNilOptions
+                                                                                 error:nil];
                              
                              if (error == nil && res.statusCode <= 201) {
                                  
-                                 NSDictionary *d = [NSJSONSerialization JSONObjectWithData:data
-                                                                                   options:kNilOptions
-                                                                                     error:nil];
-                                 id c = [file class];
+                                                                  id c = [file class];
                                  id newObject = [[c alloc] initWithDictionary:d[@"data"]];
                                  completionBlock(newObject, nil);
                                  
                              } else {
+                                 
+                                 NSDictionary *userInfo = @{
+                                                            NSLocalizedDescriptionKey: d[@"message"],
+                                                            NSLocalizedFailureReasonErrorKey: d[@"message"],
+                                                            NSLocalizedRecoverySuggestionErrorKey: @"Make sure that ACL roles and usernames exist on the backed."
+                                                            };
+                                 NSError *error = [NSError errorWithDomain:@"com.baasbox.error"
+                                                                      code:-51
+                                                                  userInfo:userInfo];
                                  
                                  completionBlock(nil, error);
                                  
