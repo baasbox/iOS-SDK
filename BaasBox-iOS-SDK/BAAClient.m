@@ -1251,7 +1251,29 @@ NSInteger const BAAPageLength = 50;
 
 - (void) loadSettingsWithCompletion:(BAAObjectResultBlock)completionBlock {
 
-    [self getPath:@"admin/configuration/dump.json" parameters:nil
+    [self getPath:@"admin/configuration/dump.json"
+       parameters:nil
+          success:^(NSDictionary *responseObject) {
+              
+              if (completionBlock) {
+                  completionBlock(responseObject, nil);
+              }
+              
+          } failure:^(NSError *error) {
+              
+              if (completionBlock) {
+                  completionBlock(nil, error);
+              }
+              
+          }];
+    
+}
+
+- (void) loadSettingsSection:(NSString *)sectionName completion:(BAAObjectResultBlock)completionBlock {
+
+    NSString *path = [NSString stringWithFormat:@"admin/configuration/%@", sectionName];
+    [self getPath:path
+       parameters:nil
           success:^(NSDictionary *responseObject) {
               
               if (completionBlock) {
