@@ -687,7 +687,7 @@ NSInteger const BAAPageLength = 50;
 
 #pragma mark - User methods
 
-- (void) loadCurrentUserWithCompletion:(BAAObjectResultBlock)completion {
+- (void) loadCurrentUserWithCompletion:(BAAObjectResultBlock)completionBlock {
 
     [self getPath:@"me"
        parameters:nil
@@ -695,19 +695,21 @@ NSInteger const BAAPageLength = 50;
               
               [self updateUserWithDictionary:responseObject];
               
-              if (completion)
-                  completion(self.currentUser, nil);
+              if (completionBlock) {
+                  completionBlock(self.currentUser, nil);
+              }
               
           } failure:^(NSError *error) {
               
-              if (completion)
-                  completion(nil, error);
+              if (completionBlock) {
+                  completionBlock(nil, error);
+              }
               
           }];
     
 }
 
-- (void) updateUserWithCompletion:(BAAObjectResultBlock)completion {
+- (void) updateUserWithCompletion:(BAAObjectResultBlock)completionBlock {
 
     [self putPath:@"user"
        parameters:@{@"visibleByAnonymousUsers" : self.currentUser.visibleByAnonymousUsers,
@@ -718,43 +720,46 @@ NSInteger const BAAPageLength = 50;
               
               [self updateUserWithDictionary:responseObject];
               
-              if (completion)
-                  completion(self.currentUser, nil);
+              if (completionBlock) {
+                  completionBlock(self.currentUser, nil);
+              }
               
           } failure:^(NSError *error) {
               
-              if (completion)
-                  completion(nil, error);
+              if (completionBlock) {
+                  completionBlock(nil, error);
+              }
               
           }];
     
 }
 
-- (void) loadUsersDetails:(NSString *)userId completion:(BAAObjectResultBlock)completion {
+- (void) loadUsersDetails:(NSString *)userId completion:(BAAObjectResultBlock)completionBlock {
 
     [self getPath:[NSString stringWithFormat:@"user/%@", userId]
        parameters:nil
           success:^(id responseObject) {
               
-              if (completion) {
+              if (completionBlock) {
                   BAAUser *user = [[BAAUser alloc] initWithDictionary:responseObject[@"data"]];
-                  completion(user, nil);
+                  completionBlock(user, nil);
               }
               
           } failure:^(NSError *error) {
               
-              if (completion)
-                  completion(nil, error);
+              if (completionBlock) {
+                  completionBlock(nil, error);
+              }
               
           }];
     
 }
 
 
-- (void) loadUsersWithCompletion:(BAAArrayResultBlock)completion {
+- (void) loadUsersWithCompletion:(BAAArrayResultBlock)completionBlock {
 
     [self loadUsersWithParameters:@{kPageNumber : @0, kPageSize : @20}
-                       completion:completion];
+                       completion:completionBlock];
     
 }
 
@@ -786,13 +791,13 @@ NSInteger const BAAPageLength = 50;
     
 }
 
-- (void) loadFollowingForUser:(BAAUser *)user completion:(BAAArrayResultBlock)completion {
+- (void) loadFollowingForUser:(BAAUser *)user completion:(BAAArrayResultBlock)completionBlock {
     
     [self getPath:[NSString stringWithFormat:@"following/%@", user.username]
        parameters:nil
           success:^(id responseObject) {
 
-              if (completion) {
+              if (completionBlock) {
 
                   NSArray *users = responseObject[@"data"];
                   NSMutableArray *resultArray = [NSMutableArray array];
@@ -804,27 +809,28 @@ NSInteger const BAAPageLength = 50;
                       
                   }
               
-                  completion(resultArray, nil);
+                  completionBlock(resultArray, nil);
                   
               }
               
               
           } failure:^(NSError *error) {
               
-              if (completion)
-                  completion(nil, error);
+              if (completionBlock) {
+                  completionBlock(nil, error);
+              }
               
           }];
     
 }
 
-- (void) loadFollowersOfUser:(BAAUser *)user completion:(BAAArrayResultBlock)completion {
+- (void) loadFollowersOfUser:(BAAUser *)user completion:(BAAArrayResultBlock)completionBlock {
 
     [self getPath:[NSString stringWithFormat:@"followers/%@", user.username]
        parameters:nil
           success:^(id responseObject) {
               
-              if (completion) {
+              if (completionBlock) {
                   
                   NSArray *users = responseObject[@"data"];
                   NSMutableArray *resultArray = [NSMutableArray array];
@@ -836,33 +842,34 @@ NSInteger const BAAPageLength = 50;
                       
                   }
                   
-                  completion(resultArray, nil);
+                  completionBlock(resultArray, nil);
                   
               }
               
               
           } failure:^(NSError *error) {
               
-              if (completion)
-                  completion(nil, error);
+              if (completionBlock) {
+                  completionBlock(nil, error);
+              }
               
           }];
     
 }
 
-- (void) followUser:(BAAUser *)user completion:(BAAObjectResultBlock)completion {
+- (void) followUser:(BAAUser *)user completion:(BAAObjectResultBlock)completionBlock {
 
     [self postPath:[NSString stringWithFormat:@"follow/%@", user.username]
         parameters:nil
            success:^(id responseObject) {
 
-               if (completion) {
+               if (completionBlock) {
                    
                    BAAUser *user = [[BAAUser alloc] initWithDictionary:responseObject[@"data"]];
                    
                    if (user) {
                        
-                       completion(user, nil);
+                       completionBlock(user, nil);
                        
                    }
                    
@@ -871,31 +878,33 @@ NSInteger const BAAPageLength = 50;
                
            } failure:^(NSError *error) {
                
-               if (completion)
-                   completion(NO, error);
+               if (completionBlock) {
+                   completionBlock(NO, error);
+               }
                
            }];
     
 }
 
-- (void) unfollowUser:(BAAUser *)user completion:(BAABooleanResultBlock)completion {
+- (void) unfollowUser:(BAAUser *)user completion:(BAABooleanResultBlock)completionBlock {
     
     [self deletePath:[NSString stringWithFormat:@"follow/%@", user.username]
           parameters:nil
              success:^(id responseObject) {
                  
-                 if (completion) {
+                 if (completionBlock) {
                      NSString *res = responseObject[@"result"];
                      if ([res isEqualToString:@"ok"]) {
-                         completion(YES, nil);
+                         completionBlock(YES, nil);
                      }
                  }
                  
                  
              } failure:^(NSError *error) {
                  
-                 if (completion)
-                     completion(NO, error);
+                 if (completionBlock) {
+                     completionBlock(NO, error);
+                 }
                  
              }];
 
@@ -903,19 +912,19 @@ NSInteger const BAAPageLength = 50;
 
 - (void) changeOldPassword:(NSString *)oldPassword
              toNewPassword:(NSString *)newPassword
-                completion:(BAABooleanResultBlock)completion {
+                completion:(BAABooleanResultBlock)completionBlock {
     
     [self putPath:@"me/password"
        parameters:@{@"old": oldPassword, @"new": newPassword}
           success:^(id responseObject) {
               
-              if (completion) {
+              if (completionBlock) {
                   
                   NSString *res = responseObject[@"result"];
                   
                   if ([res isEqualToString:@"ok"]) {
                       
-                      completion(YES, nil);
+                      completionBlock(YES, nil);
                       
                   } else {
                       
@@ -927,35 +936,35 @@ NSInteger const BAAPageLength = 50;
                       NSError *error = [NSError errorWithDomain:@"com.baasbox.error"
                                                            code:-52
                                                        userInfo:userInfo];
-                      completion(NO, error);
+                      completionBlock(NO, error);
                       
                   }
               }
               
           } failure:^(NSError *error) {
               
-              if (completion) {
-                  completion(NO, error);
+              if (completionBlock) {
+                  completionBlock(NO, error);
               }
               
           }];
     
 }
 
-- (void) resetPasswordForUser:(BAAUser *)user withCompletion:(BAABooleanResultBlock)completion; {
+- (void) resetPasswordForUser:(BAAUser *)user withCompletion:(BAABooleanResultBlock)completionBlock {
 
     NSString *path = [NSString stringWithFormat:@"user/%@/password/reset", user.username];
     [self getPath:path
        parameters:nil
           success:^(id responseObject) {
               
-              if (completion) {
+              if (completionBlock) {
                   
                   NSString *res = responseObject[@"result"];
                   
                   if ([res isEqualToString:@"ok"]) {
                       
-                      completion(YES, nil);
+                      completionBlock(YES, nil);
                       
                   } else {
                       
@@ -967,15 +976,15 @@ NSInteger const BAAPageLength = 50;
                       NSError *error = [NSError errorWithDomain:@"com.baasbox.error"
                                                            code:-50
                                                        userInfo:userInfo];
-                      completion(NO, error);
+                      completionBlock(NO, error);
                       
                   }
               }
               
           } failure:^(NSError *error) {
               
-              if (completion) {
-                  completion(NO, error);
+              if (completionBlock) {
+                  completionBlock(NO, error);
               }
               
           }];
@@ -1102,11 +1111,13 @@ NSInteger const BAAPageLength = 50;
     
 }
 
-- (void) enablePushNotification:(NSData *)tokenData completion:(BAABooleanResultBlock)completion {
+- (void) enablePushNotification:(NSData *)tokenData completion:(BAABooleanResultBlock)completionBlock {
     
     if (self.currentUser.pushEnabled) {
-        completion(YES, nil);
-        return;
+        if (completionBlock) {
+            completionBlock(YES, nil);
+            return;
+        }
     }
     
     self.currentUser.pushNotificationToken = [self convertTokenToDeviceID:tokenData];
@@ -1117,26 +1128,32 @@ NSInteger const BAAPageLength = 50;
        parameters:nil
           success:^(id responseObject) {
               
-              if (responseObject) {
+              if (completionBlock) {
                   
-                  self.currentUser.pushEnabled = YES;
-                  completion(YES, nil);
-                  
-              } else {
-                  
-                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
-                  details[@"NSLocalizedDescriptionKey"] = [NSString stringWithFormat:@"Server returned %@", responseObject];
-                  NSError *error = [NSError errorWithDomain:@"baasbox"
-                                                       code:200
-                                                   userInfo:details];
-                  completion(NO, error);
+                  if (responseObject) {
+                      
+                      self.currentUser.pushEnabled = YES;
+                      completionBlock(YES, nil);
+                      
+                  } else {
+                      
+                      NSMutableDictionary* details = [NSMutableDictionary dictionary];
+                      details[@"NSLocalizedDescriptionKey"] = [NSString stringWithFormat:@"Server returned %@", responseObject];
+                      NSError *error = [NSError errorWithDomain:@"baasbox"
+                                                           code:200
+                                                       userInfo:details];
+                      completionBlock(NO, error);
+                      
+                  }
                   
               }
               
           } failure:^(NSError *error) {
               
               NSLog(@"error %@", error);
-              completion(NO, error);
+              if (completionBlock) {
+                  completionBlock(NO, error);
+              }
               
           }];
     

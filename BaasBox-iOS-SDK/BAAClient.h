@@ -21,15 +21,15 @@
 // Authentication
 - (void)authenticateUser:(NSString *)username
                 password:(NSString *)password
-              completion:(BAABooleanResultBlock)completionHander;
+              completion:(BAABooleanResultBlock)completionBlock;
 
 - (void)createUserWithUsername:(NSString *)username
                       password:(NSString *)password
-                    completion:(BAABooleanResultBlock)completionHander;
+                    completion:(BAABooleanResultBlock)completionBlock;
 
 - (BOOL) isAuthenticated;
 
-- (void) logoutWithCompletion:(BAABooleanResultBlock)completionHander;
+- (void) logoutWithCompletion:(BAABooleanResultBlock)completionBlock;
 
 // Loading
 - (void) loadObject:(BAAObject *)object completion:(BAAObjectResultBlock)completionBlock;
@@ -45,7 +45,7 @@
 
 // Push notifications
 - (void) askToEnablePushNotifications;
-- (void) enablePushNotification:(NSData *)token completion:(BAABooleanResultBlock)completion;
+- (void) enablePushNotification:(NSData *)token completion:(BAABooleanResultBlock)completionBlock;
 
 // Files
 - (void) loadFiles:(BAAFile *)file completion:(BAAArrayResultBlock)completionBlock;
@@ -57,15 +57,15 @@
 - (void) loadFileDetails:(NSString *)fileID completion:(BAAObjectResultBlock)completionBlock;
 
 // User
-- (void) loadCurrentUserWithCompletion:(BAAObjectResultBlock)completion;
-- (void) updateUserWithCompletion:(BAAObjectResultBlock)completion;
-- (void) loadUsersWithCompletion:(BAAArrayResultBlock)completion;
+- (void) loadCurrentUserWithCompletion:(BAAObjectResultBlock)completionBlock;
+- (void) updateUserWithCompletion:(BAAObjectResultBlock)completionBlock;
+- (void) loadUsersWithCompletion:(BAAArrayResultBlock)completionBlock;
 - (void) loadUsersWithParameters:(NSDictionary *)parameters completion:(BAAArrayResultBlock)completionBlock;
-- (void) loadUsersDetails:(NSString *) userId completion:(BAAObjectResultBlock)completion;
-- (void) loadFollowingForUser:(BAAUser *)user completion:(BAAArrayResultBlock)completion;
-- (void) loadFollowersOfUser:(BAAUser *)user completion:(BAAArrayResultBlock)completion;
-- (void) followUser:(BAAUser *)user completion:(BAAObjectResultBlock)completion;
-- (void) unfollowUser:(BAAUser *)user completion:(BAABooleanResultBlock)completion;
+- (void) loadUsersDetails:(NSString *) userId completion:(BAAObjectResultBlock)completionBlock;
+- (void) loadFollowingForUser:(BAAUser *)user completion:(BAAArrayResultBlock)completionBlock;
+- (void) loadFollowersOfUser:(BAAUser *)user completion:(BAAArrayResultBlock)completionBlock;
+- (void) followUser:(BAAUser *)user completion:(BAAObjectResultBlock)completionBlock;
+- (void) unfollowUser:(BAAUser *)user completion:(BAABooleanResultBlock)completionBlock;
 
 // Acl
 - (void) grantAccess:(BAAFile *)file toRole:(NSString *)roleName accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock;
@@ -75,7 +75,7 @@
 
 // Password
 - (void) changeOldPassword:(NSString *)oldPassword toNewPassword:(NSString *)newPassword completion:(BAABooleanResultBlock)completionBlock;
-- (void) resetPasswordForUser:(BAAUser *)user withCompletion:(BAABooleanResultBlock)completion;
+- (void) resetPasswordForUser:(BAAUser *)user withCompletion:(BAABooleanResultBlock)completionBlock;
 
 extern NSString * const kAclAnonymousRole;
 extern NSString * const kAclRegisteredRole;

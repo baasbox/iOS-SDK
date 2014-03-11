@@ -25,19 +25,22 @@
 - (NSString *) jsonString;
 
 // load
-+ (void) logoutWithCompletion:(BAABooleanResultBlock)completion;
-+ (void) loadCurrentUserWithCompletion:(BAAObjectResultBlock)completion;
++ (void) logoutWithCompletion:(BAABooleanResultBlock)completionBlock;
++ (void) loadCurrentUserWithCompletion:(BAAObjectResultBlock)completionBlock;
 + (void) loadUsersWithParameters:(NSDictionary *)parameters completion:(BAAArrayResultBlock)completionBlock;
 + (void) loadUserDetails:(NSString *)username completion:(BAAObjectResultBlock)completionBlock;
 
+// update
+- (void) updateWithCompletion:(BAAObjectResultBlock)completionBlock;
+
 // Follow/unfollow
-- (void) loadFollowingWithCompletion:(BAAArrayResultBlock)completion;
-- (void) loadFollowersWithCompletion:(BAAArrayResultBlock)completion;
+- (void) loadFollowingWithCompletion:(BAAArrayResultBlock)completionBlock;
+- (void) loadFollowersWithCompletion:(BAAArrayResultBlock)completionBlock;
 + (void) followUser:(BAAUser *)user completion:(BAAObjectResultBlock)completionBlock;
 + (void) unfollowUser:(BAAUser *)user completion:(BAABooleanResultBlock)completionBlock;
 
 // Password
 - (void) changeOldPassword:(NSString *)oldPassword toNewPassword:(NSString *)newPassword completionBlock:(BAABooleanResultBlock)completionBlock;
-- (void) resetPasswordWithCompletion:(BAABooleanResultBlock)completion;
+- (void) resetPasswordWithCompletion:(BAABooleanResultBlock)completionBlock;
 
 @end

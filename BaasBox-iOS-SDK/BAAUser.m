@@ -46,34 +46,7 @@
     
 }
 
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    
-    self = [super init];
-    
-    if(self) {
-        
-        decodeObject(_username);
-        decodeObject(_authenticationToken);
-        decodeObject(_pushNotificationToken);
-        decodeBool(_pushEnabled);
-        
-    }
-    
-    return self;
-    
-}
-
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    
-    encodeObject(_username);
-    encodeObject(_authenticationToken);
-    encodeObject(_pushNotificationToken);
-    encodeBool(_pushEnabled);
-    
-}
-
-
+#pragma mark - Load
 
 + (void) loadCurrentUserWithCompletion:(BAAObjectResultBlock)completionBlock {
 
@@ -124,45 +97,56 @@
     
 }
 
-+ (void) loadUserDetails:(NSString *)username completion:(BAAObjectResultBlock)completion {
++ (void) loadUserDetails:(NSString *)username completion:(BAAObjectResultBlock)completionBlock {
 
     BAAClient *client = [BAAClient sharedClient];
     
     [client loadUsersDetails:username
                   completion:^(BAAUser *user, NSError *error) {
         
-                      if (completion)
-                          completion(user, error);
+                      if (completionBlock)
+                          completionBlock(user, error);
                       
     }];
     
 }
 
-- (void) loadFollowingWithCompletion:(BAAArrayResultBlock)completion {
+- (void) loadFollowingWithCompletion:(BAAArrayResultBlock)completionBlock {
 
     BAAClient *client = [BAAClient sharedClient];
     [client loadFollowingForUser:self
                       completion:^(NSArray *users, NSError *error) {
                           
-                          if (completion)
-                              completion(users, error);
+                          if (completionBlock)
+                              completionBlock(users, error);
                           
                       }];
     
 }
 
-- (void) loadFollowersWithCompletion:(BAAArrayResultBlock)completion {
+- (void) loadFollowersWithCompletion:(BAAArrayResultBlock)completionBlock {
 
     BAAClient *client = [BAAClient sharedClient];
     [client loadFollowersOfUser:self
                       completion:^(NSArray *users, NSError *error) {
                           
-                          if (completion)
-                              completion(users, error);
+                          if (completionBlock)
+                              completionBlock(users, error);
                           
                       }];
     
 }
+
+#pragma mark - Update
+
+- (void) updateWithCompletion:(BAAObjectResultBlock)completionBlock {
+
+    BAAClient *client = [BAAClient sharedClient];
+    [client updateUserWithCompletion:completionBlock];
+
+}
+
+#pragma mark - Follow/Unfollow
 
 + (void) followUser:(BAAUser *)user completion:(BAAObjectResultBlock)completionBlock {
 
@@ -199,11 +183,11 @@
     
 }
 
-- (void) resetPasswordWithCompletion:(BAABooleanResultBlock)completion {
+- (void) resetPasswordWithCompletion:(BAABooleanResultBlock)completionBlock {
 
     BAAClient *client = [BAAClient sharedClient];
     [client resetPasswordForUser:self
-                  withCompletion:completion];
+                  withCompletion:completionBlock];
     
 }
 
@@ -290,6 +274,34 @@
 -(NSString *)description {
     
     return [[self objectAsDictionary] description];
+    
+}
+
+#pragma mark - NSCoding
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    
+    self = [super init];
+    
+    if(self) {
+        
+        decodeObject(_username);
+        decodeObject(_authenticationToken);
+        decodeObject(_pushNotificationToken);
+        decodeBool(_pushEnabled);
+        
+    }
+    
+    return self;
+    
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    
+    encodeObject(_username);
+    encodeObject(_authenticationToken);
+    encodeObject(_pushNotificationToken);
+    encodeBool(_pushEnabled);
     
 }
 
