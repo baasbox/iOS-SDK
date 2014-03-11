@@ -1173,6 +1173,34 @@ NSInteger const BAAPageLength = 50;
 }
 
 
+#pragma mark - Admin
+
+- (void) createCollection:(NSString *)collectionName completion:(BAAObjectResultBlock)completionBlock {
+
+    [self postPath:[NSString stringWithFormat:@"admin/collection/%@", collectionName]
+        parameters:nil
+           success:^(id responseObject) {
+               
+               if (completionBlock) {
+                   
+                   completionBlock(responseObject, nil);
+                   
+               }
+               
+           } failure:^(NSError *error) {
+               
+               if (completionBlock) {
+                   
+                   completionBlock(nil, error);
+                   
+               }
+               
+           }];
+    
+}
+
+
+
 #pragma mark - URL Serialization
 
 - (BAAMutableURLRequest *)requestWithMethod:(NSString *)method

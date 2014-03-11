@@ -77,6 +77,9 @@
 - (void) changeOldPassword:(NSString *)oldPassword toNewPassword:(NSString *)newPassword completion:(BAABooleanResultBlock)completionBlock;
 - (void) resetPasswordForUser:(BAAUser *)user withCompletion:(BAABooleanResultBlock)completionBlock;
 
+// Admin
+- (void) createCollection:(NSString *)collectionName completion:(BAAObjectResultBlock)completionBlock;
+
 extern NSString * const kAclAnonymousRole;
 extern NSString * const kAclRegisteredRole;
 extern NSString * const kAclAdministratorRole;
