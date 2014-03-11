@@ -45,8 +45,8 @@
 
 // Push notifications
 - (void) askToEnablePushNotifications;
-- (void) enablePushNotification:(NSData *)token completion:(BAABooleanResultBlock)completionBlock;
-- (void) disablePushNotification:(NSData *)tokenData completion:(BAABooleanResultBlock)completionBlock;
+- (void) enablePushNotifications:(NSData *)token completion:(BAABooleanResultBlock)completionBlock;
+- (void) disablePushNotificationsWithCompletion:(BAABooleanResultBlock)completionBlock;
 
 // Files
 - (void) loadFiles:(BAAFile *)file completion:(BAAArrayResultBlock)completionBlock;

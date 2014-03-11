@@ -1161,7 +1161,7 @@ NSInteger const BAAPageLength = 50;
     
 }
 
-- (void) enablePushNotification:(NSData *)tokenData completion:(BAABooleanResultBlock)completionBlock {
+- (void) enablePushNotifications:(NSData *)tokenData completion:(BAABooleanResultBlock)completionBlock {
     
     if (self.currentUser.pushEnabled) {
         if (completionBlock) {
@@ -1209,15 +1209,25 @@ NSInteger const BAAPageLength = 50;
     
 }
 
-- (void) disablePushNotification:(NSData *)tokenData completion:(BAABooleanResultBlock)completionBlock {
+- (void) disablePushNotificationsWithCompletion:(BAABooleanResultBlock)completionBlock {
     
     if (!self.currentUser.pushEnabled) {
+        
+        if (completionBlock) {
+            
+            NSMutableDictionary* details = [NSMutableDictionary dictionary];
+            details[@"NSLocalizedDescriptionKey"] = @"Push notifications already disabled";
+            NSError *error = [NSError errorWithDomain:[BaasBox errorDomain]
+                                                 code:[BaasBox errorCode]
+                                             userInfo:details];
+            completionBlock(NO, error);
+            
+        }
+        
         return;
     }
     
-    self.currentUser.pushNotificationToken = [self convertTokenToDeviceID:tokenData];
-    
-    NSString *path = [NSString stringWithFormat:@"push/disable/%@/%@", @"ios", self.currentUser.pushNotificationToken];
+    NSString *path = [NSString stringWithFormat:@"push/disable/%@", self.currentUser.pushNotificationToken];
     
     [self putPath:path
        parameters:nil
