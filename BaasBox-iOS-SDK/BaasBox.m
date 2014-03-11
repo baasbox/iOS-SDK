@@ -33,7 +33,11 @@
 }
 
 + (NSString *) errorDomain {
-    return @"com.baasbox";
+    return @"com.baasbox.error";
+}
+
++ (NSInteger) errorCode {
+    return -13579;
 }
 
 @end

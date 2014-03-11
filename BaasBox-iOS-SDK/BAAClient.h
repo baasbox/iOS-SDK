@@ -46,6 +46,7 @@
 // Push notifications
 - (void) askToEnablePushNotifications;
 - (void) enablePushNotification:(NSData *)token completion:(BAABooleanResultBlock)completionBlock;
+- (void) disablePushNotification:(NSData *)tokenData completion:(BAABooleanResultBlock)completionBlock;
 
 // Files
 - (void) loadFiles:(BAAFile *)file completion:(BAAArrayResultBlock)completionBlock;
@@ -82,6 +83,7 @@
 - (void) createCollection:(NSString *)collectionName completion:(BAAObjectResultBlock)completionBlock;
 - (void) loadSettingsWithCompletion:(BAAObjectResultBlock)completionBlock;
 - (void) loadSettingsSection:(NSString *)sectionName completion:(BAAObjectResultBlock)completionBlock;
+- (void) setValue:(NSString *)value forKey:(NSString *)key inSection:(NSString *)sectionName completion:(BAAObjectResultBlock)completionBlock;
 
 extern NSString * const kAclAnonymousRole;
 extern NSString * const kAclRegisteredRole;

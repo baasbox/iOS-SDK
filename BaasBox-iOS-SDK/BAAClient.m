@@ -197,7 +197,7 @@ NSInteger const BAAPageLength = 50;
                    [errorDetail setValue:responseObject[@"message"]
                                   forKey:NSLocalizedDescriptionKey];
                    NSError *error = [NSError errorWithDomain:[BaasBox errorDomain]
-                                                        code:100
+                                                        code:[BaasBox errorCode]
                                                     userInfo:errorDetail];
                    completionHander(NO, error);
                    
@@ -236,7 +236,7 @@ NSInteger const BAAPageLength = 50;
                    [errorDetail setValue:responseObject[@"message"]
                                   forKey:NSLocalizedDescriptionKey];
                    NSError *error = [NSError errorWithDomain:[BaasBox errorDomain]
-                                                        code:100
+                                                        code:[BaasBox errorCode]
                                                     userInfo:errorDetail];
                    completionHander(NO, error);
                    
@@ -299,7 +299,7 @@ NSInteger const BAAPageLength = 50;
                   [errorDetail setValue:responseObject[@"message"]
                                  forKey:NSLocalizedDescriptionKey];
                   NSError *error = [NSError errorWithDomain:[BaasBox errorDomain]
-                                                       code:100
+                                                       code:[BaasBox errorCode]
                                                    userInfo:errorDetail];
                   completionBlock(NO, error);
                   
@@ -553,8 +553,8 @@ NSInteger const BAAPageLength = 50;
                                                             NSLocalizedFailureReasonErrorKey: d[@"message"],
                                                             NSLocalizedRecoverySuggestionErrorKey: @"Make sure that ACL roles and usernames exist on the backed."
                                                             };
-                                 NSError *error = [NSError errorWithDomain:@"com.baasbox.error"
-                                                                      code:-51
+                                 NSError *error = [NSError errorWithDomain:[BaasBox errorDomain]
+                                                                      code:[BaasBox errorCode]
                                                                   userInfo:userInfo];
                                  
                                  completionBlock(nil, error);
@@ -983,8 +983,8 @@ NSInteger const BAAPageLength = 50;
                                                  NSLocalizedFailureReasonErrorKey: responseObject[@"message"],
                                                  NSLocalizedRecoverySuggestionErrorKey: responseObject[@"message"]
                                                  };
-                      NSError *error = [NSError errorWithDomain:@"com.baasbox.error"
-                                                           code:-52
+                      NSError *error = [NSError errorWithDomain:[BaasBox errorDomain]
+                                                           code:[BaasBox errorCode]
                                                        userInfo:userInfo];
                       completionBlock(NO, error);
                       
@@ -1023,8 +1023,8 @@ NSInteger const BAAPageLength = 50;
                                                  NSLocalizedFailureReasonErrorKey: responseObject[@"message"],
                                                  NSLocalizedRecoverySuggestionErrorKey: responseObject[@"message"]
                                                  };
-                      NSError *error = [NSError errorWithDomain:@"com.baasbox.error"
-                                                           code:-50
+                      NSError *error = [NSError errorWithDomain:[BaasBox errorDomain]
+                                                           code:[BaasBox errorCode]
                                                        userInfo:userInfo];
                       completionBlock(NO, error);
                       
@@ -1189,8 +1189,53 @@ NSInteger const BAAPageLength = 50;
                       
                       NSMutableDictionary* details = [NSMutableDictionary dictionary];
                       details[@"NSLocalizedDescriptionKey"] = [NSString stringWithFormat:@"Server returned %@", responseObject];
-                      NSError *error = [NSError errorWithDomain:@"baasbox"
-                                                           code:200
+                      NSError *error = [NSError errorWithDomain:[BaasBox errorDomain]
+                                                           code:[BaasBox errorCode]
+                                                       userInfo:details];
+                      completionBlock(NO, error);
+                      
+                  }
+                  
+              }
+              
+          } failure:^(NSError *error) {
+              
+              NSLog(@"error %@", error);
+              if (completionBlock) {
+                  completionBlock(NO, error);
+              }
+              
+          }];
+    
+}
+
+- (void) disablePushNotification:(NSData *)tokenData completion:(BAABooleanResultBlock)completionBlock {
+    
+    if (!self.currentUser.pushEnabled) {
+        return;
+    }
+    
+    self.currentUser.pushNotificationToken = [self convertTokenToDeviceID:tokenData];
+    
+    NSString *path = [NSString stringWithFormat:@"push/disable/%@/%@", @"ios", self.currentUser.pushNotificationToken];
+    
+    [self putPath:path
+       parameters:nil
+          success:^(id responseObject) {
+              
+              if (completionBlock) {
+                  
+                  if (responseObject) {
+                      
+                      self.currentUser.pushEnabled = YES;
+                      completionBlock(YES, nil);
+                      
+                  } else {
+                      
+                      NSMutableDictionary* details = [NSMutableDictionary dictionary];
+                      details[@"NSLocalizedDescriptionKey"] = [NSString stringWithFormat:@"Server returned %@", responseObject];
+                      NSError *error = [NSError errorWithDomain:[BaasBox errorDomain]
+                                                           code:[BaasBox errorCode]
                                                        userInfo:details];
                       completionBlock(NO, error);
                       
@@ -1290,6 +1335,26 @@ NSInteger const BAAPageLength = 50;
     
 }
 
+- (void) setValue:(NSString *)value forKey:(NSString *)key inSection:(NSString *)sectionName completion:(BAAObjectResultBlock)completionBlock {
+
+    NSString *path = [NSString stringWithFormat:@"admin/configuration/%@/%@/%@", sectionName, key, value];
+    [self putPath:path
+       parameters:nil
+          success:^(NSDictionary *responseObject) {
+              
+              if (completionBlock) {
+                  completionBlock(responseObject, nil);
+              }
+              
+          } failure:^(NSError *error) {
+              
+              if (completionBlock) {
+                  completionBlock(nil, error);
+              }
+              
+          }];
+    
+}
 
 #pragma mark - URL Serialization
 

@@ -16,5 +16,6 @@
 + (NSString *) baseURL;
 + (NSString *) appCode;
 + (NSString *) errorDomain;
++ (NSInteger) errorCode;
 
 @end
