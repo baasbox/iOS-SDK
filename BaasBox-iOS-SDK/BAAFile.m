@@ -131,6 +131,18 @@
     
 }
 
++ (void) loadFilesAndDetailsWithCompletion:(BAAArrayResultBlock)completionBlock {
+
+    BAAClient *client = [BAAClient sharedClient];
+    [client loadFilesAndDetailsWithCompletion:^(NSArray *files, NSError *error) {
+                     
+                     if (completionBlock)
+                         completionBlock(files, error);
+                     
+                 }];
+    
+}
+
 #pragma mark - Permissions
 
 - (void) grantAccessToRole:(NSString *)roleName ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock {

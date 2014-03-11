@@ -604,10 +604,44 @@ NSInteger const BAAPageLength = 50;
               
           } failure:^(NSError *error) {
               
-              completionBlock(nil, error);
+              if (completionBlock) {
+                  completionBlock(nil, error);
+              }
               
           }];
     
+}
+
+- (void) loadFilesAndDetailsWithCompletion:(BAAArrayResultBlock)completionBlock {
+
+    
+    [self getPath:@"file/details"
+       parameters:nil
+          success:^(NSDictionary *responseObject) {
+              
+              if (completionBlock) {
+                  
+                  NSArray *files = responseObject[@"data"];
+                  NSMutableArray *resultArray = [NSMutableArray new];
+                  
+                  for (NSDictionary *fileDictionary in files) {
+                  
+                      BAAFile *file = [[BAAFile alloc] initWithDictionary:fileDictionary];
+                      [resultArray addObject:file];
+                      
+                  }
+                  
+                  completionBlock(resultArray, nil);
+                  
+              }
+              
+          } failure:^(NSError *error) {
+              
+              if (completionBlock) {
+                  completionBlock(nil, error);
+              }
+              
+          }];
 }
 
 #pragma mark - Acl
@@ -624,7 +658,9 @@ NSInteger const BAAPageLength = 50;
               
           } failure:^(NSError *error) {
               
-              completionBlock(nil, error);
+              if (completionBlock) {
+                  completionBlock(nil, error);
+              }
               
           }];
     
@@ -638,11 +674,15 @@ NSInteger const BAAPageLength = 50;
        parameters:nil
           success:^(id responseObject) {
               
-              completionBlock(file, nil);
+              if (completionBlock) {
+                  completionBlock(file, nil);
+              }
               
           } failure:^(NSError *error) {
               
-              completionBlock(nil, error);
+              if (completionBlock) {
+                  completionBlock(nil, error);
+              }
               
           }];
     
@@ -656,11 +696,15 @@ NSInteger const BAAPageLength = 50;
           parameters:nil
              success:^(id responseObject) {
                  
-                 completionBlock(file, nil);
+                 if (completionBlock) {
+                     completionBlock(file, nil);
+                 }
                  
              } failure:^(NSError *error) {
                  
-                 completionBlock(nil, error);
+                 if (completionBlock) {
+                     completionBlock(nil, error);
+                 }
                  
              }];
     
@@ -674,11 +718,15 @@ NSInteger const BAAPageLength = 50;
           parameters:nil
              success:^(id responseObject) {
                  
-                 completionBlock(file, nil);
+                 if (completionBlock) {
+                     completionBlock(file, nil);
+                 }
                  
              } failure:^(NSError *error) {
                  
-                 completionBlock(nil, error);
+                 if (completionBlock) {
+                     completionBlock(nil, error);
+                 }
                  
              }];
     
@@ -779,13 +827,15 @@ NSInteger const BAAPageLength = 50;
                   
               }
               
-              if (completionBlock)
+              if (completionBlock) {
                   completionBlock(users, nil);
+              }
               
           } failure:^(NSError *error) {
               
-              if (completionBlock)
+              if (completionBlock) {
                   completionBlock(nil, error);
+              }
               
           }];
     

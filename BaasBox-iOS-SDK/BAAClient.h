@@ -55,6 +55,7 @@
 - (void) uploadFile:(BAAFile *)file withPermissions:(NSDictionary *)permissions completion:(BAAObjectResultBlock)completionBlock;
 - (void) deleteFile:(BAAFile *)file completion:(BAABooleanResultBlock)completionBlock;
 - (void) loadFileDetails:(NSString *)fileID completion:(BAAObjectResultBlock)completionBlock;
+- (void) loadFilesAndDetailsWithCompletion:(BAAArrayResultBlock)completionBlock;
 
 // User
 - (void) loadCurrentUserWithCompletion:(BAAObjectResultBlock)completionBlock;

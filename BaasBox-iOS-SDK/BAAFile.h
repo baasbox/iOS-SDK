@@ -26,6 +26,7 @@
 - (void) loadFileWithCompletion:(void(^)(NSData *data, NSError *error))completionBlock;
 - (void) loadFileWithParameters:(NSDictionary *)parameters completion:(void(^)(NSData *data, NSError *error))completionBlock;
 + (void) loadFileDetails:(NSString *)fileId completion:(BAAObjectResultBlock)completionBlock;
++ (void) loadFilesAndDetailsWithCompletion:(BAAArrayResultBlock)completionBlock;
 - (void) stopFileLoading;
 - (void) uploadFileWithPermissions:(NSDictionary *)permissions completion:(BAAObjectResultBlock)completionBlock;
 - (void) grantAccessToRole:(NSString *)roleName ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock;
