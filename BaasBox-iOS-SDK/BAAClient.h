@@ -80,6 +80,7 @@
 
 // Admin
 - (void) createCollection:(NSString *)collectionName completion:(BAAObjectResultBlock)completionBlock;
+- (void) loadSettingsWithCompletion:(BAAObjectResultBlock)completionBlock;
 
 extern NSString * const kAclAnonymousRole;
 extern NSString * const kAclRegisteredRole;

@@ -1249,6 +1249,24 @@ NSInteger const BAAPageLength = 50;
     
 }
 
+- (void) loadSettingsWithCompletion:(BAAObjectResultBlock)completionBlock {
+
+    [self getPath:@"admin/configuration/dump.json" parameters:nil
+          success:^(NSDictionary *responseObject) {
+              
+              if (completionBlock) {
+                  completionBlock(responseObject, nil);
+              }
+              
+          } failure:^(NSError *error) {
+              
+              if (completionBlock) {
+                  completionBlock(nil, error);
+              }
+              
+          }];
+    
+}
 
 
 #pragma mark - URL Serialization
