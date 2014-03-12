@@ -5,8 +5,7 @@
 //  Copyright (c) 2013 Cesare Rocchi. All rights reserved.
 //
 
-#define kPageNumber @"page"
-#define kPageSize @"recordsPerPage"
+
 
 #import <Foundation/Foundation.h>
 

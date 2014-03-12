@@ -85,13 +85,22 @@
 - (void) loadSettingsSection:(NSString *)sectionName completion:(BAAObjectResultBlock)completionBlock;
 - (void) setValue:(NSString *)value forKey:(NSString *)key inSection:(NSString *)sectionName completion:(BAAObjectResultBlock)completionBlock;
 
+// Pagination constants
+extern NSString * const kPageNumberKey;
+extern NSString * const kPageSizeKey;
+extern NSInteger const kPageLength;
+
+// Role constants
 extern NSString * const kAclAnonymousRole;
 extern NSString * const kAclRegisteredRole;
 extern NSString * const kAclAdministratorRole;
 
+// ACL constants
 extern NSString * const kAclReadPermission;
 extern NSString * const kAclDeletePermission;
 extern NSString * const kAclUpdatePermission;
+
+
 
 
 @end

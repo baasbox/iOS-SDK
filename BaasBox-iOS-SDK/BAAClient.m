@@ -11,9 +11,14 @@
 #import "BaasBox.h"
 #import "BAAMutableURLRequest.h"
 
+NSString * const kPageNumberKey = @"page";
+NSString * const kPageSizeKey = @"recordsPerPage";
+NSInteger const kPageLength = 50;
+
 NSString * const kAclAnonymousRole = @"anonymous";
 NSString * const kAclRegisteredRole = @"registered";
 NSString * const kAclAdministratorRole = @"administrator";
+
 NSString * const kAclReadPermission = @"read";
 NSString * const kAclDeletePermission = @"delete";
 NSString * const kAclUpdatePermission = @"update";
@@ -129,7 +134,6 @@ NSArray * BAAQueryStringPairsFromKeyAndValue(NSString *key, id value) {
 @end
 
 NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
-NSInteger const BAAPageLength = 50;
 
 @implementation BAAClient
 
@@ -345,8 +349,8 @@ NSInteger const BAAPageLength = 50;
 - (void) loadCollection:(BAAObject *)object completion:(BAAArrayResultBlock)completionBlock {
     
     [self loadCollection:object
-              withParams:@{kPageNumber : @0,
-                           kPageSize : [NSNumber numberWithInteger:BAAPageLength]}
+              withParams:@{kPageNumberKey : @0,
+                           kPageSizeKey : [NSNumber numberWithInteger:kPageLength]}
               completion:completionBlock];
     
 }
@@ -806,7 +810,7 @@ NSInteger const BAAPageLength = 50;
 
 - (void) loadUsersWithCompletion:(BAAArrayResultBlock)completionBlock {
 
-    [self loadUsersWithParameters:@{kPageNumber : @0, kPageSize : @20}
+    [self loadUsersWithParameters:@{kPageNumberKey : @0, kPageSizeKey : @20}
                        completion:completionBlock];
     
 }
