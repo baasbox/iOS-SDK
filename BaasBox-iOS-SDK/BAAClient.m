@@ -1269,8 +1269,11 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     NSURL *url = [NSURL URLWithString:u];
     BAAMutableURLRequest *request = [[BAAMutableURLRequest alloc] initWithURL:url];
     
-    if ([path isEqualToString:@"login"]) // Hack. Login should support json
+    if ([path isEqualToString:@"login"]) { // Hack. Login should support json
+     
         request.contentType = BAAContentTypeForm;
+        
+    }
     
     [request setHTTPMethod:method];
     [request setValue:self.appCode

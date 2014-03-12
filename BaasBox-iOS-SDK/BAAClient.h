@@ -85,6 +85,28 @@
 - (void) loadSettingsSection:(NSString *)sectionName completion:(BAAObjectResultBlock)completionBlock;
 - (void) setValue:(NSString *)value forKey:(NSString *)key inSection:(NSString *)sectionName completion:(BAAObjectResultBlock)completionBlock;
 
+// Core methods
+- (void)getPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
+        success:(void (^)(id responseObject))success
+        failure:(void (^)(NSError *error))failure;
+
+- (void)postPath:(NSString *)path
+      parameters:(NSDictionary *)parameters
+         success:(void (^)(id responseObject))success
+         failure:(void (^)(NSError *error))failure;
+
+- (void)putPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
+        success:(void (^)(id responseObject))success
+        failure:(void (^)(NSError *error))failure;
+    
+- (void)deletePath:(NSString *)path
+        parameters:(NSDictionary *)parameters
+           success:(void (^)(id responseObject))success
+           failure:(void (^)(NSError *error))failure;
+
+
 // Pagination constants
 extern NSString * const kPageNumberKey;
 extern NSString * const kPageSizeKey;
