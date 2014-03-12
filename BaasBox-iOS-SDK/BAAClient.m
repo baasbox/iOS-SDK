@@ -255,7 +255,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 }
 
 - (void) logoutWithCompletion:(BAABooleanResultBlock)completionHander {
-
+    
     NSString *path = @"logout";
     
     if (self.currentUser.pushNotificationToken) {
@@ -453,7 +453,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 }
 
 - (NSURLSessionDataTask *) loadFileData:(BAAFile *)file completion:(void(^)(NSData *data, NSError *error))completionBlock {
-
+    
     return [self loadFileData:file parameters:nil completion:completionBlock];
     
 }
@@ -464,8 +464,8 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     NSString *path = [NSString stringWithFormat:@"file/%@", file.fileId];
     BAAMutableURLRequest *request = [self requestWithMethod:@"GET" URLString:path parameters:parameters];
     NSLog(@"request %@", request);
-//    [request setValue:@"image/jpeg"
-//          forHTTPHeaderField:@"Content-Type"];
+    //    [request setValue:@"image/jpeg"
+    //          forHTTPHeaderField:@"Content-Type"];
     NSURLSessionDataTask *task = [s dataTaskWithRequest:request
                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                           
@@ -546,7 +546,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                              
                              if (error == nil && res.statusCode <= 201) {
                                  
-                                                                  id c = [file class];
+                                 id c = [file class];
                                  id newObject = [[c alloc] initWithDictionary:d[@"data"]];
                                  completionBlock(newObject, nil);
                                  
@@ -571,7 +571,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 }
 
 - (void) deleteFile:(BAAFile *)file completion:(BAABooleanResultBlock)completionBlock {
-
+    
     NSString *path = [NSString stringWithFormat:@"file/%@", file.fileId];
     [self deletePath:path
           parameters:nil
@@ -595,7 +595,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 }
 
 - (void) loadFileDetails:(NSString *)fileID completion:(BAAObjectResultBlock)completionBlock {
-
+    
     NSString *path = [NSString stringWithFormat:@"file/details/%@", fileID];
     [self getPath:path
        parameters:nil
@@ -617,7 +617,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 }
 
 - (void) loadFilesAndDetailsWithCompletion:(BAAArrayResultBlock)completionBlock {
-
+    
     
     [self getPath:@"file/details"
        parameters:nil
@@ -629,7 +629,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                   NSMutableArray *resultArray = [NSMutableArray new];
                   
                   for (NSDictionary *fileDictionary in files) {
-                  
+                      
                       BAAFile *file = [[BAAFile alloc] initWithDictionary:fileDictionary];
                       [resultArray addObject:file];
                       
@@ -671,7 +671,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 }
 
 - (void) grantAccess:(BAAFile *)file toUser:(NSString *)username accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock {
-
+    
     NSString *path = [NSString stringWithFormat:@"file/%@/%@/user/%@", file.fileId, access, username];
     
     [self putPath:path
@@ -693,7 +693,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 }
 
 - (void) revokeAccess:(BAAFile *)file toRole:(NSString *)roleName accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock {
-
+    
     NSString *path = [NSString stringWithFormat:@"file/%@/%@/role/%@", file.fileId, access, roleName];
     
     [self deletePath:path
@@ -715,7 +715,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 }
 
 - (void) revokeAccess:(BAAFile *)file toUser:(NSString *)username accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock {
-
+    
     NSString *path = [NSString stringWithFormat:@"file/%@/%@/user/%@", file.fileId, access, username];
     
     [self deletePath:path
@@ -740,7 +740,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 #pragma mark - User methods
 
 - (void) loadCurrentUserWithCompletion:(BAAObjectResultBlock)completionBlock {
-
+    
     [self getPath:@"me"
        parameters:nil
           success:^(NSDictionary *responseObject) {
@@ -762,7 +762,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 }
 
 - (void) updateUserWithCompletion:(BAAObjectResultBlock)completionBlock {
-
+    
     [self putPath:@"user"
        parameters:@{@"visibleByAnonymousUsers" : self.currentUser.visibleByAnonymousUsers,
                     @"visibleByTheUser" : self.currentUser.visibleByTheUser,
@@ -787,7 +787,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 }
 
 - (void) loadUsersDetails:(NSString *)userId completion:(BAAObjectResultBlock)completionBlock {
-
+    
     [self getPath:[NSString stringWithFormat:@"user/%@", userId]
        parameters:nil
           success:^(id responseObject) {
@@ -809,14 +809,14 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 
 
 - (void) loadUsersWithCompletion:(BAAArrayResultBlock)completionBlock {
-
+    
     [self loadUsersWithParameters:@{kPageNumberKey : @0, kPageSizeKey : @20}
                        completion:completionBlock];
     
 }
 
 - (void) loadUsersWithParameters:(NSDictionary *)parameters completion:(BAAArrayResultBlock)completionBlock {
-
+    
     [self getPath:@"users"
        parameters:parameters
           success:^(id responseObject) {
@@ -850,9 +850,9 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     [self getPath:[NSString stringWithFormat:@"following/%@", user.username]
        parameters:nil
           success:^(id responseObject) {
-
+              
               if (completionBlock) {
-
+                  
                   NSArray *users = responseObject[@"data"];
                   NSMutableArray *resultArray = [NSMutableArray array];
                   
@@ -862,7 +862,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                       [resultArray addObject:user];
                       
                   }
-              
+                  
                   completionBlock(resultArray, nil);
                   
               }
@@ -879,7 +879,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 }
 
 - (void) loadFollowersOfUser:(BAAUser *)user completion:(BAAArrayResultBlock)completionBlock {
-
+    
     [self getPath:[NSString stringWithFormat:@"followers/%@", user.username]
        parameters:nil
           success:^(id responseObject) {
@@ -912,11 +912,11 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 }
 
 - (void) followUser:(BAAUser *)user completion:(BAAObjectResultBlock)completionBlock {
-
+    
     [self postPath:[NSString stringWithFormat:@"follow/%@", user.username]
         parameters:nil
            success:^(id responseObject) {
-
+               
                if (completionBlock) {
                    
                    BAAUser *user = [[BAAUser alloc] initWithDictionary:responseObject[@"data"]];
@@ -961,7 +961,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                  }
                  
              }];
-
+    
 }
 
 - (void) changeOldPassword:(NSString *)oldPassword
@@ -1006,7 +1006,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 }
 
 - (void) resetPasswordForUser:(BAAUser *)user withCompletion:(BAABooleanResultBlock)completionBlock {
-
+    
     NSString *path = [NSString stringWithFormat:@"user/%@/password/reset", user.username];
     [self getPath:path
        parameters:nil
@@ -1042,117 +1042,6 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
               }
               
           }];
-    
-}
-
-#pragma mark - Client methods
-
-
-- (void)getPath:(NSString *)path
-     parameters:(NSDictionary *)parameters
-        success:(void (^)(id responseObject))success
-        failure:(void (^)(NSError *error))failure {
-    
-	BAAMutableURLRequest *request = [self requestWithMethod:@"GET" URLString:path parameters:parameters];
-    
-    [[self.session dataTaskWithRequest:request
-                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                         
-                         if (error == nil) {
-                             NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
-                                                                                        options:kNilOptions
-                                                                                          error:nil];
-                             success(jsonObject);
-                             
-                         } else {
-                             
-                             failure(error);
-                             
-                         }
-                         
-                     }] resume];
-    
-}
-
-- (void)postPath:(NSString *)path
-      parameters:(NSDictionary *)parameters
-         success:(void (^)(id responseObject))success
-         failure:(void (^)(NSError *error))failure {
-    
-	BAAMutableURLRequest *request = [self requestWithMethod:@"POST"
-                                                  URLString:path
-                                                 parameters:parameters];
-    
-	[[self.session dataTaskWithRequest:request
-                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                         
-                         if (error == nil) {
-                             NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
-                                                                                        options:kNilOptions
-                                                                                          error:nil];
-                             success(jsonObject);
-                             
-                         } else {
-                             
-                             failure(error);
-                             
-                         }
-                         
-                     }] resume];
-    
-}
-
--(void)putPath:(NSString *)path
-    parameters:(NSDictionary *)parameters
-       success:(void (^)(id responseObject))success
-       failure:(void (^)(NSError *error))failure {
-    
-    BAAMutableURLRequest *request = [self requestWithMethod:@"PUT"
-                                                  URLString:path
-                                                 parameters:parameters];
-    [[self.session dataTaskWithRequest:request
-                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                         
-                         if (error == nil) {
-                             NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
-                                                                                        options:kNilOptions
-                                                                                          error:nil];
-                             success(jsonObject);
-                             
-                         } else {
-                             
-                             failure(error);
-                             
-                         }
-                         
-                     }] resume];
-    
-}
-
--(void)deletePath:(NSString *)path
-       parameters:(NSDictionary *)parameters
-          success:(void (^)(id responseObject))success
-          failure:(void (^)(NSError *error))failure {
-    
-    BAAMutableURLRequest *request = [self requestWithMethod:@"DELETE"
-                                                  URLString:path
-                                                 parameters:parameters];
-    [[self.session dataTaskWithRequest:request
-                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                         
-                         if (error == nil) {
-                             NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
-                                                                                        options:kNilOptions
-                                                                                          error:nil];
-                             success(jsonObject);
-                             
-                         } else {
-                             
-                             failure(error);
-                             
-                         }
-                         
-                     }] resume];
     
 }
 
@@ -1285,7 +1174,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 #pragma mark - Admin
 
 - (void) createCollection:(NSString *)collectionName completion:(BAAObjectResultBlock)completionBlock {
-
+    
     [self postPath:[NSString stringWithFormat:@"admin/collection/%@", collectionName]
         parameters:nil
            success:^(id responseObject) {
@@ -1309,7 +1198,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 }
 
 - (void) loadSettingsWithCompletion:(BAAObjectResultBlock)completionBlock {
-
+    
     [self getPath:@"admin/configuration/dump.json"
        parameters:nil
           success:^(NSDictionary *responseObject) {
@@ -1329,7 +1218,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 }
 
 - (void) loadSettingsSection:(NSString *)sectionName completion:(BAAObjectResultBlock)completionBlock {
-
+    
     NSString *path = [NSString stringWithFormat:@"admin/configuration/%@", sectionName];
     [self getPath:path
        parameters:nil
@@ -1350,7 +1239,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 }
 
 - (void) setValue:(NSString *)value forKey:(NSString *)key inSection:(NSString *)sectionName completion:(BAAObjectResultBlock)completionBlock {
-
+    
     NSString *path = [NSString stringWithFormat:@"admin/configuration/%@/%@/%@", sectionName, key, value];
     [self putPath:path
        parameters:nil
@@ -1426,6 +1315,117 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     
     return mutableRequest;
 }
+
+#pragma mark - Client methods
+
+- (void)getPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
+        success:(void (^)(id responseObject))success
+        failure:(void (^)(NSError *error))failure {
+    
+	BAAMutableURLRequest *request = [self requestWithMethod:@"GET" URLString:path parameters:parameters];
+    
+    [[self.session dataTaskWithRequest:request
+                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                         
+                         if (error == nil) {
+                             NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
+                                                                                        options:kNilOptions
+                                                                                          error:nil];
+                             success(jsonObject);
+                             
+                         } else {
+                             
+                             failure(error);
+                             
+                         }
+                         
+                     }] resume];
+    
+}
+
+- (void)postPath:(NSString *)path
+      parameters:(NSDictionary *)parameters
+         success:(void (^)(id responseObject))success
+         failure:(void (^)(NSError *error))failure {
+    
+	BAAMutableURLRequest *request = [self requestWithMethod:@"POST"
+                                                  URLString:path
+                                                 parameters:parameters];
+    
+	[[self.session dataTaskWithRequest:request
+                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                         
+                         if (error == nil) {
+                             NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
+                                                                                        options:kNilOptions
+                                                                                          error:nil];
+                             success(jsonObject);
+                             
+                         } else {
+                             
+                             failure(error);
+                             
+                         }
+                         
+                     }] resume];
+    
+}
+
+- (void)putPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
+        success:(void (^)(id responseObject))success
+        failure:(void (^)(NSError *error))failure {
+    
+    BAAMutableURLRequest *request = [self requestWithMethod:@"PUT"
+                                                  URLString:path
+                                                 parameters:parameters];
+    [[self.session dataTaskWithRequest:request
+                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                         
+                         if (error == nil) {
+                             NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
+                                                                                        options:kNilOptions
+                                                                                          error:nil];
+                             success(jsonObject);
+                             
+                         } else {
+                             
+                             failure(error);
+                             
+                         }
+                         
+                     }] resume];
+    
+}
+
+- (void)deletePath:(NSString *)path
+        parameters:(NSDictionary *)parameters
+           success:(void (^)(id responseObject))success
+           failure:(void (^)(NSError *error))failure {
+    
+    BAAMutableURLRequest *request = [self requestWithMethod:@"DELETE"
+                                                  URLString:path
+                                                 parameters:parameters];
+    [[self.session dataTaskWithRequest:request
+                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                         
+                         if (error == nil) {
+                             NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
+                                                                                        options:kNilOptions
+                                                                                          error:nil];
+                             success(jsonObject);
+                             
+                         } else {
+                             
+                             failure(error);
+                             
+                         }
+                         
+                     }] resume];
+    
+}
+
 
 #pragma mark - Helpers
 
