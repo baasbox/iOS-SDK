@@ -7,7 +7,6 @@ Pod::Spec.new do |spec|
   spec.source       = { :git => 'https://github.com/baasbox/iOS-SDK.git', :tag => "v0.7.4" }
   spec.platform     = :ios
   spec.ios.deployment_target = "7.0"
-  spec.description  = 'iOS SDK for the open source back end BaasBox.'
   spec.source_files = 'BaasBox-iOS-SDK/*.{h,m}'
   spec.requires_arc = true
   spec.license      = { :type => 'APACHE2', :file => 'LICENSE' }
