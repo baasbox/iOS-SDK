@@ -16,11 +16,11 @@
 import "BAAObject.h"
 import "BAAGlobals.h"
 import "BaasBox.h"
-//import "BAAFile.h"
-//import "BAAUser.h"
+import "BAAFile.h"
+import "BAAUser.h"
 
-//@class BAAFile;
-//@class BAAUser;
+@class BAAFile;
+@class BAAUser;
 
 @interface BAAClient : NSObject
 
