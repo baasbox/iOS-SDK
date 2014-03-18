@@ -18,6 +18,8 @@
 #import "BAAClient.h"
 #import "BaasBox.h"
 #import "BAAMutableURLRequest.h"
+#import "BAAUser.h"
+#import "BAAFile.h"
 
 NSString * const kPageNumberKey = @"page";
 NSString * const kPageSizeKey = @"recordsPerPage";
