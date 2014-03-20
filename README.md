@@ -1,12 +1,26 @@
 BaasBox iOS SDK
 =======
 
-#How to
+This is the official iOS SDK for [BaasBox](http://www.baasbox.com)
+
+#Installation
+
+## Cocoapods
+
+Add the following to your Podfile
+
+``pod 'BaasBoxSDK', '~> 0.7'``
+
+## Good old way
 
 Download this repo and drag the `BaasBox-iOS-SDK` folder on your Xcode project. 
-Add `#import "BAAClient.h"` to your .pch file and you are good to go.
 
-Check documentation here: [http://www.baasbox.com/documentation](http://www.baasbox.com/documentation)
+#Importing
+
+Add `#import "BAAClient.h"` to the .pch file of your project and you are good to go.
+
+#Documentation
+Read documentation here: [http://www.baasbox.com/documentation](http://www.baasbox.com/documentation)
 
 #License
 
