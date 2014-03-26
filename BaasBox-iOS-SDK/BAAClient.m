@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-#define VERSION @"0.7.4"
+#define VERSION @"0.8"
 
 #import "BAAClient.h"
 #import "BaasBox.h"
