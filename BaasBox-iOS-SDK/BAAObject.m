@@ -96,7 +96,7 @@
     
 }
 
--(NSDictionary*) objectAsDictionary {
+- (NSDictionary*) objectAsDictionary {
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:0];
     
@@ -105,19 +105,29 @@
     objc_property_t *properties = class_copyPropertyList([self class], &outCount);
     
     for(i = 0; i < outCount; i++) {
+        
         objc_property_t property = properties[i];
         const char *propName = property_getName(property);
+        
         if(propName) {
             NSString *propertyName = [NSString stringWithUTF8String:propName];
             NSValue *value = [self valueForKey:propertyName];
             
-            if ([value isKindOfClass:[NSArray class]]) { // TODO: review this
+            if ([value isKindOfClass:[NSArray class]]) {
                 
-                NSArray *a = (NSArray *)value;
+                NSArray *array = (NSArray *)value;
                 NSMutableArray *tmp = [NSMutableArray array];
-                for (BAAObject *b in a) {
-                
-                    [tmp addObject:[b objectAsDictionary]];
+                for (id object in array) {
+                    
+                    if ([object respondsToSelector:@selector(objectAsDictionary)]) {
+                        
+                        [tmp addObject:[object objectAsDictionary]];
+                        
+                    } else {
+                        
+                        [tmp addObject:object];
+                        
+                    }
                     
                 }
                 
@@ -136,6 +146,7 @@
     free(properties);
     
     return dict;
+    
 }
 
 - (NSString *)jsonString {
