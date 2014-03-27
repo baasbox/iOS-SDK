@@ -111,7 +111,7 @@
         
         if(propName) {
             NSString *propertyName = [NSString stringWithUTF8String:propName];
-            NSValue *value = [self valueForKey:propertyName];
+            id value = [self valueForKey:propertyName];
             
             if ([value isKindOfClass:[NSArray class]]) {
                 
@@ -132,6 +132,13 @@
                 }
                 
                 [dict setValue:tmp forKey:propertyName];
+                
+            }
+            
+            else if ([value respondsToSelector:@selector(objectAsDictionary)]) {
+                
+                [dict setValue:[value objectAsDictionary]
+                        forKey:propertyName];
                 
             }
             

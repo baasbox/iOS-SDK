@@ -218,8 +218,12 @@
         if (![exclude containsObject:propertyName]) {
             
             id value = [self valueForKey:propertyName];
-            if (value)
+            
+            if (value) {
+
                 [result setObject:value forKey:propertyName];
+
+            }
             
         }
         
