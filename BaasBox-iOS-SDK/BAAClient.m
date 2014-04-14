@@ -84,7 +84,7 @@ static NSString * BAAPercentEscapedQueryStringValueFromStringWithEncoding(NSStri
 extern NSArray * BAAQueryStringPairsFromDictionary(NSDictionary *dictionary);
 extern NSArray * BAAQueryStringPairsFromKeyAndValue(NSString *key, id value);
 
-static NSString * AFQueryStringFromParametersWithEncoding(NSDictionary *parameters, NSStringEncoding stringEncoding) {
+static NSString * BAAQueryStringFromParametersWithEncoding(NSDictionary *parameters, NSStringEncoding stringEncoding) {
     NSMutableArray *mutablePairs = [NSMutableArray array];
     for (BAAQueryStringPair *pair in BAAQueryStringPairsFromDictionary(parameters)) {
         [mutablePairs addObject:[pair URLEncodedStringValueWithEncoding:stringEncoding]];
@@ -1303,7 +1303,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     }
     
     NSString *charset = (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
-    NSString *query = AFQueryStringFromParametersWithEncoding(parameters, NSUTF8StringEncoding);
+    NSString *query = BAAQueryStringFromParametersWithEncoding(parameters, NSUTF8StringEncoding);
     
     if (mutableRequest.contentType == BAAContentTypeForm) {
         
