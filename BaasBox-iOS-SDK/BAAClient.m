@@ -1278,7 +1278,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     BAAMutableURLRequest *request = [[BAAMutableURLRequest alloc] initWithURL:url];
     
     if ([path isEqualToString:@"login"]) { // Hack. Login should support json
-     
+        
         request.contentType = BAAContentTypeForm;
         
     }
@@ -1339,19 +1339,34 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     [[self.session dataTaskWithRequest:request
                      completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                          
-                         if (error == nil) {
-                             NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
-                                                                                        options:kNilOptions
-                                                                                          error:nil];
-                             success(jsonObject);
+                         NSHTTPURLResponse *r = (NSHTTPURLResponse*)response;
+                         NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
+                                                                                    options:kNilOptions
+                                                                                      error:nil];
+                         if (r.statusCode == 401) {
                              
-                         } else {
-                             
+                             NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+                             [errorDetail setValue:jsonObject[@"message"]
+                                            forKey:NSLocalizedDescriptionKey];
+                             NSError *error = [NSError errorWithDomain:[BaasBox errorDomain]
+                                                                  code:[BaasBox authenticationErrorCode]
+                                                              userInfo:errorDetail];
                              failure(error);
+                             return;
                              
                          }
                          
-                     }] resume];
+                         if (error == nil) {
+                             
+                             success(jsonObject);
+                             
+                         } else {
+                         
+                             failure(error);
+                     
+                         }
+      
+      }] resume];
     
 }
 

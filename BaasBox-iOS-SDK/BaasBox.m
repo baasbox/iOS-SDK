@@ -48,4 +48,8 @@
     return -13579;
 }
 
++ (NSInteger) authenticationErrorCode {
+    return -22222;
+}
+
 @end
