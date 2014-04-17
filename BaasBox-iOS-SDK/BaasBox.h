@@ -25,6 +25,6 @@
 + (NSString *) appCode;
 + (NSString *) errorDomain;
 + (NSInteger) errorCode;
-+ (NSInteger) authenticationErrorCode;
++ (NSError *)authenticationErrorForResponse:(NSDictionary *)response;
 
 @end
