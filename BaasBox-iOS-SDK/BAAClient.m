@@ -134,6 +134,7 @@ NSArray * BAAQueryStringPairsFromKeyAndValue(NSString *key, id value) {
 
 @property (nonatomic, copy) NSString *appCode;
 @property (nonatomic, strong) NSURLSession *session;
+@property (nonatomic, strong) NSIndexSet *acceptableStatusCodes;
 
 - (void) saveUserToDisk:(BAAUser *)user;
 - (BAAUser *) loadUserFromDisk;
@@ -180,6 +181,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                                              delegate:nil
                                         delegateQueue:[NSOperationQueue mainQueue]];
     
+    _acceptableStatusCodes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(200, 100)];
 }
 
 #pragma mark - Authentication
@@ -657,15 +659,22 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 
 #pragma mark - Acl
 
-- (void) grantAccess:(BAAFile *)file toRole:(NSString *)roleName accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock {
-    
-    NSString *path = [NSString stringWithFormat:@"file/%@/%@/role/%@", file.fileId, access, roleName];
+- (void) grantAccess:(NSObject<BAAAcl> *)object toRole:(NSString *)roleName accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock {
+    NSString *path;
+
+    if ([object isKindOfClass:[BAAObject class]]) {
+        BAAObject *baaObj = (BAAObject *)object;
+        path = [NSString stringWithFormat:@"%@/%@/%@/role/%@", baaObj.collectionName,baaObj.objectId, access, roleName];
+    } else if ([object isKindOfClass:[BAAFile class]]) {
+        BAAFile *file = (BAAFile *)object;
+        path = [NSString stringWithFormat:@"file/%@/%@/role/%@", file.fileId, access, roleName];
+    }
     
     [self putPath:path
        parameters:nil
           success:^(id responseObject) {
               
-              completionBlock(file, nil);
+              completionBlock(object, nil);
               
           } failure:^(NSError *error) {
               
@@ -677,16 +686,25 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     
 }
 
-- (void) grantAccess:(BAAFile *)file toUser:(NSString *)username accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock {
+- (void) grantAccess:(NSObject<BAAAcl> *)object toUser:(NSString *)username accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock {
     
-    NSString *path = [NSString stringWithFormat:@"file/%@/%@/user/%@", file.fileId, access, username];
+    NSString *path;
+    
+    if ([object isKindOfClass:[BAAObject class]]) {
+        BAAObject *baaObj = (BAAObject *)object;
+        path = [NSString stringWithFormat:@"%@/%@/%@/user/%@", baaObj.collectionName,baaObj.objectId, access, username];
+    } else if ([object isKindOfClass:[BAAFile class]]) {
+        BAAFile *file = (BAAFile *)object;
+        path = [NSString stringWithFormat:@"file/%@/%@/user/%@", file.fileId, access, username];
+    }
+    
     
     [self putPath:path
        parameters:nil
           success:^(id responseObject) {
               
               if (completionBlock) {
-                  completionBlock(file, nil);
+                  completionBlock(object, nil);
               }
               
           } failure:^(NSError *error) {
@@ -699,16 +717,25 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     
 }
 
-- (void) revokeAccess:(BAAFile *)file toRole:(NSString *)roleName accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock {
+- (void) revokeAccess:(NSObject<BAAAcl> *)object toRole:(NSString *)roleName accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock {
     
-    NSString *path = [NSString stringWithFormat:@"file/%@/%@/role/%@", file.fileId, access, roleName];
+    NSString *path;
+    
+    if ([object isKindOfClass:[BAAObject class]]) {
+        BAAObject *baaObj = (BAAObject *)object;
+        path = [NSString stringWithFormat:@"%@/%@/%@/role/%@", baaObj.collectionName,baaObj.objectId, access, roleName];
+    } else if ([object isKindOfClass:[BAAFile class]]) {
+        BAAFile *file = (BAAFile *)object;
+        path = [NSString stringWithFormat:@"file/%@/%@/role/%@", file.fileId, access, roleName];
+    }
+
     
     [self deletePath:path
           parameters:nil
              success:^(id responseObject) {
                  
                  if (completionBlock) {
-                     completionBlock(file, nil);
+                     completionBlock(object, nil);
                  }
                  
              } failure:^(NSError *error) {
@@ -721,16 +748,27 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     
 }
 
-- (void) revokeAccess:(BAAFile *)file toUser:(NSString *)username accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock {
+- (void) revokeAccess:(BAAFile *)object toUser:(NSString *)username accessType:(NSString *)access completion:(BAAObjectResultBlock)completionBlock {
     
-    NSString *path = [NSString stringWithFormat:@"file/%@/%@/user/%@", file.fileId, access, username];
+    NSString *path;
+    
+    if ([object isKindOfClass:[BAAObject class]]) {
+        BAAObject *baaObj = (BAAObject *)object;
+        path = [NSString stringWithFormat:@"%@/%@/%@/user/%@", baaObj.collectionName,baaObj.objectId, access, username];
+    } else if ([object isKindOfClass:[BAAFile class]]) {
+        BAAFile *file = (BAAFile *)object;
+        path = [NSString stringWithFormat:@"file/%@/%@/user/%@", file.fileId, access, username];
+    }
+
+    
+    
     
     [self deletePath:path
           parameters:nil
              success:^(id responseObject) {
                  
                  if (completionBlock) {
-                     completionBlock(file, nil);
+                     completionBlock(object, nil);
                  }
                  
              } failure:^(NSError *error) {
@@ -1338,30 +1376,25 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     [[self.session dataTaskWithRequest:request
                      completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                          
-                         NSHTTPURLResponse *r = (NSHTTPURLResponse*)response;
-                         NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
-                                                                                    options:kNilOptions
-                                                                                      error:nil];
-                         if (r.statusCode == 401) {
+                         if (response && [response isKindOfClass:[NSHTTPURLResponse class]]) {
+                             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
                              
-                             NSError *error = [BaasBox authenticationErrorForResponse:jsonObject];                            
+                             NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                             
+                             if ( [self.acceptableStatusCodes containsIndex:[httpResponse statusCode]]) {
+                                 success(jsonObject);
+                             } else if (httpResponse.statusCode == 401) {
+                                 NSError *error = [BaasBox authenticationErrorForResponse:jsonObject];
+                                 failure(error);
+                             } else {
+                                 NSError *error = [NSError errorWithDomain:[BaasBox errorDomain] code:[BaasBox errorCode] userInfo:jsonObject];
+                                 failure(error);
+                             }
+                             
+                         } else {                             
                              failure(error);
-                             return;
-                             
                          }
-                         
-                         if (error == nil) {
-                             
-                             success(jsonObject);
-                             
-                         } else {
-                         
-                             failure(error);
-                     
-                         }
-      
-      }] resume];
-    
+                     }] resume];
 }
 
 - (void)postPath:(NSString *)path

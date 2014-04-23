@@ -183,4 +183,43 @@
     
 }
 
+#pragma mark - ACL
+
+- (void) grantAccessToRole:(NSString *)roleName ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock {
+    
+    [[BAAClient sharedClient] grantAccess:self
+                      toRole:roleName
+                  accessType:accessType
+                  completion:completionBlock];
+    
+}
+
+- (void) grantAccessToUser:(NSString *)username ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock {
+    
+    [[BAAClient sharedClient] grantAccess:self
+                      toUser:username
+                  accessType:accessType
+                  completion:completionBlock];
+    
+}
+
+- (void) revokeAccessToRole:(NSString *)roleName ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock {
+    
+    [[BAAClient sharedClient] revokeAccess:self
+                       toRole:roleName
+                   accessType:accessType
+                   completion:completionBlock];
+    
+}
+
+- (void) revokeAccessToUser:(NSString *)username ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock {
+    
+    [[BAAClient sharedClient] revokeAccess:self
+                       toUser:username
+                   accessType:accessType
+                   completion:completionBlock];
+    
+}
+
+
 @end

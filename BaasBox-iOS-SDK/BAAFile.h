@@ -15,8 +15,9 @@
 
 #import <Foundation/Foundation.h>
 #import "BAAClient.h"
+#import "BAAAcl.h"
 
-@interface BAAFile : NSObject
+@interface BAAFile : NSObject <BAAAcl>
 
 @property (nonatomic, copy, readonly) NSData *data;
 @property (nonatomic, copy) NSString *fileId;
@@ -37,10 +38,6 @@
 + (void) loadFilesAndDetailsWithCompletion:(BAAArrayResultBlock)completionBlock;
 - (void) stopFileLoading;
 - (void) uploadFileWithPermissions:(NSDictionary *)permissions completion:(BAAObjectResultBlock)completionBlock;
-- (void) grantAccessToRole:(NSString *)roleName ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock;
-- (void) grantAccessToUser:(NSString *)username ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock;
-- (void) revokeAccessToRole:(NSString *)roleName ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock;
-- (void) revokeAccessToUser:(NSString *)username ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock;
 - (void) deleteFileWithCompletion:(BAABooleanResultBlock)completionBlock;
 
 @end
