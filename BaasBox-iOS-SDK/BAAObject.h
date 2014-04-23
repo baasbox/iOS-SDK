@@ -15,8 +15,9 @@
 
 #import <Foundation/Foundation.h>
 #import "BAAGlobals.h"
+#import "BAAAcl.h"
 
-@interface BAAObject : NSObject
+@interface BAAObject : NSObject <BAAAcl>
 
 @property (nonatomic, copy, readonly) NSString *objectId;
 
