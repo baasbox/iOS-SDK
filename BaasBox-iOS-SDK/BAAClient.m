@@ -1338,11 +1338,11 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     [[self.session dataTaskWithRequest:request
                      completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                          
-                         NSHTTPURLResponse *r = (NSHTTPURLResponse*)response;
+                         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
                          NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
                                                                                     options:kNilOptions
                                                                                       error:nil];
-                         if (r.statusCode == 401) {
+                         if (httpResponse.statusCode == 401) {
                              
                              NSError *error = [BaasBox authenticationErrorForResponse:jsonObject];                            
                              failure(error);
@@ -1352,7 +1352,16 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                          
                          if (error == nil) {
                              
-                             success(jsonObject);
+                             NSString *contentType = [httpResponse.allHeaderFields objectForKey:@"Content-type"];
+                             if ([contentType hasPrefix:@"image/"]) {
+                                 
+                                 success(data);
+                                 
+                             } else {
+                             
+                                 success(jsonObject);
+                                 
+                             }
                              
                          } else {
                          
