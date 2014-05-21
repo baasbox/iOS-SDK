@@ -249,8 +249,9 @@
 
 - (NSMutableDictionary *) visibleByAnonymousUsers {
     
-    if (_visibleByAnonymousUsers == nil)
+    if (_visibleByAnonymousUsers == nil) {
         _visibleByAnonymousUsers = [NSMutableDictionary dictionary];
+    }
     
     return _visibleByAnonymousUsers;
     
@@ -258,8 +259,9 @@
 
 - (NSMutableDictionary *) visibleByTheUser {
     
-    if (_visibleByTheUser == nil)
+    if (_visibleByTheUser == nil) {
         _visibleByTheUser = [NSMutableDictionary dictionary];
+    }
     
     return _visibleByTheUser;
     
@@ -267,8 +269,9 @@
 
 - (NSMutableDictionary *) visibleByFriends {
     
-    if (_visibleByFriends == nil)
+    if (_visibleByFriends == nil) {
         _visibleByFriends = [NSMutableDictionary dictionary];
+    }
     
     return _visibleByFriends;
     
@@ -276,8 +279,9 @@
 
 - (NSMutableDictionary *) visibleByRegisteredUsers {
     
-    if (_visibleByRegisteredUsers == nil)
+    if (_visibleByRegisteredUsers == nil) {
         _visibleByRegisteredUsers = [NSMutableDictionary dictionary];
+    }
     
     return _visibleByRegisteredUsers;
     
