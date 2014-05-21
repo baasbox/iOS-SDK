@@ -19,11 +19,11 @@
 
 @interface BAAUser : NSObject <NSCoding>
 
-@property (nonatomic, copy) NSString *username;
 @property (nonatomic, copy) NSString *authenticationToken;
 @property (nonatomic, copy) NSString *pushNotificationToken;
 @property (nonatomic, assign) BOOL pushEnabled;
 @property (nonatomic, copy) NSDictionary *roles;
+@property (nonatomic, copy) NSString *status;
 @property (nonatomic, copy) NSMutableDictionary *visibleByTheUser;
 @property (nonatomic, copy) NSMutableDictionary *visibleByFriends;
 @property (nonatomic, copy) NSMutableDictionary *visibleByRegisteredUsers;
@@ -31,6 +31,7 @@
 
 - (instancetype) initWithDictionary:(NSDictionary *)dict;
 - (NSString *) jsonString;
+- (NSString *) username;
 
 // load
 + (void) logoutWithCompletion:(BAABooleanResultBlock)completionBlock;

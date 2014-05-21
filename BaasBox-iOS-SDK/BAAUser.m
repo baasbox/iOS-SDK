@@ -30,6 +30,8 @@
 
 }
 
+@property (nonatomic, copy) NSMutableDictionary *user;
+
 @end
 
 @implementation BAAUser
@@ -41,12 +43,13 @@
     
     if (self) {
         
-        _username = dict[@"user"][@"name"];
+        _user = dict[@"user"];
         _roles = dict[@"user"][@"roles"];
-        _visibleByAnonymousUsers = dict[@"visibleByAnonymousUsers"];
-        _visibleByFriends = dict[@"visibleByFriend"];
-        _visibleByRegisteredUsers = dict[@"_visibleByRegisteredUsers"];
-        _visibleByTheUser = dict[@"_visibleByTheUser"];
+        _status = dict[@"user"][@"status"];
+        _visibleByAnonymousUsers = [NSMutableDictionary dictionaryWithDictionary:dict[@"visibleByAnonymousUsers"]];
+        _visibleByFriends = [NSMutableDictionary dictionaryWithDictionary:dict[@"visibleByFriend"]];
+        _visibleByRegisteredUsers = [NSMutableDictionary dictionaryWithDictionary:dict[@"_visibleByRegisteredUsers"]];
+        _visibleByTheUser = [NSMutableDictionary dictionaryWithDictionary:dict[@"_visibleByTheUser"]];
         
     }
     
@@ -287,7 +290,13 @@
     
 }
 
--(NSString *)description {
+- (NSString *) username {
+    
+    return self.user[@"name"];
+    
+}
+
+- (NSString *)description {
     
     return [[self objectAsDictionary] description];
     
@@ -301,7 +310,7 @@
     
     if(self) {
         
-        decodeObject(_username);
+        decodeObject(_user);
         decodeObject(_authenticationToken);
         decodeObject(_pushNotificationToken);
         decodeBool(_pushEnabled);
@@ -314,7 +323,7 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     
-    encodeObject(_username);
+    encodeObject(_user);
     encodeObject(_authenticationToken);
     encodeObject(_pushNotificationToken);
     encodeBool(_pushEnabled);
