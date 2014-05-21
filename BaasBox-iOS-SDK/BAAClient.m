@@ -1512,7 +1512,13 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 
 - (void) updateUserWithDictionary:(NSDictionary *) dictionary {
     
-    self.currentUser = [[BAAUser alloc] initWithDictionary:dictionary[@"data"]];
+    NSDictionary *dataDictionary = dictionary[@"data"];
+    self.currentUser.roles = dataDictionary[@"user"][@"roles"];
+    self.currentUser.status = dataDictionary[@"user"][@"status"];
+    self.currentUser.visibleByTheUser = [NSMutableDictionary dictionaryWithDictionary:dataDictionary[@"visibleByTheUser"]];
+    self.currentUser.visibleByFriends = [NSMutableDictionary dictionaryWithDictionary:dataDictionary[@"visibleByFriends"]];
+    self.currentUser.visibleByRegisteredUsers = [NSMutableDictionary dictionaryWithDictionary:dataDictionary[@"visibleByRegisteredUsers"]];
+    self.currentUser.visibleByAnonymousUsers = [NSMutableDictionary dictionaryWithDictionary:dataDictionary[@"visibleByAnonymousUsers"]];
     
 }
 

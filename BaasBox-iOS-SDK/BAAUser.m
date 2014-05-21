@@ -48,8 +48,8 @@
         _status = dict[@"user"][@"status"];
         _visibleByAnonymousUsers = [NSMutableDictionary dictionaryWithDictionary:dict[@"visibleByAnonymousUsers"]];
         _visibleByFriends = [NSMutableDictionary dictionaryWithDictionary:dict[@"visibleByFriend"]];
-        _visibleByRegisteredUsers = [NSMutableDictionary dictionaryWithDictionary:dict[@"_visibleByRegisteredUsers"]];
-        _visibleByTheUser = [NSMutableDictionary dictionaryWithDictionary:dict[@"_visibleByTheUser"]];
+        _visibleByRegisteredUsers = [NSMutableDictionary dictionaryWithDictionary:dict[@"visibleByRegisteredUsers"]];
+        _visibleByTheUser = [NSMutableDictionary dictionaryWithDictionary:dict[@"visibleByTheUser"]];
         
     }
     

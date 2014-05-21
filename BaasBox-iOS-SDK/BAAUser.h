@@ -24,10 +24,10 @@
 @property (nonatomic, assign) BOOL pushEnabled;
 @property (nonatomic, copy) NSDictionary *roles;
 @property (nonatomic, copy) NSString *status;
-@property (nonatomic, copy) NSMutableDictionary *visibleByTheUser;
-@property (nonatomic, copy) NSMutableDictionary *visibleByFriends;
-@property (nonatomic, copy) NSMutableDictionary *visibleByRegisteredUsers;
-@property (nonatomic, copy) NSMutableDictionary *visibleByAnonymousUsers;
+@property (nonatomic, strong) NSMutableDictionary *visibleByTheUser;
+@property (nonatomic, strong) NSMutableDictionary *visibleByFriends;
+@property (nonatomic, strong) NSMutableDictionary *visibleByRegisteredUsers;
+@property (nonatomic, strong) NSMutableDictionary *visibleByAnonymousUsers;
 
 - (instancetype) initWithDictionary:(NSDictionary *)dict;
 - (NSString *) jsonString;
