@@ -47,7 +47,7 @@
         _roles = dict[@"user"][@"roles"];
         _status = dict[@"user"][@"status"];
         _visibleByAnonymousUsers = [NSMutableDictionary dictionaryWithDictionary:dict[@"visibleByAnonymousUsers"]];
-        _visibleByFriends = [NSMutableDictionary dictionaryWithDictionary:dict[@"visibleByFriend"]];
+        _visibleByFriends = [NSMutableDictionary dictionaryWithDictionary:dict[@"visibleByFriends"]];
         _visibleByRegisteredUsers = [NSMutableDictionary dictionaryWithDictionary:dict[@"visibleByRegisteredUsers"]];
         _visibleByTheUser = [NSMutableDictionary dictionaryWithDictionary:dict[@"visibleByTheUser"]];
         
