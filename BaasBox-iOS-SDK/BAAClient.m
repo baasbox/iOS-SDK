@@ -1510,15 +1510,34 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     
 }
 
-- (void) updateUserWithDictionary:(NSDictionary *) dictionary {
+- (void) updateUserWithDictionary:(NSDictionary *)dictionary {
     
     NSDictionary *dataDictionary = dictionary[@"data"];
     self.currentUser.roles = dataDictionary[@"user"][@"roles"];
     self.currentUser.status = dataDictionary[@"user"][@"status"];
-    self.currentUser.visibleByTheUser = [NSMutableDictionary dictionaryWithDictionary:dataDictionary[@"visibleByTheUser"]];
-    self.currentUser.visibleByFriends = [NSMutableDictionary dictionaryWithDictionary:dataDictionary[@"visibleByFriends"]];
-    self.currentUser.visibleByRegisteredUsers = [NSMutableDictionary dictionaryWithDictionary:dataDictionary[@"visibleByRegisteredUsers"]];
+    
     self.currentUser.visibleByAnonymousUsers = [NSMutableDictionary dictionaryWithDictionary:dataDictionary[@"visibleByAnonymousUsers"]];
+    self.currentUser.visibleByRegisteredUsers = [NSMutableDictionary dictionaryWithDictionary:dataDictionary[@"visibleByRegisteredUsers"]];
+    
+    if (dictionary[@"visibleByFriends"] == [NSNull null]) {
+        
+        self.currentUser.visibleByFriends = [NSMutableDictionary dictionary];
+        
+    } else {
+        
+        self.currentUser.visibleByFriends = [NSMutableDictionary dictionaryWithDictionary:dataDictionary[@"visibleByFriends"]];
+        
+    }
+    
+    if (dictionary[@"visibleByTheUser"] == [NSNull null]) {
+        
+        self.currentUser.visibleByTheUser = [NSMutableDictionary dictionary];
+        
+    } else {
+        
+        self.currentUser.visibleByTheUser = [NSMutableDictionary dictionaryWithDictionary:dataDictionary[@"visibleByTheUser"]];
+        
+    }
     
 }
 
