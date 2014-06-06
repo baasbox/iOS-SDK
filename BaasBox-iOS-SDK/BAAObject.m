@@ -18,6 +18,12 @@
 #import "BaasBox.h"
 #import <objc/runtime.h>
 
+@interface BAAObject ()
+
+@property (nonatomic, strong) BAAClient *client;
+
+@end
+
 @implementation BAAObject
 
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary {
@@ -31,6 +37,15 @@
     }
     
     return self;
+    
+}
+
+- (BAAClient *) client {
+    
+    if (_client == nil)
+        _client = [BAAClient sharedClient];
+    
+    return _client;
     
 }
 
@@ -89,6 +104,45 @@
               completion:completionBlock];
     
 }
+
+#pragma mark - ACL
+
+- (void) grantAccessToRole:(NSString *)roleName ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock {
+    
+    [self.client grantAccess:self
+                      toRole:roleName
+                  accessType:accessType
+                  completion:completionBlock];
+    
+}
+
+- (void) grantAccessToUser:(NSString *)username ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock {
+    
+    [self.client grantAccess:self
+                      toUser:username
+                  accessType:accessType
+                  completion:completionBlock];
+    
+}
+
+- (void) revokeAccessToRole:(NSString *)roleName ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock {
+    
+    [self.client revokeAccess:self
+                       toRole:roleName
+                   accessType:accessType
+                   completion:completionBlock];
+    
+}
+
+- (void) revokeAccessToUser:(NSString *)username ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock {
+    
+    [self.client revokeAccess:self
+                       toUser:username
+                   accessType:accessType
+                   completion:completionBlock];
+    
+}
+
 
 - (NSString *) collectionName {
     

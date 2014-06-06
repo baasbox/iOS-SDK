@@ -151,7 +151,7 @@
     
 }
 
-#pragma mark - Permissions
+#pragma mark - ACL
 
 - (void) grantAccessToRole:(NSString *)roleName ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock {
     
