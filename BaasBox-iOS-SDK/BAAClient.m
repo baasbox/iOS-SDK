@@ -30,6 +30,7 @@ NSString * const kAclAdministratorRole = @"administrator";
 NSString * const kAclReadPermission = @"read";
 NSString * const kAclDeletePermission = @"delete";
 NSString * const kAclUpdatePermission = @"update";
+NSString * const kAclAllPermission = @"all";
 
 static NSString * const boundary = @"BAASBOX_BOUNDARY_STRING";
 
