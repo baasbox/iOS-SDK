@@ -132,7 +132,7 @@ extern NSString * const kAclAdministratorRole;
 extern NSString * const kAclReadPermission;
 extern NSString * const kAclDeletePermission;
 extern NSString * const kAclUpdatePermission;
-
+extern NSString * const kAclAllPermission;
 
 
 
