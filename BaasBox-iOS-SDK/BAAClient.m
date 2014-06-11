@@ -378,7 +378,6 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                
                completionBlock(nil, error);
                
-               
            }];
     
 }
@@ -419,6 +418,28 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                  
                  
              }];
+    
+}
+
+- (void) fetchCountForObjects:(BAAObject *)object completion:(BAAIntegerResultBlock)completionBlock {
+    
+    [self getPath:[NSString stringWithFormat:@"%@/count", object.collectionName]
+       parameters:nil
+          success:^(id responseObject) {
+              
+              NSInteger result = [responseObject[@"data"][@"count"] intValue];
+              
+              if (completionBlock) {
+                  completionBlock(result, nil);
+              }
+              
+          } failure:^(NSError *error) {
+              
+              if (completionBlock) {
+                  completionBlock(-1, error);
+              }
+              
+          }];
     
 }
 

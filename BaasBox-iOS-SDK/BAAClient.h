@@ -54,6 +54,9 @@
 // Deleting
 - (void) deleteObject:(BAAObject *)object completion:(BAABooleanResultBlock)completionBlock;
 
+// Counting
+- (void) fetchCountForObjects:(BAAObject *)object completion:(BAAIntegerResultBlock)completionBlock;
+
 // Push notifications
 - (void) askToEnablePushNotifications;
 - (void) enablePushNotifications:(NSData *)token completion:(BAABooleanResultBlock)completionBlock;
@@ -95,6 +98,7 @@
 - (void) loadSettingsWithCompletion:(BAAObjectResultBlock)completionBlock;
 - (void) loadSettingsSection:(NSString *)sectionName completion:(BAAObjectResultBlock)completionBlock;
 - (void) setValue:(NSString *)value forKey:(NSString *)key inSection:(NSString *)sectionName completion:(BAAObjectResultBlock)completionBlock;
+
 
 // Core methods
 - (void)getPath:(NSString *)path

@@ -20,6 +20,7 @@
 typedef void (^BAAArrayResultBlock)(NSArray *objects, NSError *error);
 typedef void (^BAAObjectResultBlock)(id object, NSError *error);
 typedef void (^BAABooleanResultBlock)(BOOL success, NSError *error);
+typedef void (^BAAIntegerResultBlock)(NSInteger count, NSError *error);
 
 @interface BAAGlobals : NSObject
 

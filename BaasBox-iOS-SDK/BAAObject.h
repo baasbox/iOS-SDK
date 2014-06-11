@@ -33,6 +33,7 @@
 - (void) grantAccessToUser:(NSString *)username ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock;
 - (void) revokeAccessToRole:(NSString *)roleName ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock;
 - (void) revokeAccessToUser:(NSString *)username ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock;
++ (void) fetchCountForObjectsWithCompletion:(BAAIntegerResultBlock)completionBlock;
 + (NSString *) assetsEndPoint;
 - (NSString *) collectionName;
 - (NSDictionary*) objectAsDictionary;

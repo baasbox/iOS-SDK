@@ -152,6 +152,18 @@
     
 }
 
+#pragma mark - Counter methods
+
++ (void) fetchCountForObjectsWithCompletion:(BAAIntegerResultBlock)completionBlock {
+
+    BAAClient *client = [BAAClient sharedClient];
+    [client fetchCountForObjects:[[self alloc] init]
+                completion:completionBlock];
+    
+}
+
+#pragma mark - Helper methods
+
 - (NSDictionary*) objectAsDictionary {
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:0];
