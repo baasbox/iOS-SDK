@@ -58,4 +58,17 @@
     
 }
 
++ (NSDateFormatter *)dateFormatter {
+    
+    static NSDateFormatter *_dateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _dateFormatter = [[NSDateFormatter alloc] init];
+        [_dateFormatter setDateFormat:@"yyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"];
+    });
+    
+    return _dateFormatter;
+    
+}
+
 @end

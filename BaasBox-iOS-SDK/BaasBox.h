@@ -26,5 +26,6 @@
 + (NSString *) errorDomain;
 + (NSInteger) errorCode;
 + (NSError *)authenticationErrorForResponse:(NSDictionary *)response;
++ (NSDateFormatter *)dateFormatter;
 
 @end
