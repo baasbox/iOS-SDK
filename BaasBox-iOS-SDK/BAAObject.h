@@ -39,4 +39,7 @@
 - (NSDictionary*) objectAsDictionary;
 - (NSString *) jsonString;
 
+// Experimental
++ (void) getRandomObjectsWithParams:(NSDictionary *)parameters bound:(NSInteger)bound completion:(BAAArrayResultBlock)completionBlock;
+
 @end

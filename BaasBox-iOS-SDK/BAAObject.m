@@ -251,4 +251,51 @@
     
 }
 
+#pragma mark - Experimental
+
+// Random selection should be done on the server side. This is a patch.
+// I tested it but might not always work.
+
++ (void) getRandomObjectsWithParams:(NSDictionary *)parameters bound:(NSInteger)bound completion:(BAAArrayResultBlock)completionBlock {
+    
+    [[self class] getObjectsWithParams:parameters completion:^(NSArray *objects, NSError *error) {
+        
+        if (error == nil) {
+            
+            if (completionBlock) {
+                
+                if (bound > objects.count) {
+                    
+                    completionBlock(@[],  nil);
+                    
+                } else {
+                    
+                    NSMutableArray *result = [NSMutableArray array];
+                    
+                    for (NSInteger i = 0; i < bound; i++) {
+                        
+                        NSInteger randomIndex = arc4random_uniform(objects.count);
+                        [result addObject:objects[randomIndex]];
+                        
+                    }
+                    
+                    completionBlock(result, nil);
+                    
+                }
+                
+            }
+            
+        } else {
+            
+            if (completionBlock) {
+                
+                completionBlock(nil, error);
+                
+            }
+        }
+        
+    }];
+    
+}
+
 @end
