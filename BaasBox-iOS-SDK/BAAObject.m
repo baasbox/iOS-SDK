@@ -270,14 +270,16 @@
                     
                 } else {
                     
-                    NSMutableArray *result = [NSMutableArray array];
+                    NSMutableSet *randomDistinctObjects = [NSMutableSet setWithCapacity:bound];
                     
-                    for (NSInteger i = 0; i < bound; i++) {
+                    do {
                         
-                        NSInteger randomIndex = arc4random_uniform(objects.count);
-                        [result addObject:objects[randomIndex]];
+                        NSInteger randomIndex = arc4random_uniform((u_int32_t)objects.count);
+                        [randomDistinctObjects addObject:objects[randomIndex]];
                         
-                    }
+                    } while (randomDistinctObjects.count < bound);
+                    
+                    NSArray *result = [randomDistinctObjects allObjects];
                     
                     completionBlock(result, nil);
                     
