@@ -22,7 +22,7 @@
 @property (nonatomic, assign, readonly) NSInteger version;
 @property (nonatomic, strong, readonly) NSDate *creationDate;
 
-- (instancetype) initWithDictionary:(NSDictionary *)dictionary;
+- (instancetype) initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
 
 + (void) getObjectsWithCompletion:(BAAArrayResultBlock)completionBlock;
 + (void) getObjectsWithParams:(NSDictionary *)parameters completion:(BAAArrayResultBlock)completionBlock;
