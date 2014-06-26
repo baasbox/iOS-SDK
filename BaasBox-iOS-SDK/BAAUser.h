@@ -29,7 +29,7 @@
 @property (nonatomic, strong) NSMutableDictionary *visibleByRegisteredUsers;
 @property (nonatomic, strong) NSMutableDictionary *visibleByAnonymousUsers;
 
-- (instancetype) initWithDictionary:(NSDictionary *)dict NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithDictionary:(NSDictionary *)dict;
 - (NSString *) jsonString;
 - (NSString *) username;
 
