@@ -22,7 +22,7 @@
 @property (nonatomic, assign, readonly) NSInteger version;
 @property (nonatomic, strong, readonly) NSDate *creationDate;
 
-- (instancetype) initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithDictionary:(NSDictionary *)dictionary __attribute((objc_designated_initializer)); // Will be NS_DESIGNATED_INITIALIZER in Xcode6
 
 + (void) getObjectsWithCompletion:(BAAArrayResultBlock)completionBlock;
 + (void) getObjectsWithParams:(NSDictionary *)parameters completion:(BAAArrayResultBlock)completionBlock;
