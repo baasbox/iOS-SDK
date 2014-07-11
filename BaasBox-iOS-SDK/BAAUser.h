@@ -43,6 +43,7 @@
 + (void) loginWithFacebookToken:(NSString *)token completion:(BAABooleanResultBlock)completionBlock;
 - (void) linkToFacebookWithToken:(NSString *)token completion:(BAABooleanResultBlock)completionBlock;
 - (void) unlinkFromFacebookWithCompletion:(BAABooleanResultBlock)completionBlock;
+- (void) fetchLinkedSocialNetworksWithCompletion:(BAAArrayResultBlock)completionBlock;
 
 // update
 - (void) updateWithCompletion:(BAAObjectResultBlock)completionBlock;

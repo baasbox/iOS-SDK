@@ -228,6 +228,24 @@
     
 }
 
+- (void) fetchLinkedSocialNetworksWithCompletion:(BAAArrayResultBlock)completionBlock {
+
+    BAAClient *client = [BAAClient sharedClient];
+    [client getPath:@"/social"
+         parameters:nil
+            success:^(id responseObject) {
+                if (completionBlock) {
+                    NSArray *res = responseObject[@"data"];
+                    completionBlock(res, nil);
+                }                
+            } failure:^(NSError *error) {
+                if(completionBlock) {
+                    completionBlock(nil, error);
+                }
+            }];
+    
+}
+
 #pragma mark - Update
 
 - (void) updateWithCompletion:(BAAObjectResultBlock)completionBlock {
