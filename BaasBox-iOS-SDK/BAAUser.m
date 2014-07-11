@@ -211,7 +211,22 @@
 
 }
 
+- (void) unlinkFromFacebookWithCompletion:(BAABooleanResultBlock)completionBlock {
 
+    BAAClient *client = [BAAClient sharedClient];
+    [client deletePath:@"/social/facebook"
+            parameters:nil
+               success:^(id responseObject) {
+                   if (completionBlock) {
+                       completionBlock(YES, nil);
+                   }
+               } failure:^(NSError *error) {
+                   if (completionBlock) {
+                       completionBlock(NO, error);
+                   }
+               }];
+    
+}
 
 #pragma mark - Update
 
