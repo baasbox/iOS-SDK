@@ -136,7 +136,6 @@ NSArray * BAAQueryStringPairsFromKeyAndValue(NSString *key, id value) {
 @property (nonatomic, copy) NSString *appCode;
 @property (nonatomic, strong) NSURLSession *session;
 
-- (void) saveUserToDisk:(BAAUser *)user;
 - (BAAUser *) loadUserFromDisk;
 - (void)_initSession;
 

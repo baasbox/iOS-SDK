@@ -121,6 +121,7 @@
            success:(void (^)(id responseObject))success
            failure:(void (^)(NSError *error))failure;
 
+- (void) saveUserToDisk:(BAAUser *)user;
 
 // Pagination constants
 extern NSString * const kPageNumberKey;
