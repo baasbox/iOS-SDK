@@ -167,10 +167,13 @@
     
 }
 
+#pragma mark - Social
+
 + (void) loginWithFacebookToken:(NSString *)token completion:(BAABooleanResultBlock)completionBlock {
     
     BAAClient *client = [BAAClient sharedClient];
-    [client postPath:@"/social/facebook" parameters:@{@"oauth_token":token, @"oauth_secret":token}
+    [client postPath:@"/social/facebook"
+          parameters:@{@"oauth_token":token, @"oauth_secret":token}
              success:^(id responseObject) {
                  
                  BAAUser *user = [[BAAUser alloc] initWithDictionary:responseObject[@"data"]];
@@ -190,6 +193,25 @@
              }];
     
 }
+
+- (void) linkToFacebookWithToken:(NSString *)token completion:(BAABooleanResultBlock)completionBlock {
+    
+    BAAClient *client = [BAAClient sharedClient];
+    [client putPath:@"/social/facebook"
+         parameters:@{@"oauth_token":token, @"oauth_secret":token}
+            success:^(id responseObject) {
+                if (completionBlock) {
+                    completionBlock(YES, nil);
+                }
+            } failure:^(NSError *error) {
+                if (completionBlock) {
+                    completionBlock(NO, error);
+                }
+            }];
+
+}
+
+
 
 #pragma mark - Update
 
