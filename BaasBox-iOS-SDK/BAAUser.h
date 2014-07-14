@@ -45,6 +45,8 @@
 - (void) unlinkFromFacebookWithCompletion:(BAABooleanResultBlock)completionBlock;
 - (void) fetchLinkedSocialNetworksWithCompletion:(BAAArrayResultBlock)completionBlock;
 
++ (void) loginWithGoogleToken:(NSString *)token completion:(BAABooleanResultBlock)completionBlock;
+
 // update
 - (void) updateWithCompletion:(BAAObjectResultBlock)completionBlock;
 

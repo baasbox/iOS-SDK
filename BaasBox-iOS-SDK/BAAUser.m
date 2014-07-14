@@ -246,6 +246,31 @@
     
 }
 
++ (void) loginWithGoogleToken:(NSString *)token completion:(BAABooleanResultBlock)completionBlock {
+
+    BAAClient *client = [BAAClient sharedClient];
+    [client postPath:@"/social/google"
+          parameters:@{@"oauth_token":token, @"oauth_secret":token}
+             success:^(id responseObject) {
+                 
+                 BAAUser *user = [[BAAUser alloc] initWithDictionary:responseObject[@"data"]];
+                 user.authenticationToken = responseObject[@"data"][@"X-BB-SESSION"];
+                 client.currentUser = user;
+                 [client saveUserToDisk:user];
+                 if (completionBlock) {
+                     completionBlock(YES, nil);
+                 }
+                 
+             } failure:^(NSError *error) {
+                 
+                 if (completionBlock) {
+                     completionBlock(NO, error);
+                 }
+                 
+             }];
+    
+}
+
 #pragma mark - Update
 
 - (void) updateWithCompletion:(BAAObjectResultBlock)completionBlock {
