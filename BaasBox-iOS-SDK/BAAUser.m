@@ -228,24 +228,6 @@
     
 }
 
-- (void) fetchLinkedSocialNetworksWithCompletion:(BAAArrayResultBlock)completionBlock {
-
-    BAAClient *client = [BAAClient sharedClient];
-    [client getPath:@"/social"
-         parameters:nil
-            success:^(id responseObject) {
-                if (completionBlock) {
-                    NSArray *res = responseObject[@"data"];
-                    completionBlock(res, nil);
-                }                
-            } failure:^(NSError *error) {
-                if(completionBlock) {
-                    completionBlock(nil, error);
-                }
-            }];
-    
-}
-
 + (void) loginWithGoogleToken:(NSString *)token completion:(BAABooleanResultBlock)completionBlock {
 
     BAAClient *client = [BAAClient sharedClient];
@@ -302,6 +284,24 @@
                        completionBlock(NO, error);
                    }
                }];
+    
+}
+
+- (void) fetchLinkedSocialNetworksWithCompletion:(BAAArrayResultBlock)completionBlock {
+    
+    BAAClient *client = [BAAClient sharedClient];
+    [client getPath:@"/social"
+         parameters:nil
+            success:^(id responseObject) {
+                if (completionBlock) {
+                    NSArray *res = responseObject[@"data"];
+                    completionBlock(res, nil);
+                }
+            } failure:^(NSError *error) {
+                if(completionBlock) {
+                    completionBlock(nil, error);
+                }
+            }];
     
 }
 
