@@ -47,6 +47,7 @@
 
 + (void) loginWithGoogleToken:(NSString *)token completion:(BAABooleanResultBlock)completionBlock;
 - (void) linkToGoogleWithToken:(NSString *)token completion:(BAABooleanResultBlock)completionBlock;
+- (void) unlinkFromGoogleWithCompletion:(BAABooleanResultBlock)completionBlock;
 
 // update
 - (void) updateWithCompletion:(BAAObjectResultBlock)completionBlock;
