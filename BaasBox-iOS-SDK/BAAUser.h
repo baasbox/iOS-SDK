@@ -46,6 +46,7 @@
 - (void) fetchLinkedSocialNetworksWithCompletion:(BAAArrayResultBlock)completionBlock;
 
 + (void) loginWithGoogleToken:(NSString *)token completion:(BAABooleanResultBlock)completionBlock;
+- (void) linkToGoogleWithToken:(NSString *)token completion:(BAABooleanResultBlock)completionBlock;
 
 // update
 - (void) updateWithCompletion:(BAAObjectResultBlock)completionBlock;
