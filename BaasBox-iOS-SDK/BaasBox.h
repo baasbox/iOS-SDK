@@ -16,6 +16,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#define VERSION @"0.8.3"
 #define BASE_URL_KEY @"baseURLKey"
 #define APP_CODE_KEY @"appCodeKey"
 
