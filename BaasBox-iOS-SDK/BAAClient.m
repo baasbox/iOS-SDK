@@ -1570,8 +1570,18 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *decodedUser = [defaults objectForKey:BAAUserKeyForUserDefaults];
-    BAAUser *user = (BAAUser *)[NSKeyedUnarchiver unarchiveObjectWithData:decodedUser];
-    return user;
+
+    if (decodedUser) {
+
+      BAAUser *user = (BAAUser *)[NSKeyedUnarchiver unarchiveObjectWithData:decodedUser];
+      return user;
+
+    } else {
+
+      return nil;
+      
+    }
+    
     
 }
 
