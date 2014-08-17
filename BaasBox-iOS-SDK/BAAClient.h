@@ -38,6 +38,14 @@
                       password:(NSString *)password
                     completion:(BAABooleanResultBlock)completionBlock;
 
+- (void)createUserWithUsername:(NSString *)username
+                      password:(NSString *)password
+              visibleByTheUser:(NSDictionary *)visibleByTheUser
+              visibleByFriends:(NSDictionary *)visibleByFriends
+      visibleByRegisteredUsers:(NSDictionary *)visibleByRegisteredUsers
+       visibleByAnonymousUsers:(NSDictionary *)visibleByAnonymousUsers
+                    completion:(BAABooleanResultBlock)completionBlock;
+
 - (BOOL) isAuthenticated;
 
 - (void) logoutWithCompletion:(BAABooleanResultBlock)completionBlock;

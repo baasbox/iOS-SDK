@@ -224,8 +224,33 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                       password:(NSString *)password
                     completion:(BAABooleanResultBlock)completionHander {
     
+    [self createUserWithUsername:username
+                        password:password
+                visibleByTheUser:nil
+                visibleByFriends:nil
+        visibleByRegisteredUsers:nil
+         visibleByAnonymousUsers:nil
+                      completion:completionHander];
+    
+}
+
+- (void)createUserWithUsername:(NSString *)username
+                      password:(NSString *)password
+              visibleByTheUser:(NSDictionary *)visibleByTheUser
+              visibleByFriends:(NSDictionary *)visibleByFriends
+      visibleByRegisteredUsers:(NSDictionary *)visibleByRegisteredUsers
+       visibleByAnonymousUsers:(NSDictionary *)visibleByAnonymousUsers
+                    completion:(BAABooleanResultBlock)completionHander {
+    
     [self postPath:@"user"
-        parameters:@{@"username" : username, @"password": password, @"appcode" : self.appCode}
+        parameters:@{
+                     @"username" : username,
+                     @"password": password,
+                     @"appcode" : self.appCode,
+                     @"visibleByTheUser" : visibleByTheUser ?: @{},
+                     @"visibleByFriends" : visibleByFriends ?: @{},
+                     @"visibleByRegisteredUsers" : visibleByRegisteredUsers ?: @{},
+                     @"visibleByAnonymousUsers" : visibleByAnonymousUsers ?: @{}}
            success:^(NSDictionary *responseObject) {
                
                NSString *token = responseObject[@"data"][@"X-BB-SESSION"];
