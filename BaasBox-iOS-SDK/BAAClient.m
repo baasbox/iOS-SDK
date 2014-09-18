@@ -606,7 +606,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                                  NSDictionary *userInfo = @{
                                                             NSLocalizedDescriptionKey: d[@"message"],
                                                             NSLocalizedFailureReasonErrorKey: d[@"message"],
-                                                            NSLocalizedRecoverySuggestionErrorKey: @"Make sure that ACL roles and usernames exist on the backed."
+                                                            NSLocalizedRecoverySuggestionErrorKey: @"Make sure that ACL roles and usernames exist on the backend."
                                                             };
                                  NSError *error = [NSError errorWithDomain:[BaasBox errorDomain]
                                                                       code:[BaasBox errorCode]
