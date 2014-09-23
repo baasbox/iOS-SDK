@@ -97,8 +97,8 @@
     
     if (fileId && completionBlock) {
         
-        NSDictionary *dictionary = [NSDictionary dictionaryWithObject:fileId forKey:@"id"];
-        BAAFile *file = [[BAAFile alloc] initWithDictionary:dictionary];
+        BAAFile *file = [[BAAFile alloc] init];
+        file.fileId = fileId;
         [file loadFileWithCompletion:completionBlock];
 
     }
