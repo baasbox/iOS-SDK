@@ -93,6 +93,17 @@
     
 }
 
++ (void)loadFileWithFileId:(NSString *)fileId completion:(void (^)(NSData *, NSError *))completionBlock {
+    
+    if (fileId && completionBlock) {
+        
+        NSDictionary *dictionary = [NSDictionary dictionaryWithObject:fileId forKey:@"id"];
+        BAAFile *file = [[BAAFile alloc] initWithDictionary:dictionary];
+        [file loadFileWithCompletion:completionBlock];
+
+    }
+}
+
 - (void) loadFileWithCompletion:(void(^)(NSData *data, NSError *error))completionBlock {
     
     self.downloadTask = [self.client loadFileData:self
