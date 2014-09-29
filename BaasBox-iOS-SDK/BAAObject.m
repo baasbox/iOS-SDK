@@ -258,11 +258,11 @@
 
 + (void) getRandomObjectsWithParams:(NSDictionary *)parameters bound:(NSInteger)bound completion:(BAAArrayResultBlock)completionBlock {
     
-    [[self class] getObjectsWithParams:parameters completion:^(NSArray *objects, NSError *error) {
+    if (completionBlock) {
         
-        if (error == nil) {
+        [[self class] getObjectsWithParams:parameters completion:^(NSArray *objects, NSError *error) {
             
-            if (completionBlock) {
+            if (error == nil) {
                 
                 if (bound > objects.count) {
                     
@@ -285,19 +285,13 @@
                     
                 }
                 
-            }
-            
-        } else {
-            
-            if (completionBlock) {
+            } else {
                 
                 completionBlock(nil, error);
                 
             }
-        }
-        
-    }];
-    
+        }];
+    }
 }
 
 @end
