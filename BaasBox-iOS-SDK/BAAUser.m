@@ -126,6 +126,42 @@
     
 }
 
++ (void) loadRandomUserWithCompletion:(BAAArrayResultBlock)completionBlock {
+    
+    if (completionBlock) {
+        
+        [self loadUsersWithParameters:@{} completion:^(NSArray *users, NSError *error) {
+            
+            if (error == nil) {
+                
+                if (users.count <= 1) {
+                    
+                    // This is the edge case where this user is the only user.
+                    completionBlock(@[],  nil);
+                    
+                } else {
+                    
+                    BAAUser *currentUser = [[BAAClient sharedClient] currentUser];
+                    BAAUser *randomUser;
+                    
+                    do {
+                        
+                        NSInteger randomIndex = arc4random_uniform((u_int32_t)users.count);
+                        randomUser = users[randomIndex];
+                        
+                    } while ([randomUser.username isEqualToString:currentUser.username]);  // Eensures that the random user is not the current user.
+                    
+                    completionBlock([NSArray arrayWithObject:randomUser], nil);
+                    
+                }
+                
+            } else {
+                completionBlock(nil, error);
+            }
+        }];
+    }
+}
+
 + (void) loadUserDetails:(NSString *)username completion:(BAAObjectResultBlock)completionBlock {
 
     BAAClient *client = [BAAClient sharedClient];
