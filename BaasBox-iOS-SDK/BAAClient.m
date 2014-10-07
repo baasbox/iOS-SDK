@@ -514,9 +514,6 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     NSURLSession *s = [NSURLSession sharedSession];
     NSString *path = [NSString stringWithFormat:@"file/%@", file.fileId];
     BAAMutableURLRequest *request = [self requestWithMethod:@"GET" URLString:path parameters:parameters];
-    NSLog(@"request %@", request);
-    //    [request setValue:@"image/jpeg"
-    //          forHTTPHeaderField:@"Content-Type"];
     NSURLSessionDataTask *task = [s dataTaskWithRequest:request
                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                           
@@ -1146,9 +1143,11 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     
     #if __IPHONE_OS_VERSION_MIN_REQUIRED  >= 80000
     
-    UIUserNotificationSettings *settings =
-    [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert |UIUserNotificationTypeBadge |  UIUserNotificationTypeSound
-                                      categories:nil];
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:
+                                            UIUserNotificationTypeAlert |
+                                            UIUserNotificationTypeBadge |
+                                            UIUserNotificationTypeSound
+                                                                             categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     
@@ -1274,6 +1273,31 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     }
     
     return deviceID;
+}
+
+- (void)pushNotificationToUsername:(NSString *)username
+                       withMessage:(NSString *)message
+                        completion:(BAABooleanResultBlock)completionBlock {
+    
+    NSString *path = [NSString stringWithFormat:@"/push/message/%@", username];
+    NSDictionary *parameters = @{ @"message" : message };
+    
+    BAAClient *client = [BAAClient sharedClient];
+    [client postPath:path
+          parameters:parameters
+             success:^(id responseObject) {
+                 
+                 if (completionBlock) {
+                     completionBlock(YES, nil);
+                 }
+                 
+             } failure:^(NSError *error) {
+                 
+                 if (completionBlock) {
+                     completionBlock(NO, error);
+                 }
+                 
+             }];
 }
 
 
