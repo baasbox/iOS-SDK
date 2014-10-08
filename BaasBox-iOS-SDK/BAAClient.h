@@ -69,6 +69,7 @@
 - (void) askToEnablePushNotifications;
 - (void) enablePushNotifications:(NSData *)token completion:(BAABooleanResultBlock)completionBlock;
 - (void) disablePushNotificationsWithCompletion:(BAABooleanResultBlock)completionBlock;
+- (void) pushNotificationToUsername:(NSString *)username withMessage:(NSString *)message completion:(BAABooleanResultBlock)completionBlock;
 
 // Files
 - (void) loadFiles:(BAAFile *)file completion:(BAAArrayResultBlock)completionBlock;
