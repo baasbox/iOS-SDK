@@ -1275,31 +1275,6 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     return deviceID;
 }
 
-- (void)pushNotificationToUsername:(NSString *)username
-                       withMessage:(NSString *)message
-                        completion:(BAABooleanResultBlock)completionBlock {
-    
-    NSString *path = [NSString stringWithFormat:@"/push/message/%@", username];
-    NSDictionary *parameters = @{ @"message" : message };
-    
-    BAAClient *client = [BAAClient sharedClient];
-    [client postPath:path
-          parameters:parameters
-             success:^(id responseObject) {
-                 
-                 if (completionBlock) {
-                     completionBlock(YES, nil);
-                 }
-                 
-             } failure:^(NSError *error) {
-                 
-                 if (completionBlock) {
-                     completionBlock(NO, error);
-                 }
-                 
-             }];
-}
-
 
 #pragma mark - Admin
 
