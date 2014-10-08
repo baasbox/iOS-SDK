@@ -37,6 +37,7 @@
 + (void) logoutWithCompletion:(BAABooleanResultBlock)completionBlock;
 + (void) loadCurrentUserWithCompletion:(BAAObjectResultBlock)completionBlock;
 + (void) loadUsersWithParameters:(NSDictionary *)parameters completion:(BAAArrayResultBlock)completionBlock;
++ (void) loadRandomUserWithCompletion:(BAAArrayResultBlock)completionBlock;
 + (void) loadUserDetails:(NSString *)username completion:(BAAObjectResultBlock)completionBlock;
 
 // Social
