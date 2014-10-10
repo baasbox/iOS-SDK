@@ -220,4 +220,15 @@
     
 }
 
++ (void)deleteFileWithId:(NSString *)fileId completion:(BAABooleanResultBlock)completionBlock {
+    
+    if (fileId && completionBlock) {
+        
+        BAAFile *file = [[BAAFile alloc] init];
+        file.fileId = fileId;
+        [file deleteFileWithCompletion:completionBlock];
+        
+    }
+}
+
 @end

@@ -43,5 +43,6 @@
 - (void) revokeAccessToRole:(NSString *)roleName ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock;
 - (void) revokeAccessToUser:(NSString *)username ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock;
 - (void) deleteFileWithCompletion:(BAABooleanResultBlock)completionBlock;
++ (void)deleteFileWithId:(NSString *)fileId completion:(BAABooleanResultBlock)completionBlock;
 
 @end
