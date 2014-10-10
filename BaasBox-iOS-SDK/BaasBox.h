@@ -14,7 +14,11 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#if TARGET_OS_IPHONE
+    #import <UIKit/UIKit.h>
+#else
+    #import <AppKit/AppKit.h>
+#endif
 
 #define VERSION @"0.8.4"
 #define BASE_URL_KEY @"baseURLKey"
