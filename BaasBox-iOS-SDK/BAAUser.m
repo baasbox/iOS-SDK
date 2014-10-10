@@ -426,7 +426,6 @@
     }
     
     free(propertyList);
-    //    NSLog(@"result is %@", result);
     return [NSDictionary dictionaryWithDictionary:result];
     
 }

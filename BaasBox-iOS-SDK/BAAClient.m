@@ -514,9 +514,6 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     NSURLSession *s = [NSURLSession sharedSession];
     NSString *path = [NSString stringWithFormat:@"file/%@", file.fileId];
     BAAMutableURLRequest *request = [self requestWithMethod:@"GET" URLString:path parameters:parameters];
-    NSLog(@"request %@", request);
-    //    [request setValue:@"image/jpeg"
-    //          forHTTPHeaderField:@"Content-Type"];
     NSURLSessionDataTask *task = [s dataTaskWithRequest:request
                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                           
@@ -533,7 +530,6 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                                               
                                           } else {
                                               
-                                              NSLog(@"Got response %@ with error %@.\n", response, error);
                                               completionBlock(nil, error);
                                               
                                           }
@@ -1199,7 +1195,6 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
               
           } failure:^(NSError *error) {
               
-              NSLog(@"error %@", error);
               if (completionBlock) {
                   completionBlock(NO, error);
               }
@@ -1254,7 +1249,6 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
               
           } failure:^(NSError *error) {
               
-              NSLog(@"error %@", error);
               if (completionBlock) {
                   completionBlock(NO, error);
               }
