@@ -93,7 +93,7 @@
     
 }
 
-+ (void)loadFileWithFileId:(NSString *)fileId completion:(void (^)(NSData *, NSError *))completionBlock {
++ (void) loadFileWithId:(NSString *)fileId completion:(void(^)(NSData *data, NSError *error))completionBlock {
     
     if (fileId && completionBlock) {
         
