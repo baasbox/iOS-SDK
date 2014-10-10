@@ -38,6 +38,7 @@
 + (void) loadCurrentUserWithCompletion:(BAAObjectResultBlock)completionBlock;
 + (void) loadUsersWithParameters:(NSDictionary *)parameters completion:(BAAArrayResultBlock)completionBlock;
 + (void) loadUserDetails:(NSString *)username completion:(BAAObjectResultBlock)completionBlock;
++ (void) loadRandomUserWithCompletion:(BAAArrayResultBlock)completionBlock;
 
 // Social
 + (void) loginWithFacebookToken:(NSString *)token completion:(BAABooleanResultBlock)completionBlock;
