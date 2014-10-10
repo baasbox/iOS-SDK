@@ -19,6 +19,7 @@
 
 NSString * const kPageNumberKey = @"page";
 NSString * const kPageSizeKey = @"recordsPerPage";
+NSString * const kSkipKey = @"skip";
 NSInteger const kPageLength = 50;
 
 NSString * const kAclAnonymousRole = @"anonymous";
