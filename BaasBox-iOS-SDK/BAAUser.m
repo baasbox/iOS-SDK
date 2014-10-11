@@ -506,6 +506,10 @@
         decodeObject(_authenticationToken);
         decodeObject(_pushNotificationToken);
         decodeBool(_pushEnabled);
+        decodeObject(_visibleByAnonymousUsers);
+        decodeObject(_visibleByRegisteredUsers);
+        decodeObject(_visibleByFriends);
+        decodeObject(_visibleByTheUser);
         
     }
     
@@ -519,6 +523,10 @@
     encodeObject(_authenticationToken);
     encodeObject(_pushNotificationToken);
     encodeBool(_pushEnabled);
+    encodeObject(_visibleByAnonymousUsers);
+    encodeObject(_visibleByRegisteredUsers);
+    encodeObject(_visibleByFriends);
+    encodeObject(_visibleByTheUser);
     
 }
 

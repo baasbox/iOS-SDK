@@ -1676,6 +1676,8 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
         
     }
     
+    [self saveUserToDisk:self.currentUser];
+    
 }
 
 - (BOOL) isAuthenticated {
