@@ -70,6 +70,7 @@
 - (void) enablePushNotifications:(NSData *)token completion:(BAABooleanResultBlock)completionBlock;
 - (void) disablePushNotificationsWithCompletion:(BAABooleanResultBlock)completionBlock;
 - (void) pushNotificationToUsername:(NSString *)username withMessage:(NSString *)message completion:(BAABooleanResultBlock)completionBlock;
+- (void) pushNotificationToUsername:(NSString *)username withMessage:(NSString *)message customPayload:(NSDictionary *)customPayload completion:(BAABooleanResultBlock)completionBlock;
 
 // Files
 - (void) loadFiles:(BAAFile *)file completion:(BAAArrayResultBlock)completionBlock;
@@ -147,6 +148,10 @@ extern NSString * const kAclReadPermission;
 extern NSString * const kAclDeletePermission;
 extern NSString * const kAclUpdatePermission;
 extern NSString * const kAclAllPermission;
+
+// Push Notification constants
+extern NSString * const kPushNotificationMessageKey;
+extern NSString * const kPushNotificationCustomPayloadKey;
 
 
 

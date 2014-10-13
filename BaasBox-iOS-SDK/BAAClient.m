@@ -31,6 +31,9 @@ NSString * const kAclDeletePermission = @"delete";
 NSString * const kAclUpdatePermission = @"update";
 NSString * const kAclAllPermission = @"all";
 
+NSString * const kPushNotificationMessageKey = @"message";
+NSString * const kPushNotificationCustomPayloadKey = @"custom";
+
 static NSString * const boundary = @"BAASBOX_BOUNDARY_STRING";
 
 static NSString * const kBAACharactersToBeEscapedInQuery = @"@/:?&=$;+!#()',*";
@@ -1284,8 +1287,23 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                        withMessage:(NSString *)message
                         completion:(BAABooleanResultBlock)completionBlock {
     
+    [self pushNotificationToUsername:username
+                         withMessage:message
+                       customPayload:nil
+                          completion:completionBlock];
+}
+
+- (void)pushNotificationToUsername:(NSString *)username
+                       withMessage:(NSString *)message
+                     customPayload:(NSDictionary *)customPayload
+                        completion:(BAABooleanResultBlock)completionBlock {
+    
     NSString *path = [NSString stringWithFormat:@"/push/message/%@", username];
-    NSDictionary *parameters = @{ @"message" : message };
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithObject:message forKey:kPushNotificationMessageKey];
+    
+    if (customPayload) {
+        [parameters setObject:customPayload forKey:kPushNotificationCustomPayloadKey];
+    }
     
     BAAClient *client = [BAAClient sharedClient];
     [client postPath:path
@@ -1675,8 +1693,6 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
         self.currentUser.visibleByTheUser = [NSMutableDictionary dictionaryWithDictionary:dataDictionary[@"visibleByTheUser"]];
         
     }
-    
-    [self saveUserToDisk:self.currentUser];
     
 }
 
