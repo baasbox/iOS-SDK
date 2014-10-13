@@ -1693,6 +1693,8 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
         self.currentUser.visibleByTheUser = [NSMutableDictionary dictionaryWithDictionary:dataDictionary[@"visibleByTheUser"]];
         
     }
+
+    [self saveUserToDisk:self.currentUser];
     
 }
 
