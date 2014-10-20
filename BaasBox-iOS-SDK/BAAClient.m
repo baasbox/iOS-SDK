@@ -188,7 +188,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 
 - (void)authenticateUser:(NSString *)username
                 password:(NSString *)password
-              completion:(BAABooleanResultBlock)completionHander {
+              completion:(BAABooleanResultBlock)completionHandler {
     
     [self postPath:@"login"
         parameters:@{@"username" : username, @"password": password, @"appcode" : self.appCode}
@@ -202,7 +202,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                    user.authenticationToken = token;
                    self.currentUser = user;
                    [self saveUserToDisk:user];
-                   completionHander(YES, nil);
+                   completionHandler(YES, nil);
                    
                } else {
                    
@@ -212,13 +212,13 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                    NSError *error = [NSError errorWithDomain:[BaasBox errorDomain]
                                                         code:[BaasBox errorCode]
                                                     userInfo:errorDetail];
-                   completionHander(NO, error);
+                   completionHandler(NO, error);
                    
                }
                
            } failure:^(NSError *error) {
                
-               completionHander(NO, error);
+               completionHandler(NO, error);
                
            }];
     
@@ -226,7 +226,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 
 - (void)createUserWithUsername:(NSString *)username
                       password:(NSString *)password
-                    completion:(BAABooleanResultBlock)completionHander {
+                    completion:(BAABooleanResultBlock)completionHandler {
     
     [self createUserWithUsername:username
                         password:password
@@ -234,7 +234,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                 visibleByFriends:nil
         visibleByRegisteredUsers:nil
          visibleByAnonymousUsers:nil
-                      completion:completionHander];
+                      completion:completionHandler];
     
 }
 
@@ -244,7 +244,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
               visibleByFriends:(NSDictionary *)visibleByFriends
       visibleByRegisteredUsers:(NSDictionary *)visibleByRegisteredUsers
        visibleByAnonymousUsers:(NSDictionary *)visibleByAnonymousUsers
-                    completion:(BAABooleanResultBlock)completionHander {
+                    completion:(BAABooleanResultBlock)completionHandler {
     
     [self postPath:@"user"
         parameters:@{
@@ -266,7 +266,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                    self.currentUser = user;
                    [self saveUserToDisk:user];
                    
-                   completionHander(YES, nil);
+                   completionHandler(YES, nil);
                    
                } else {
                    
@@ -276,19 +276,19 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                    NSError *error = [NSError errorWithDomain:[BaasBox errorDomain]
                                                         code:[BaasBox errorCode]
                                                     userInfo:errorDetail];
-                   completionHander(NO, error);
+                   completionHandler(NO, error);
                    
                }
                
            } failure:^(NSError *error) {
                
-               completionHander(NO, error);
+               completionHandler(NO, error);
                
            }];
     
 }
 
-- (void) logoutWithCompletion:(BAABooleanResultBlock)completionHander {
+- (void) logoutWithCompletion:(BAABooleanResultBlock)completionHandler {
     
     NSString *path = @"logout";
     
@@ -300,16 +300,17 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
         parameters:nil
            success:^(id responseObject) {
                
-               if (completionHander) {
+               if (completionHandler) {
                    self.currentUser = nil;
                    [self saveUserToDisk:self.currentUser];
-                   completionHander(YES, nil);
+                   completionHandler(YES, nil);
                }
                
            } failure:^(NSError *error) {
                
-               if (completionHander)
-                   completionHander(NO, error);
+               if (completionHandler) {
+                   completionHandler(NO, error);
+               }
                
            }];
     
