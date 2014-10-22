@@ -9,7 +9,7 @@ This is the official iOS SDK for [BaasBox](http://www.baasbox.com)
 
 Add the following to your Podfile
 
-``pod 'BaasBoxSDK', '~> 0.8.3'``
+``pod 'BaasBoxSDK', '~> 0.8.4'``
 
 ## Good old way
 
