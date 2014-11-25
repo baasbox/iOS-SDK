@@ -1144,30 +1144,31 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
 #pragma mark - Push notifications
 
 - (void) askToEnablePushNotifications {
-    
+  
 #if TARGET_OS_IPHONE
-    
-    #if __IPHONE_OS_VERSION_MIN_REQUIRED  >= 80000
-        
-        UIUserNotificationSettings *settings =
-        [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert |UIUserNotificationTypeBadge |  UIUserNotificationTypeSound
-                                          categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-        
-    #else
-        
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-         (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-        
-    #endif
-    
+  
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 80000
+  
+  [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+   (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+  
 #else
-    
-    [[NSApplication sharedApplication] registerForRemoteNotificationTypes:
-     (NSRemoteNotificationTypeBadge | NSRemoteNotificationTypeSound | NSRemoteNotificationTypeAlert)];
-    
+  
+  UIUserNotificationSettings *settings =
+  [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert |UIUserNotificationTypeBadge |  UIUserNotificationTypeSound
+                                    categories:nil];
+  [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+  [[UIApplication sharedApplication] registerForRemoteNotifications];
+  
 #endif
+  
+#else
+  
+  [[NSApplication sharedApplication] registerForRemoteNotificationTypes:
+   (NSRemoteNotificationTypeBadge | NSRemoteNotificationTypeSound | NSRemoteNotificationTypeAlert)];
+  
+#endif
+  
 }
 
 - (void) enablePushNotifications:(NSData *)tokenData completion:(BAABooleanResultBlock)completionBlock {
