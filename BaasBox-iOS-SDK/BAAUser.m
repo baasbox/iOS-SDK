@@ -484,7 +484,11 @@
 
 - (NSString *) username {
     
+  if (self.visibleByRegisteredUsers[@"_social"]) {
+    return self.visibleByTheUser[@"name"];
+  } else {
     return self.user[@"name"];
+  }
     
 }
 
