@@ -483,13 +483,13 @@
 }
 
 - (NSString *) username {
-    
-  if (self.visibleByRegisteredUsers[@"_social"]) {
+  
+  if ([self.visibleByRegisteredUsers[@"_social"] count] > 0) {
     return self.visibleByTheUser[@"name"];
   } else {
     return self.user[@"name"];
   }
-    
+  
 }
 
 - (NSString *)description {
