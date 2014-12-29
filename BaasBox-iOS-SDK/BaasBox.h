@@ -20,7 +20,7 @@
     #import <AppKit/AppKit.h>
 #endif
 
-#define VERSION @"0.8.4"
+#define VERSION @"0.9.0"
 #define BASE_URL_KEY @"baseURLKey"
 #define APP_CODE_KEY @"appCodeKey"
 
