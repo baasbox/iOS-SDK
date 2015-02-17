@@ -33,6 +33,7 @@ NSString * const kAclAllPermission = @"all";
 
 NSString * const kPushNotificationMessageKey = @"message";
 NSString * const kPushNotificationCustomPayloadKey = @"custom";
+NSString * const kAuthenticationTokenExpiredNotification = @"com.baasbox.tokenExpired";
 
 static NSString * const boundary = @"BAASBOX_BOUNDARY_STRING";
 
@@ -1498,6 +1499,8 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                              
                              NSError *error = [BaasBox authenticationErrorForResponse:jsonObject];                            
                              failure(error);
+                             [[NSNotificationCenter defaultCenter] postNotificationName:kAuthenticationTokenExpiredNotification 
+                                                                                 object:nil];
                              return;
                              
                          }
@@ -1546,6 +1549,8 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                              
                              NSError *error = [BaasBox authenticationErrorForResponse:jsonObject];
                              failure(error);
+                             [[NSNotificationCenter defaultCenter] postNotificationName:kAuthenticationTokenExpiredNotification
+                                                                                 object:nil];
                              return;
                              
                          }
@@ -1584,6 +1589,8 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                              
                              NSError *error = [BaasBox authenticationErrorForResponse:jsonObject];
                              failure(error);
+                             [[NSNotificationCenter defaultCenter] postNotificationName:kAuthenticationTokenExpiredNotification
+                                                                                 object:nil];
                              return;
                              
                          }
@@ -1622,6 +1629,8 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                              
                              NSError *error = [BaasBox authenticationErrorForResponse:jsonObject];
                              failure(error);
+                             [[NSNotificationCenter defaultCenter] postNotificationName:kAuthenticationTokenExpiredNotification
+                                                                                 object:nil];
                              return;
                              
                          }

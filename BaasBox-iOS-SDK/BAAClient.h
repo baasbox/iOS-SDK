@@ -153,6 +153,7 @@ extern NSString * const kAclAllPermission;
 extern NSString * const kPushNotificationMessageKey;
 extern NSString * const kPushNotificationCustomPayloadKey;
 
-
+// Authentication expired notification
+extern NSString * const kAuthenticationTokenExpiredNotification;
 
 @end
