@@ -107,6 +107,15 @@
     
 }
 
+- (void) saveObjectWithACL:(NSDictionary *)acl completion:(BAAObjectResultBlock)completionBlock {
+
+  NSAssert(acl != nil, @"ACL should not be nil, otherwise you will delete previously set ACLs.");
+  NSAssert(acl.allKeys.count > 0, @"ACL should not be empty, otherwise you will delete previously set ACLs.");
+  _acl = acl;
+  [self saveObjectWithCompletion:completionBlock];
+  
+}
+
 #pragma mark - ACL
 
 - (void) grantAccessToRole:(NSString *)roleName ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock {
@@ -219,7 +228,11 @@
     }
     
     free(properties);
-    
+  
+    if (self.acl) {
+      [dict addEntriesFromDictionary:self.acl];
+    }
+  
     return dict;
     
 }

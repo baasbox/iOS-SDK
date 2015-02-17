@@ -21,6 +21,7 @@
 @property (nonatomic, copy, readonly) NSString *objectId;
 @property (nonatomic, assign, readonly) NSInteger version;
 @property (nonatomic, strong, readonly) NSDate *creationDate;
+@property (nonatomic, strong, readonly) NSDictionary *acl;
 
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary __attribute((objc_designated_initializer)); // Will be NS_DESIGNATED_INITIALIZER in Xcode6
 
@@ -28,6 +29,7 @@
 + (void) getObjectsWithParams:(NSDictionary *)parameters completion:(BAAArrayResultBlock)completionBlock;
 + (void) getObjectWithId:(NSString *)objectID completion:(BAAObjectResultBlock)completionBlock;
 - (void) saveObjectWithCompletion:(BAAObjectResultBlock)completionBlock;
+- (void) saveObjectWithACL:(NSDictionary *)acl completion:(BAAObjectResultBlock)completionBlock;
 - (void) deleteObjectWithCompletion:(BAABooleanResultBlock)completionBlock;
 - (void) grantAccessToRole:(NSString *)roleName ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock;
 - (void) grantAccessToUser:(NSString *)username ofType:(NSString *)accessType completion:(BAAObjectResultBlock)completionBlock;
