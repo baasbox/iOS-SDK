@@ -1466,7 +1466,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
         
         [mutableRequest setValue:[NSString stringWithFormat:@"application/json; charset=%@", charset]
               forHTTPHeaderField:@"Content-Type"];
-        if ([mutableRequest.HTTPMethod isEqualToString:@"POST"] || [mutableRequest.HTTPMethod isEqualToString:@"PUT"]) {
+        if ([mutableRequest.HTTPMethod isEqualToString:@"POST"] || [mutableRequest.HTTPMethod isEqualToString:@"PUT"] || [mutableRequest.HTTPMethod isEqualToString:@"DELETE"]) {
             [mutableRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:parameters options:0 error:error]];
         }
         if ([mutableRequest.HTTPMethod isEqualToString:@"GET"]) {
