@@ -41,6 +41,8 @@
 - (NSDictionary*) objectAsDictionary;
 - (NSString *) jsonString;
 
+- (NSArray *)exclude;
+
 // Experimental
 + (void) getRandomObjectsWithParams:(NSDictionary *)parameters bound:(NSInteger)bound completion:(BAAArrayResultBlock)completionBlock;
 

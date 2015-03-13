@@ -161,6 +161,10 @@
     
 }
 
+- (NSArray *)exclude {
+  return @[@"superclass", @"description", @"debugDescription"];
+}
+
 #pragma mark - Counter methods
 
 + (void) fetchCountForObjectsWithCompletion:(BAAIntegerResultBlock)completionBlock {
@@ -174,7 +178,7 @@
 #pragma mark - Helper methods
 
 - (NSDictionary*) objectAsDictionary {
-    
+  
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:0];
     
     unsigned int outCount, i;
@@ -186,8 +190,9 @@
         objc_property_t property = properties[i];
         const char *propName = property_getName(property);
         
-        if(propName) {
-            NSString *propertyName = [NSString stringWithUTF8String:propName];
+        NSString *propertyName = [NSString stringWithUTF8String:propName];
+      
+        if (![self.exclude containsObject:propertyName]) {
             id value = [self valueForKey:propertyName];
             
             if ([value isKindOfClass:[NSArray class]]) {
@@ -225,6 +230,7 @@
                 
             }
         }
+      
     }
     
     free(properties);
