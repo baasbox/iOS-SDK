@@ -1102,9 +1102,9 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     
 }
 
-- (void) resetPasswordForUser:(BAAUser *)user withCompletion:(BAABooleanResultBlock)completionBlock {
+- (void) resetPasswordForUsername:(NSString *)username withCompletion:(BAABooleanResultBlock)completionBlock {
     
-    NSString *path = [NSString stringWithFormat:@"user/%@/password/reset", user.username];
+    NSString *path = [NSString stringWithFormat:@"user/%@/password/reset", username];
     [self getPath:path
        parameters:nil
           success:^(id responseObject) {

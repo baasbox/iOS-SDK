@@ -101,7 +101,7 @@
 
 // Password
 - (void) changeOldPassword:(NSString *)oldPassword toNewPassword:(NSString *)newPassword completion:(BAABooleanResultBlock)completionBlock;
-- (void) resetPasswordForUser:(BAAUser *)user withCompletion:(BAABooleanResultBlock)completionBlock;
+- (void) resetPasswordForUsername:(NSString *)username withCompletion:(BAABooleanResultBlock)completionBlock;
 
 // Admin
 - (void) createCollection:(NSString *)collectionName completion:(BAAObjectResultBlock)completionBlock;

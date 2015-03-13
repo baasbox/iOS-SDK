@@ -405,7 +405,7 @@
 - (void) resetPasswordWithCompletion:(BAABooleanResultBlock)completionBlock {
 
     BAAClient *client = [BAAClient sharedClient];
-    [client resetPasswordForUser:self
+    [client resetPasswordForUsername:self.username
                   withCompletion:completionBlock];
     
 }
