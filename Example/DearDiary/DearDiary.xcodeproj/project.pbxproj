@@ -1,0 +1,574 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BD2BF06417F43F470087DEBA /* TrafficLight.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2BF06317F43F470087DEBA /* TrafficLight.m */; };
+		BDAC0CEF17F42EC700A58451 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAC0CEE17F42EC700A58451 /* Foundation.framework */; };
+		BDAC0CF117F42EC700A58451 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAC0CF017F42EC700A58451 /* CoreGraphics.framework */; };
+		BDAC0CF317F42EC700A58451 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAC0CF217F42EC700A58451 /* UIKit.framework */; };
+		BDAC0CF917F42EC700A58451 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BDAC0CF717F42EC700A58451 /* InfoPlist.strings */; };
+		BDAC0CFB17F42EC700A58451 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BDAC0CFA17F42EC700A58451 /* main.m */; };
+		BDAC0CFF17F42EC700A58451 /* SMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BDAC0CFE17F42EC700A58451 /* SMAppDelegate.m */; };
+		BDAC0D0217F42EC700A58451 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDAC0D0017F42EC700A58451 /* Main.storyboard */; };
+		BDAC0D0517F42EC700A58451 /* SMMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDAC0D0417F42EC700A58451 /* SMMasterViewController.m */; };
+		BDAC0D0817F42EC700A58451 /* SMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDAC0D0717F42EC700A58451 /* SMDetailViewController.m */; };
+		BDAC0D0A17F42EC700A58451 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDAC0D0917F42EC700A58451 /* Images.xcassets */; };
+		BDAC0D1117F42EC700A58451 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAC0D1017F42EC700A58451 /* XCTest.framework */; };
+		BDAC0D1217F42EC700A58451 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAC0CEE17F42EC700A58451 /* Foundation.framework */; };
+		BDAC0D1317F42EC700A58451 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAC0CF217F42EC700A58451 /* UIKit.framework */; };
+		BDAC0D1B17F42EC700A58451 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BDAC0D1917F42EC700A58451 /* InfoPlist.strings */; };
+		BDAC0D1D17F42EC700A58451 /* DearDiaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BDAC0D1C17F42EC700A58451 /* DearDiaryTests.m */; };
+		BDAC0D2917F42F4400A58451 /* SMPost.m in Sources */ = {isa = PBXBuildFile; fileRef = BDAC0D2817F42F4400A58451 /* SMPost.m */; };
+		BDAC0D2A17F42F4400A58451 /* SMPost.m in Sources */ = {isa = PBXBuildFile; fileRef = BDAC0D2817F42F4400A58451 /* SMPost.m */; };
+		BDAC0D2C17F4322800A58451 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAC0D2B17F4322800A58451 /* MobileCoreServices.framework */; };
+		BDAC0D2E17F4322F00A58451 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAC0D2D17F4322F00A58451 /* SystemConfiguration.framework */; };
+		BDAC0D6117F4335A00A58451 /* SMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDAC0D5F17F4335A00A58451 /* SMLoginViewController.m */; };
+		BDAC0D6217F4335A00A58451 /* SMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDAC0D5F17F4335A00A58451 /* SMLoginViewController.m */; };
+		BDAC0D6317F4335A00A58451 /* SMLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDAC0D6017F4335A00A58451 /* SMLoginViewController.xib */; };
+		BDAC0D6417F4335A00A58451 /* SMLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDAC0D6017F4335A00A58451 /* SMLoginViewController.xib */; };
+		D341F0F318D774F100FE48BA /* BAAClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D341F0E618D774F100FE48BA /* BAAClient.m */; };
+		D341F0F418D774F100FE48BA /* BAAFile.m in Sources */ = {isa = PBXBuildFile; fileRef = D341F0E818D774F100FE48BA /* BAAFile.m */; };
+		D341F0F518D774F100FE48BA /* BAAGlobals.m in Sources */ = {isa = PBXBuildFile; fileRef = D341F0EA18D774F100FE48BA /* BAAGlobals.m */; };
+		D341F0F618D774F100FE48BA /* BAAMutableURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D341F0EC18D774F100FE48BA /* BAAMutableURLRequest.m */; };
+		D341F0F718D774F100FE48BA /* BAAObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D341F0EE18D774F100FE48BA /* BAAObject.m */; };
+		D341F0F818D774F100FE48BA /* BaasBox.m in Sources */ = {isa = PBXBuildFile; fileRef = D341F0F018D774F100FE48BA /* BaasBox.m */; };
+		D341F0F918D774F100FE48BA /* BAAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D341F0F218D774F100FE48BA /* BAAUser.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BDAC0D1417F42EC700A58451 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BDAC0CE317F42EC700A58451 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDAC0CEA17F42EC700A58451;
+			remoteInfo = DearDiary;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BD2BF06217F43F470087DEBA /* TrafficLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrafficLight.h; sourceTree = "<group>"; };
+		BD2BF06317F43F470087DEBA /* TrafficLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrafficLight.m; sourceTree = "<group>"; };
+		BDAC0CEB17F42EC700A58451 /* DearDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DearDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDAC0CEE17F42EC700A58451 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BDAC0CF017F42EC700A58451 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BDAC0CF217F42EC700A58451 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BDAC0CF617F42EC700A58451 /* DearDiary-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DearDiary-Info.plist"; sourceTree = "<group>"; };
+		BDAC0CF817F42EC700A58451 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BDAC0CFA17F42EC700A58451 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BDAC0CFC17F42EC700A58451 /* DearDiary-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DearDiary-Prefix.pch"; sourceTree = "<group>"; };
+		BDAC0CFD17F42EC700A58451 /* SMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAppDelegate.h; sourceTree = "<group>"; };
+		BDAC0CFE17F42EC700A58451 /* SMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAppDelegate.m; sourceTree = "<group>"; };
+		BDAC0D0117F42EC700A58451 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BDAC0D0317F42EC700A58451 /* SMMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMMasterViewController.h; sourceTree = "<group>"; };
+		BDAC0D0417F42EC700A58451 /* SMMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMMasterViewController.m; sourceTree = "<group>"; };
+		BDAC0D0617F42EC700A58451 /* SMDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMDetailViewController.h; sourceTree = "<group>"; };
+		BDAC0D0717F42EC700A58451 /* SMDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMDetailViewController.m; sourceTree = "<group>"; };
+		BDAC0D0917F42EC700A58451 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BDAC0D0F17F42EC700A58451 /* DearDiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DearDiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDAC0D1017F42EC700A58451 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BDAC0D1817F42EC700A58451 /* DearDiaryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DearDiaryTests-Info.plist"; sourceTree = "<group>"; };
+		BDAC0D1A17F42EC700A58451 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BDAC0D1C17F42EC700A58451 /* DearDiaryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DearDiaryTests.m; sourceTree = "<group>"; };
+		BDAC0D2717F42F4400A58451 /* SMPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPost.h; sourceTree = "<group>"; };
+		BDAC0D2817F42F4400A58451 /* SMPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPost.m; sourceTree = "<group>"; };
+		BDAC0D2B17F4322800A58451 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		BDAC0D2D17F4322F00A58451 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BDAC0D5E17F4335A00A58451 /* SMLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLoginViewController.h; sourceTree = "<group>"; };
+		BDAC0D5F17F4335A00A58451 /* SMLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoginViewController.m; sourceTree = "<group>"; };
+		BDAC0D6017F4335A00A58451 /* SMLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMLoginViewController.xib; sourceTree = "<group>"; };
+		D341F0E518D774F100FE48BA /* BAAClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAClient.h; sourceTree = "<group>"; };
+		D341F0E618D774F100FE48BA /* BAAClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAClient.m; sourceTree = "<group>"; };
+		D341F0E718D774F100FE48BA /* BAAFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAFile.h; sourceTree = "<group>"; };
+		D341F0E818D774F100FE48BA /* BAAFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAFile.m; sourceTree = "<group>"; };
+		D341F0E918D774F100FE48BA /* BAAGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAGlobals.h; sourceTree = "<group>"; };
+		D341F0EA18D774F100FE48BA /* BAAGlobals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAGlobals.m; sourceTree = "<group>"; };
+		D341F0EB18D774F100FE48BA /* BAAMutableURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAMutableURLRequest.h; sourceTree = "<group>"; };
+		D341F0EC18D774F100FE48BA /* BAAMutableURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAMutableURLRequest.m; sourceTree = "<group>"; };
+		D341F0ED18D774F100FE48BA /* BAAObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAObject.h; sourceTree = "<group>"; };
+		D341F0EE18D774F100FE48BA /* BAAObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAObject.m; sourceTree = "<group>"; };
+		D341F0EF18D774F100FE48BA /* BaasBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaasBox.h; sourceTree = "<group>"; };
+		D341F0F018D774F100FE48BA /* BaasBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaasBox.m; sourceTree = "<group>"; };
+		D341F0F118D774F100FE48BA /* BAAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAUser.h; sourceTree = "<group>"; };
+		D341F0F218D774F100FE48BA /* BAAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAUser.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BDAC0CE817F42EC700A58451 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDAC0D2E17F4322F00A58451 /* SystemConfiguration.framework in Frameworks */,
+				BDAC0D2C17F4322800A58451 /* MobileCoreServices.framework in Frameworks */,
+				BDAC0CF117F42EC700A58451 /* CoreGraphics.framework in Frameworks */,
+				BDAC0CF317F42EC700A58451 /* UIKit.framework in Frameworks */,
+				BDAC0CEF17F42EC700A58451 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDAC0D0C17F42EC700A58451 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDAC0D1117F42EC700A58451 /* XCTest.framework in Frameworks */,
+				BDAC0D1317F42EC700A58451 /* UIKit.framework in Frameworks */,
+				BDAC0D1217F42EC700A58451 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BDAC0CE217F42EC700A58451 = {
+			isa = PBXGroup;
+			children = (
+				BDAC0CF417F42EC700A58451 /* DearDiary */,
+				BDAC0D1617F42EC700A58451 /* DearDiaryTests */,
+				BDAC0CED17F42EC700A58451 /* Frameworks */,
+				BDAC0CEC17F42EC700A58451 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BDAC0CEC17F42EC700A58451 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BDAC0CEB17F42EC700A58451 /* DearDiary.app */,
+				BDAC0D0F17F42EC700A58451 /* DearDiaryTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BDAC0CED17F42EC700A58451 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BDAC0D2D17F4322F00A58451 /* SystemConfiguration.framework */,
+				BDAC0D2B17F4322800A58451 /* MobileCoreServices.framework */,
+				BDAC0CEE17F42EC700A58451 /* Foundation.framework */,
+				BDAC0CF017F42EC700A58451 /* CoreGraphics.framework */,
+				BDAC0CF217F42EC700A58451 /* UIKit.framework */,
+				BDAC0D1017F42EC700A58451 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BDAC0CF417F42EC700A58451 /* DearDiary */ = {
+			isa = PBXGroup;
+			children = (
+				D341F0E418D774F100FE48BA /* BaasBox-iOS-SDK */,
+				BDAC0D2617F42F2F00A58451 /* Model */,
+				BDAC0CFD17F42EC700A58451 /* SMAppDelegate.h */,
+				BDAC0CFE17F42EC700A58451 /* SMAppDelegate.m */,
+				BDAC0D0017F42EC700A58451 /* Main.storyboard */,
+				BDAC0D0317F42EC700A58451 /* SMMasterViewController.h */,
+				BDAC0D0417F42EC700A58451 /* SMMasterViewController.m */,
+				BDAC0D0617F42EC700A58451 /* SMDetailViewController.h */,
+				BDAC0D0717F42EC700A58451 /* SMDetailViewController.m */,
+				BDAC0D0917F42EC700A58451 /* Images.xcassets */,
+				BDAC0CF517F42EC700A58451 /* Supporting Files */,
+				BDAC0D5E17F4335A00A58451 /* SMLoginViewController.h */,
+				BDAC0D5F17F4335A00A58451 /* SMLoginViewController.m */,
+				BDAC0D6017F4335A00A58451 /* SMLoginViewController.xib */,
+			);
+			path = DearDiary;
+			sourceTree = "<group>";
+		};
+		BDAC0CF517F42EC700A58451 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BDAC0CF617F42EC700A58451 /* DearDiary-Info.plist */,
+				BDAC0CF717F42EC700A58451 /* InfoPlist.strings */,
+				BDAC0CFA17F42EC700A58451 /* main.m */,
+				BDAC0CFC17F42EC700A58451 /* DearDiary-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BDAC0D1617F42EC700A58451 /* DearDiaryTests */ = {
+			isa = PBXGroup;
+			children = (
+				BD2BF06217F43F470087DEBA /* TrafficLight.h */,
+				BD2BF06317F43F470087DEBA /* TrafficLight.m */,
+				BDAC0D1C17F42EC700A58451 /* DearDiaryTests.m */,
+				BDAC0D1717F42EC700A58451 /* Supporting Files */,
+			);
+			path = DearDiaryTests;
+			sourceTree = "<group>";
+		};
+		BDAC0D1717F42EC700A58451 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BDAC0D1817F42EC700A58451 /* DearDiaryTests-Info.plist */,
+				BDAC0D1917F42EC700A58451 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BDAC0D2617F42F2F00A58451 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BDAC0D2717F42F4400A58451 /* SMPost.h */,
+				BDAC0D2817F42F4400A58451 /* SMPost.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D341F0E418D774F100FE48BA /* BaasBox-iOS-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				D341F0E518D774F100FE48BA /* BAAClient.h */,
+				D341F0E618D774F100FE48BA /* BAAClient.m */,
+				D341F0E718D774F100FE48BA /* BAAFile.h */,
+				D341F0E818D774F100FE48BA /* BAAFile.m */,
+				D341F0E918D774F100FE48BA /* BAAGlobals.h */,
+				D341F0EA18D774F100FE48BA /* BAAGlobals.m */,
+				D341F0EB18D774F100FE48BA /* BAAMutableURLRequest.h */,
+				D341F0EC18D774F100FE48BA /* BAAMutableURLRequest.m */,
+				D341F0ED18D774F100FE48BA /* BAAObject.h */,
+				D341F0EE18D774F100FE48BA /* BAAObject.m */,
+				D341F0EF18D774F100FE48BA /* BaasBox.h */,
+				D341F0F018D774F100FE48BA /* BaasBox.m */,
+				D341F0F118D774F100FE48BA /* BAAUser.h */,
+				D341F0F218D774F100FE48BA /* BAAUser.m */,
+			);
+			path = "BaasBox-iOS-SDK";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BDAC0CEA17F42EC700A58451 /* DearDiary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDAC0D2017F42EC700A58451 /* Build configuration list for PBXNativeTarget "DearDiary" */;
+			buildPhases = (
+				BDAC0CE717F42EC700A58451 /* Sources */,
+				BDAC0CE817F42EC700A58451 /* Frameworks */,
+				BDAC0CE917F42EC700A58451 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DearDiary;
+			productName = DearDiary;
+			productReference = BDAC0CEB17F42EC700A58451 /* DearDiary.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BDAC0D0E17F42EC700A58451 /* DearDiaryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDAC0D2317F42EC700A58451 /* Build configuration list for PBXNativeTarget "DearDiaryTests" */;
+			buildPhases = (
+				BDAC0D0B17F42EC700A58451 /* Sources */,
+				BDAC0D0C17F42EC700A58451 /* Frameworks */,
+				BDAC0D0D17F42EC700A58451 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BDAC0D1517F42EC700A58451 /* PBXTargetDependency */,
+			);
+			name = DearDiaryTests;
+			productName = DearDiaryTests;
+			productReference = BDAC0D0F17F42EC700A58451 /* DearDiaryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BDAC0CE317F42EC700A58451 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SM;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Cesare Rocchi";
+				TargetAttributes = {
+					BDAC0D0E17F42EC700A58451 = {
+						TestTargetID = BDAC0CEA17F42EC700A58451;
+					};
+				};
+			};
+			buildConfigurationList = BDAC0CE617F42EC700A58451 /* Build configuration list for PBXProject "DearDiary" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BDAC0CE217F42EC700A58451;
+			productRefGroup = BDAC0CEC17F42EC700A58451 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BDAC0CEA17F42EC700A58451 /* DearDiary */,
+				BDAC0D0E17F42EC700A58451 /* DearDiaryTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BDAC0CE917F42EC700A58451 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDAC0D0A17F42EC700A58451 /* Images.xcassets in Resources */,
+				BDAC0CF917F42EC700A58451 /* InfoPlist.strings in Resources */,
+				BDAC0D6317F4335A00A58451 /* SMLoginViewController.xib in Resources */,
+				BDAC0D0217F42EC700A58451 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDAC0D0D17F42EC700A58451 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDAC0D6417F4335A00A58451 /* SMLoginViewController.xib in Resources */,
+				BDAC0D1B17F42EC700A58451 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BDAC0CE717F42EC700A58451 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D341F0F418D774F100FE48BA /* BAAFile.m in Sources */,
+				D341F0F618D774F100FE48BA /* BAAMutableURLRequest.m in Sources */,
+				BDAC0D6117F4335A00A58451 /* SMLoginViewController.m in Sources */,
+				D341F0F718D774F100FE48BA /* BAAObject.m in Sources */,
+				D341F0F918D774F100FE48BA /* BAAUser.m in Sources */,
+				D341F0F818D774F100FE48BA /* BaasBox.m in Sources */,
+				D341F0F318D774F100FE48BA /* BAAClient.m in Sources */,
+				BDAC0CFF17F42EC700A58451 /* SMAppDelegate.m in Sources */,
+				BDAC0D0817F42EC700A58451 /* SMDetailViewController.m in Sources */,
+				BDAC0CFB17F42EC700A58451 /* main.m in Sources */,
+				D341F0F518D774F100FE48BA /* BAAGlobals.m in Sources */,
+				BDAC0D0517F42EC700A58451 /* SMMasterViewController.m in Sources */,
+				BDAC0D2917F42F4400A58451 /* SMPost.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDAC0D0B17F42EC700A58451 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD2BF06417F43F470087DEBA /* TrafficLight.m in Sources */,
+				BDAC0D6217F4335A00A58451 /* SMLoginViewController.m in Sources */,
+				BDAC0D1D17F42EC700A58451 /* DearDiaryTests.m in Sources */,
+				BDAC0D2A17F42F4400A58451 /* SMPost.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BDAC0D1517F42EC700A58451 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDAC0CEA17F42EC700A58451 /* DearDiary */;
+			targetProxy = BDAC0D1417F42EC700A58451 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BDAC0CF717F42EC700A58451 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDAC0CF817F42EC700A58451 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BDAC0D0017F42EC700A58451 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDAC0D0117F42EC700A58451 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BDAC0D1917F42EC700A58451 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDAC0D1A17F42EC700A58451 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BDAC0D1E17F42EC700A58451 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BDAC0D1F17F42EC700A58451 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BDAC0D2117F42EC700A58451 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DearDiary/DearDiary-Prefix.pch";
+				INFOPLIST_FILE = "DearDiary/DearDiary-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BDAC0D2217F42EC700A58451 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DearDiary/DearDiary-Prefix.pch";
+				INFOPLIST_FILE = "DearDiary/DearDiary-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BDAC0D2417F42EC700A58451 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DearDiary.app/DearDiary";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DearDiary/DearDiary-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "DearDiaryTests/DearDiaryTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		BDAC0D2517F42EC700A58451 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DearDiary.app/DearDiary";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DearDiary/DearDiary-Prefix.pch";
+				INFOPLIST_FILE = "DearDiaryTests/DearDiaryTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BDAC0CE617F42EC700A58451 /* Build configuration list for PBXProject "DearDiary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDAC0D1E17F42EC700A58451 /* Debug */,
+				BDAC0D1F17F42EC700A58451 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BDAC0D2017F42EC700A58451 /* Build configuration list for PBXNativeTarget "DearDiary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDAC0D2117F42EC700A58451 /* Debug */,
+				BDAC0D2217F42EC700A58451 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BDAC0D2317F42EC700A58451 /* Build configuration list for PBXNativeTarget "DearDiaryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDAC0D2417F42EC700A58451 /* Debug */,
+				BDAC0D2517F42EC700A58451 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BDAC0CE317F42EC700A58451 /* Project object */;
+}

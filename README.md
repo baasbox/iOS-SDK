@@ -25,6 +25,11 @@ Then add the following to the bridging header file `#import "BAAClient.h"`. Test
 #Documentation
 Read documentation here: [http://www.baasbox.com/documentation](http://www.baasbox.com/documentation)
 
+#Example 
+
+[Download BaasBox](http://www.baasbox.com/download/), start it, login to the console as an admin and create a collection named "memos". 
+Then start the iOS app inside example folder and signup/login.
+
 #License
 
 This SDK is released under the Apache 2 license. See the LICENSE file for more details.
