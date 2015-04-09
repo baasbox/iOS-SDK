@@ -96,7 +96,7 @@
     }
     
     SMPost *p = [[SMPost alloc] init];
-    p.postTitle = [NSString stringWithFormat:@"No title %i", _posts.count ];
+    p.postTitle = [NSString stringWithFormat:@"No title %i", (int)_posts.count ];
     p.postBody = @"No body";
     
     [p saveObjectWithCompletion:^(SMPost *post, NSError *error) {

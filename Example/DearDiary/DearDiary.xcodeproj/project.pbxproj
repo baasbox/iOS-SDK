@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		906BE653F265B6877ADB9F25 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B713FB0BFA8D5E5D91D739A /* libPods.a */; };
+		975F3675F37D027179BB1F7C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B713FB0BFA8D5E5D91D739A /* libPods.a */; };
 		BD2BF06417F43F470087DEBA /* TrafficLight.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2BF06317F43F470087DEBA /* TrafficLight.m */; };
 		BDAC0CEF17F42EC700A58451 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAC0CEE17F42EC700A58451 /* Foundation.framework */; };
 		BDAC0CF117F42EC700A58451 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAC0CF017F42EC700A58451 /* CoreGraphics.framework */; };
@@ -31,13 +33,6 @@
 		BDAC0D6217F4335A00A58451 /* SMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDAC0D5F17F4335A00A58451 /* SMLoginViewController.m */; };
 		BDAC0D6317F4335A00A58451 /* SMLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDAC0D6017F4335A00A58451 /* SMLoginViewController.xib */; };
 		BDAC0D6417F4335A00A58451 /* SMLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDAC0D6017F4335A00A58451 /* SMLoginViewController.xib */; };
-		D341F0F318D774F100FE48BA /* BAAClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D341F0E618D774F100FE48BA /* BAAClient.m */; };
-		D341F0F418D774F100FE48BA /* BAAFile.m in Sources */ = {isa = PBXBuildFile; fileRef = D341F0E818D774F100FE48BA /* BAAFile.m */; };
-		D341F0F518D774F100FE48BA /* BAAGlobals.m in Sources */ = {isa = PBXBuildFile; fileRef = D341F0EA18D774F100FE48BA /* BAAGlobals.m */; };
-		D341F0F618D774F100FE48BA /* BAAMutableURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D341F0EC18D774F100FE48BA /* BAAMutableURLRequest.m */; };
-		D341F0F718D774F100FE48BA /* BAAObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D341F0EE18D774F100FE48BA /* BAAObject.m */; };
-		D341F0F818D774F100FE48BA /* BaasBox.m in Sources */ = {isa = PBXBuildFile; fileRef = D341F0F018D774F100FE48BA /* BaasBox.m */; };
-		D341F0F918D774F100FE48BA /* BAAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D341F0F218D774F100FE48BA /* BAAUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B713FB0BFA8D5E5D91D739A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B45C3E82601CDE5CBF1718E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		5DD2F9CCBB832DF28F579C25 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BD2BF06217F43F470087DEBA /* TrafficLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrafficLight.h; sourceTree = "<group>"; };
 		BD2BF06317F43F470087DEBA /* TrafficLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrafficLight.m; sourceTree = "<group>"; };
 		BDAC0CEB17F42EC700A58451 /* DearDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DearDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,20 +79,6 @@
 		BDAC0D5E17F4335A00A58451 /* SMLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLoginViewController.h; sourceTree = "<group>"; };
 		BDAC0D5F17F4335A00A58451 /* SMLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoginViewController.m; sourceTree = "<group>"; };
 		BDAC0D6017F4335A00A58451 /* SMLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMLoginViewController.xib; sourceTree = "<group>"; };
-		D341F0E518D774F100FE48BA /* BAAClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAClient.h; sourceTree = "<group>"; };
-		D341F0E618D774F100FE48BA /* BAAClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAClient.m; sourceTree = "<group>"; };
-		D341F0E718D774F100FE48BA /* BAAFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAFile.h; sourceTree = "<group>"; };
-		D341F0E818D774F100FE48BA /* BAAFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAFile.m; sourceTree = "<group>"; };
-		D341F0E918D774F100FE48BA /* BAAGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAGlobals.h; sourceTree = "<group>"; };
-		D341F0EA18D774F100FE48BA /* BAAGlobals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAGlobals.m; sourceTree = "<group>"; };
-		D341F0EB18D774F100FE48BA /* BAAMutableURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAMutableURLRequest.h; sourceTree = "<group>"; };
-		D341F0EC18D774F100FE48BA /* BAAMutableURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAMutableURLRequest.m; sourceTree = "<group>"; };
-		D341F0ED18D774F100FE48BA /* BAAObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAObject.h; sourceTree = "<group>"; };
-		D341F0EE18D774F100FE48BA /* BAAObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAObject.m; sourceTree = "<group>"; };
-		D341F0EF18D774F100FE48BA /* BaasBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaasBox.h; sourceTree = "<group>"; };
-		D341F0F018D774F100FE48BA /* BaasBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaasBox.m; sourceTree = "<group>"; };
-		D341F0F118D774F100FE48BA /* BAAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAUser.h; sourceTree = "<group>"; };
-		D341F0F218D774F100FE48BA /* BAAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +91,7 @@
 				BDAC0CF117F42EC700A58451 /* CoreGraphics.framework in Frameworks */,
 				BDAC0CF317F42EC700A58451 /* UIKit.framework in Frameworks */,
 				BDAC0CEF17F42EC700A58451 /* Foundation.framework in Frameworks */,
+				906BE653F265B6877ADB9F25 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,12 +102,22 @@
 				BDAC0D1117F42EC700A58451 /* XCTest.framework in Frameworks */,
 				BDAC0D1317F42EC700A58451 /* UIKit.framework in Frameworks */,
 				BDAC0D1217F42EC700A58451 /* Foundation.framework in Frameworks */,
+				975F3675F37D027179BB1F7C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A3B6E486A2AD7F65262670AA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5DD2F9CCBB832DF28F579C25 /* Pods.debug.xcconfig */,
+				3B45C3E82601CDE5CBF1718E /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BDAC0CE217F42EC700A58451 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +125,7 @@
 				BDAC0D1617F42EC700A58451 /* DearDiaryTests */,
 				BDAC0CED17F42EC700A58451 /* Frameworks */,
 				BDAC0CEC17F42EC700A58451 /* Products */,
+				A3B6E486A2AD7F65262670AA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +147,7 @@
 				BDAC0CF017F42EC700A58451 /* CoreGraphics.framework */,
 				BDAC0CF217F42EC700A58451 /* UIKit.framework */,
 				BDAC0D1017F42EC700A58451 /* XCTest.framework */,
+				2B713FB0BFA8D5E5D91D739A /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -158,7 +155,6 @@
 		BDAC0CF417F42EC700A58451 /* DearDiary */ = {
 			isa = PBXGroup;
 			children = (
-				D341F0E418D774F100FE48BA /* BaasBox-iOS-SDK */,
 				BDAC0D2617F42F2F00A58451 /* Model */,
 				BDAC0CFD17F42EC700A58451 /* SMAppDelegate.h */,
 				BDAC0CFE17F42EC700A58451 /* SMAppDelegate.m */,
@@ -216,27 +212,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		D341F0E418D774F100FE48BA /* BaasBox-iOS-SDK */ = {
-			isa = PBXGroup;
-			children = (
-				D341F0E518D774F100FE48BA /* BAAClient.h */,
-				D341F0E618D774F100FE48BA /* BAAClient.m */,
-				D341F0E718D774F100FE48BA /* BAAFile.h */,
-				D341F0E818D774F100FE48BA /* BAAFile.m */,
-				D341F0E918D774F100FE48BA /* BAAGlobals.h */,
-				D341F0EA18D774F100FE48BA /* BAAGlobals.m */,
-				D341F0EB18D774F100FE48BA /* BAAMutableURLRequest.h */,
-				D341F0EC18D774F100FE48BA /* BAAMutableURLRequest.m */,
-				D341F0ED18D774F100FE48BA /* BAAObject.h */,
-				D341F0EE18D774F100FE48BA /* BAAObject.m */,
-				D341F0EF18D774F100FE48BA /* BaasBox.h */,
-				D341F0F018D774F100FE48BA /* BaasBox.m */,
-				D341F0F118D774F100FE48BA /* BAAUser.h */,
-				D341F0F218D774F100FE48BA /* BAAUser.m */,
-			);
-			path = "BaasBox-iOS-SDK";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -244,9 +219,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BDAC0D2017F42EC700A58451 /* Build configuration list for PBXNativeTarget "DearDiary" */;
 			buildPhases = (
+				082C2F1AA5884815E2E93770 /* Check Pods Manifest.lock */,
 				BDAC0CE717F42EC700A58451 /* Sources */,
 				BDAC0CE817F42EC700A58451 /* Frameworks */,
 				BDAC0CE917F42EC700A58451 /* Resources */,
+				81A31748B4A5057351CBED8C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -261,9 +238,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BDAC0D2317F42EC700A58451 /* Build configuration list for PBXNativeTarget "DearDiaryTests" */;
 			buildPhases = (
+				4F3E9DB1B6AE1B61CF3C4D12 /* Check Pods Manifest.lock */,
 				BDAC0D0B17F42EC700A58451 /* Sources */,
 				BDAC0D0C17F42EC700A58451 /* Frameworks */,
 				BDAC0D0D17F42EC700A58451 /* Resources */,
+				503C134E20988E31765A9C03 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -332,22 +311,78 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		082C2F1AA5884815E2E93770 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4F3E9DB1B6AE1B61CF3C4D12 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		503C134E20988E31765A9C03 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		81A31748B4A5057351CBED8C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BDAC0CE717F42EC700A58451 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D341F0F418D774F100FE48BA /* BAAFile.m in Sources */,
-				D341F0F618D774F100FE48BA /* BAAMutableURLRequest.m in Sources */,
 				BDAC0D6117F4335A00A58451 /* SMLoginViewController.m in Sources */,
-				D341F0F718D774F100FE48BA /* BAAObject.m in Sources */,
-				D341F0F918D774F100FE48BA /* BAAUser.m in Sources */,
-				D341F0F818D774F100FE48BA /* BaasBox.m in Sources */,
-				D341F0F318D774F100FE48BA /* BAAClient.m in Sources */,
 				BDAC0CFF17F42EC700A58451 /* SMAppDelegate.m in Sources */,
 				BDAC0D0817F42EC700A58451 /* SMDetailViewController.m in Sources */,
 				BDAC0CFB17F42EC700A58451 /* main.m in Sources */,
-				D341F0F518D774F100FE48BA /* BAAGlobals.m in Sources */,
 				BDAC0D0517F42EC700A58451 /* SMMasterViewController.m in Sources */,
 				BDAC0D2917F42F4400A58451 /* SMPost.m in Sources */,
 			);
@@ -474,6 +509,7 @@
 		};
 		BDAC0D2117F42EC700A58451 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DD2F9CCBB832DF28F579C25 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -487,6 +523,7 @@
 		};
 		BDAC0D2217F42EC700A58451 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B45C3E82601CDE5CBF1718E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -500,6 +537,7 @@
 		};
 		BDAC0D2417F42EC700A58451 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DD2F9CCBB832DF28F579C25 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DearDiary.app/DearDiary";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -522,6 +560,7 @@
 		};
 		BDAC0D2517F42EC700A58451 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B45C3E82601CDE5CBF1718E /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DearDiary.app/DearDiary";
 				FRAMEWORK_SEARCH_PATHS = (
