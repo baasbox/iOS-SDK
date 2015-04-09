@@ -7,8 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "BAAClient.h"
-#import "TrafficLight.h"
+#import <BaasBoxSDK/BAAClient.h>
 #import "SMPost.h"
 
 /*
@@ -16,19 +15,19 @@
  WARNING
  
  - assumes server is running
- - a user cesare:cesare is created on the backend
  - a user a:a is NOT created on the backend
- - a collection posts is created
+ - a collection(memos) posts is created
  
  */
 
 @interface DearDiaryTests : XCTestCase
 
-@property (strong) SMPost *post;
-
 @end
 
 @implementation DearDiaryTests
+
+#pragma mark - 
+#pragma mark - Setup
 
 - (void)setUp
 {
@@ -42,167 +41,172 @@
     [super tearDown];
 }
 
-- (void)testAdminLogin {
+
+#pragma mark - 
+#pragma mark - Test Case
+
+- (void)testAUserCreation {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"async testing"];
     
     BAAClient *client = [BAAClient sharedClient];
     
-    [client authenticateUsername:@"admin"
-                    withPassword:@"admin"
-               completionHandler:^(BOOL success, NSError *error) {
-                   
-                   [[TrafficLight sharedInstance] goGreen:NSStringFromSelector(_cmd)];
-                   
-                   XCTAssertTrue(client.isAuthenticated, @"Admin login failed");
-                   
-               }];
+    [client createUserWithUsername:@"cesare"
+                          password:@"cesare"
+                        completion:^(BOOL success, NSError *error)
+    {
+        [expectation fulfill];
+                            
+    }];
     
-    [[TrafficLight sharedInstance] waitGreenForKey:NSStringFromSelector(_cmd)];
+    [self waitForExpectationsWithTimeout:30 handler:nil];
+    
+}
+
+- (void)testLoginWithAdmin {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"async testing"];
+    
+    BAAClient *client = [BAAClient sharedClient];
+    
+    [client authenticateUser:@"admin"
+                    password:@"admin"
+                  completion:^(BOOL success, NSError *error)
+    {
+        [expectation fulfill];
+        XCTAssertTrue(client.isAuthenticated, @"Admin login failed");
+        
+    }];
+    
+    [self waitForExpectationsWithTimeout:30 handler:nil];
     
 }
 
 - (void)testLoginWrong {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"async testing"];
     
-    BAAClient *client = [BAAClient sharedClient];
-    
-    [client authenticateUsername:@"a"
-                    withPassword:@"a"
-               completionHandler:^(BOOL success, NSError *error) {
-                   
-                   [[TrafficLight sharedInstance] goGreen:NSStringFromSelector(_cmd)];
-                   
-                   XCTAssertNotNil(error, @"login didn't fail as expected");
-                   
-               }];
-    
-    [[TrafficLight sharedInstance] waitGreenForKey:NSStringFromSelector(_cmd)];
-    
-}
+    [[BAAClient sharedClient] authenticateUser:@"a"
+                     password:@"a"
+                   completion:^(BOOL success, NSError *error)
+    {
+        [expectation fulfill];
+        XCTAssertNotNil(error, @"login didn't fail as expected");
 
-- (void)testLogin {
+    }];
     
-    BAAClient *client = [BAAClient sharedClient];
-    
-    [client authenticateUsername:@"cesare"
-                    withPassword:@"cesare"
-               completionHandler:^(BOOL success, NSError *error) {
-                   
-                   [[TrafficLight sharedInstance] goGreen:NSStringFromSelector(_cmd)];
-                   
-                   XCTAssertTrue(client.isAuthenticated, @"Didn't authenticate as expected. Check if user really exists on the backend");
-                   
-               }];
-    
-    [[TrafficLight sharedInstance] waitGreenForKey:NSStringFromSelector(_cmd)];
+    [self waitForExpectationsWithTimeout:30 handler:nil];
     
 }
 
 - (void)testCreationOfNewObject {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"async testing"];
     
-    [self testLogin];
+    [self login];
     
     SMPost *p = [[SMPost alloc] init];
     p.postTitle = @"Mock title";
     p.postBody = @"No body";
     
-    [SMPost saveObject:p
-            completion:^(SMPost *post, NSError *error) {
-                
-                [[TrafficLight sharedInstance] goGreen:NSStringFromSelector(_cmd)];
-                XCTAssertNil(error, @"error is not nil as expected");
-                XCTAssertNotNil(post, @"post is nil, it shouldn't.");
-                
-            }];
+    [p saveObjectWithCompletion:^(id object, NSError *error)
+    {
+        [expectation fulfill];
+        XCTAssertNil(error, @"error is not nil as expected");
+        XCTAssertNotNil(object, @"post is nil, it shouldn't.");
     
-    [[TrafficLight sharedInstance] waitGreenForKey:NSStringFromSelector(_cmd)];
+    }];
+    
+    [self waitForExpectationsWithTimeout:30 handler:nil];
     
 }
 
-- (void) testObjectRetrieval {
+- (void)testObjectRetrieval {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"async testing"];
     
-    [self testLogin];
+    [self login];
     
-    [SMPost getObjectsWithCompletion:^(NSArray *objects, NSError *error) {
-        
-        [[TrafficLight sharedInstance] goGreen:NSStringFromSelector(_cmd)];
+    [SMPost getObjectsWithCompletion:^(NSArray *objects, NSError *error)
+    {
+        [expectation fulfill];
         XCTAssertNil(error, @"error is not nil");
         XCTAssertNotNil(objects, @"returned array is nil");
         
     }];
     
-    [[TrafficLight sharedInstance] waitGreenForKey:NSStringFromSelector(_cmd)];
+    [self waitForExpectationsWithTimeout:30 handler:nil];
     
 }
 
-- (void) testObjectRetrievalWithParams {
+- (void)testObjectRetrievalWithParams {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"async testing"];
     
-    [self testLogin];
+    [self login];
     
-    [SMPost getObjectsWithParams:@{kPageNumber : @0, kPageSize : @4}
-                      completion:^(NSArray *objects, NSError *error) {
-                          
-                          [[TrafficLight sharedInstance] goGreen:NSStringFromSelector(_cmd)];
-                          XCTAssertNil(error, @"error is not nil");
-                          XCTAssertNotNil(objects, @"returned array is nil");
-                          
-                      }];
-    
-    [[TrafficLight sharedInstance] waitGreenForKey:NSStringFromSelector(_cmd)];
-    
-}
-
-- (void) testSingleObjectRetrieval {
-    
-    [self testLogin];
-    
-    [SMPost getObjectsWithCompletion:^(NSArray *objects, NSError *error) {
-        
-        [[TrafficLight sharedInstance] goGreen:NSStringFromSelector(_cmd)];
+    [SMPost getObjectsWithParams:@{kPageNumberKey : @0,
+                                   kPageSizeKey : @4}
+                      completion:^(NSArray *objects, NSError *error)
+    {
+        [expectation fulfill];
         XCTAssertNil(error, @"error is not nil");
         XCTAssertNotNil(objects, @"returned array is nil");
-        self.post = (SMPost *) [objects firstObject];
         
     }];
     
-    [[TrafficLight sharedInstance] waitGreenForKey:NSStringFromSelector(_cmd)];
+    [self waitForExpectationsWithTimeout:30 handler:nil];
     
 }
 
-- (void) testObjectDeletion {
-
-    [self testSingleObjectRetrieval];
+- (void)testObjectDeletion {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"async testing"];
     
-    [SMPost deleteObject:self.post
-              completion:^(BOOL success, NSError *error) {
-
-                  [[TrafficLight sharedInstance] goGreen:NSStringFromSelector(_cmd)];
-                  XCTAssertTrue(success, @"object not deleted as expected");
-                  XCTAssertNil(error, @"error is not nil");
-                  
-              }];
-
-    [[TrafficLight sharedInstance] waitGreenForKey:NSStringFromSelector(_cmd)];
+    [SMPost getObjectsWithCompletion:^(NSArray *objects, NSError *error)
+     {
+         XCTAssertNil(error, @"error is not nil");
+         XCTAssertNotNil(objects, @"returned array is nil");
+         
+         [(SMPost *)objects.firstObject deleteObjectWithCompletion:^(BOOL success, NSError *error)
+          {
+              [expectation fulfill];
+              XCTAssertTrue(success, @"object not deleted as expected");
+              XCTAssertNil(error, @"error is not nil");
+              
+          }];
+     }];
+    
+    [self waitForExpectationsWithTimeout:60 handler:nil];
     
 }
 
-
-
-- (void) testSignup {
+- (void)testSignup {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"async testing"];
     
     BAAClient *client = [BAAClient sharedClient];
     
-    [client createUserWithUsername:@"cesare"
-                       andPassword:@"cesare"
-                 completionHandler:^(BOOL success, NSError *error) {
-                     
-                     [[TrafficLight sharedInstance] goGreen:NSStringFromSelector(_cmd)];
-                     XCTAssertTrue(client.isAuthenticated, @"Not signed up as expected");
-                     XCTAssertNil(error, @"Error is not nil");
-                 }];
+    [client authenticateUser:@"cesare"
+                    password:@"cesare"
+                  completion:^(BOOL success, NSError *error)
+    {
+        [expectation fulfill];
+        XCTAssertTrue(client.isAuthenticated, @"Not signed up as expected");
+        XCTAssertNil(error, @"Error is not nil");
+    }];
     
-    [[TrafficLight sharedInstance] goGreen:NSStringFromSelector(_cmd)];
+    [self waitForExpectationsWithTimeout:30 handler:nil];
     
 }
 
+
+#pragma mark - 
+#pragma mark - Helper method
+
+- (void)login {
+    BAAClient *client = [BAAClient sharedClient];
+    
+    [client authenticateUser:@"cesare"
+                    password:@"cesare"
+                  completion:^(BOOL success, NSError *error)
+     {
+         XCTAssertTrue(client.isAuthenticated, @"Didn't authenticate as expected. Check if user really exists on the backend");
+         
+     }];
+}
 
 
 @end
