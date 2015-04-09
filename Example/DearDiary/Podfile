@@ -1,0 +1,3 @@
+link_with 'DearDiary', 'DearDiaryTests'
+
+pod 'BaasBoxSDK', :path => '../../BaasBoxSDK.podspec'
