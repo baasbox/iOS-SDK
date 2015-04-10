@@ -6,7 +6,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   BaasBoxSDK:
-    :path: ../../BaasBoxSDK.podspec
+    :path: "../../BaasBoxSDK.podspec"
 
 SPEC CHECKSUMS:
   BaasBoxSDK: 56dc8b1a0b38adb404e64a32e1ed34037a3e9aa2

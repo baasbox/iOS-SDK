@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		906BE653F265B6877ADB9F25 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B713FB0BFA8D5E5D91D739A /* libPods.a */; };
 		975F3675F37D027179BB1F7C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B713FB0BFA8D5E5D91D739A /* libPods.a */; };
-		BD2BF06417F43F470087DEBA /* TrafficLight.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2BF06317F43F470087DEBA /* TrafficLight.m */; };
 		BDAC0CEF17F42EC700A58451 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAC0CEE17F42EC700A58451 /* Foundation.framework */; };
 		BDAC0CF117F42EC700A58451 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAC0CF017F42EC700A58451 /* CoreGraphics.framework */; };
 		BDAC0CF317F42EC700A58451 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAC0CF217F42EC700A58451 /* UIKit.framework */; };
@@ -49,8 +48,6 @@
 		2B713FB0BFA8D5E5D91D739A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B45C3E82601CDE5CBF1718E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5DD2F9CCBB832DF28F579C25 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		BD2BF06217F43F470087DEBA /* TrafficLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrafficLight.h; sourceTree = "<group>"; };
-		BD2BF06317F43F470087DEBA /* TrafficLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrafficLight.m; sourceTree = "<group>"; };
 		BDAC0CEB17F42EC700A58451 /* DearDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DearDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDAC0CEE17F42EC700A58451 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BDAC0CF017F42EC700A58451 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -109,6 +106,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E4A731E1AD80C3F002C61D1 /* view controller */ = {
+			isa = PBXGroup;
+			children = (
+				BDAC0D0317F42EC700A58451 /* SMMasterViewController.h */,
+				BDAC0D0417F42EC700A58451 /* SMMasterViewController.m */,
+				BDAC0D0617F42EC700A58451 /* SMDetailViewController.h */,
+				BDAC0D0717F42EC700A58451 /* SMDetailViewController.m */,
+				BDAC0D5E17F4335A00A58451 /* SMLoginViewController.h */,
+				BDAC0D5F17F4335A00A58451 /* SMLoginViewController.m */,
+			);
+			name = "view controller";
+			sourceTree = "<group>";
+		};
+		4E4A731F1AD80C62002C61D1 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				BDAC0D0017F42EC700A58451 /* Main.storyboard */,
+				BDAC0D6017F4335A00A58451 /* SMLoginViewController.xib */,
+			);
+			name = storyboard;
+			sourceTree = "<group>";
+		};
 		A3B6E486A2AD7F65262670AA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,39 +174,31 @@
 		BDAC0CF417F42EC700A58451 /* DearDiary */ = {
 			isa = PBXGroup;
 			children = (
-				BDAC0D2617F42F2F00A58451 /* Model */,
 				BDAC0CFD17F42EC700A58451 /* SMAppDelegate.h */,
 				BDAC0CFE17F42EC700A58451 /* SMAppDelegate.m */,
-				BDAC0D0017F42EC700A58451 /* Main.storyboard */,
-				BDAC0D0317F42EC700A58451 /* SMMasterViewController.h */,
-				BDAC0D0417F42EC700A58451 /* SMMasterViewController.m */,
-				BDAC0D0617F42EC700A58451 /* SMDetailViewController.h */,
-				BDAC0D0717F42EC700A58451 /* SMDetailViewController.m */,
-				BDAC0D0917F42EC700A58451 /* Images.xcassets */,
-				BDAC0CF517F42EC700A58451 /* Supporting Files */,
-				BDAC0D5E17F4335A00A58451 /* SMLoginViewController.h */,
-				BDAC0D5F17F4335A00A58451 /* SMLoginViewController.m */,
-				BDAC0D6017F4335A00A58451 /* SMLoginViewController.xib */,
+				BDAC0D2617F42F2F00A58451 /* model */,
+				4E4A731E1AD80C3F002C61D1 /* view controller */,
+				4E4A731F1AD80C62002C61D1 /* storyboard */,
+				BDAC0CF517F42EC700A58451 /* supporting Files */,
 			);
 			path = DearDiary;
 			sourceTree = "<group>";
 		};
-		BDAC0CF517F42EC700A58451 /* Supporting Files */ = {
+		BDAC0CF517F42EC700A58451 /* supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BDAC0D0917F42EC700A58451 /* Images.xcassets */,
 				BDAC0CF617F42EC700A58451 /* DearDiary-Info.plist */,
 				BDAC0CF717F42EC700A58451 /* InfoPlist.strings */,
 				BDAC0CFA17F42EC700A58451 /* main.m */,
 				BDAC0CFC17F42EC700A58451 /* DearDiary-Prefix.pch */,
 			);
-			name = "Supporting Files";
+			name = "supporting Files";
 			sourceTree = "<group>";
 		};
 		BDAC0D1617F42EC700A58451 /* DearDiaryTests */ = {
 			isa = PBXGroup;
 			children = (
-				BD2BF06217F43F470087DEBA /* TrafficLight.h */,
-				BD2BF06317F43F470087DEBA /* TrafficLight.m */,
 				BDAC0D1C17F42EC700A58451 /* DearDiaryTests.m */,
 				BDAC0D1717F42EC700A58451 /* Supporting Files */,
 			);
@@ -203,13 +214,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		BDAC0D2617F42F2F00A58451 /* Model */ = {
+		BDAC0D2617F42F2F00A58451 /* model */ = {
 			isa = PBXGroup;
 			children = (
 				BDAC0D2717F42F4400A58451 /* SMPost.h */,
 				BDAC0D2817F42F4400A58451 /* SMPost.m */,
 			);
-			name = Model;
+			name = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,7 +403,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD2BF06417F43F470087DEBA /* TrafficLight.m in Sources */,
 				BDAC0D6217F4335A00A58451 /* SMLoginViewController.m in Sources */,
 				BDAC0D1D17F42EC700A58451 /* DearDiaryTests.m in Sources */,
 				BDAC0D2A17F42F4400A58451 /* SMPost.m in Sources */,
