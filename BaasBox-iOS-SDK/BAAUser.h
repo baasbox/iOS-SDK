@@ -33,6 +33,19 @@
 - (NSString *) jsonString;
 - (NSString *) username;
 
+// register
++ (void)createUserWithUsername:(NSString *)username
+                      password:(NSString *)password
+                    completion:(BAAUserResultBlock)completionBlock;
+
++ (void)createUserWithUsername:(NSString *)username
+                      password:(NSString *)password
+              visibleByTheUser:(NSDictionary *)visibleByTheUser
+              visibleByFriends:(NSDictionary *)visibleByFriends
+      visibleByRegisteredUsers:(NSDictionary *)visibleByRegisteredUsers
+       visibleByAnonymousUsers:(NSDictionary *)visibleByAnonymousUsers
+                    completion:(BAAUserResultBlock)completionBlock;
+
 // login/logout
 + (void) loginWithUsername:(NSString *)username password:(NSString *)password completion:(BAABooleanResultBlock)completionHandler;
 + (void) logoutWithCompletion:(BAABooleanResultBlock)completionBlock;

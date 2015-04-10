@@ -14,7 +14,7 @@
  
  WARNING
  
- - assumes server is running
+ - assumes server is running on localhost
  - a user a:a is NOT created on the backend
  - a collection(memos) posts is created
  
@@ -48,14 +48,14 @@
 - (void)testAUserCreation {
     XCTestExpectation *expectation = [self expectationWithDescription:@"async testing"];
     
-    BAAClient *client = [BAAClient sharedClient];
-    
-    [client createUserWithUsername:@"cesare"
-                          password:@"cesare"
-                        completion:^(BOOL success, NSError *error)
+    [BAAUser createUserWithUsername:@"cesare"
+                           password:@"cesare"
+                         completion:^(BAAUser *currentUser, NSError *error)
     {
         [expectation fulfill];
-                            
+        
+        XCTAssertNotNil(currentUser);
+        
     }];
     
     [self waitForExpectationsWithTimeout:30 handler:nil];

@@ -75,6 +75,49 @@
     
 }
 
+#pragma mark - Register
++ (void)createUserWithUsername:(NSString *)username
+                      password:(NSString *)password
+                    completion:(BAAUserResultBlock)completionBlock {
+    [self createUserWithUsername:username
+                        password:password
+                visibleByTheUser:nil
+                visibleByFriends:nil
+        visibleByRegisteredUsers:nil
+         visibleByAnonymousUsers:nil
+                      completion:completionBlock];
+    
+}
+
++ (void)createUserWithUsername:(NSString *)username
+                      password:(NSString *)password
+              visibleByTheUser:(NSDictionary *)visibleByTheUser
+              visibleByFriends:(NSDictionary *)visibleByFriends
+      visibleByRegisteredUsers:(NSDictionary *)visibleByRegisteredUsers
+       visibleByAnonymousUsers:(NSDictionary *)visibleByAnonymousUsers
+                    completion:(BAAUserResultBlock)completionBlock {
+    BAAClient *client = [BAAClient sharedClient];
+    
+    [client createUserWithUsername:username
+                          password:password
+                  visibleByTheUser:visibleByTheUser
+                  visibleByFriends:visibleByFriends
+          visibleByRegisteredUsers:visibleByRegisteredUsers
+           visibleByAnonymousUsers:visibleByAnonymousUsers
+                        completion:^(BOOL success, NSError *error)
+     {
+         // handle error
+         if (!success)
+         {
+             return completionBlock(nil, error);
+         }
+         
+         // otherwise get the current user
+         return completionBlock(client.currentUser, nil);
+     }];
+    
+}
+
 #pragma mark - Login
 
 + (void) loginWithUsername:(NSString *)username password:(NSString *)password completion:(BAABooleanResultBlock)completionHandler {

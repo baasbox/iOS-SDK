@@ -17,10 +17,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class BAAUser;
+
 typedef void (^BAAArrayResultBlock)(NSArray *objects, NSError *error);
 typedef void (^BAAObjectResultBlock)(id object, NSError *error);
 typedef void (^BAABooleanResultBlock)(BOOL success, NSError *error);
 typedef void (^BAAIntegerResultBlock)(NSInteger count, NSError *error);
+typedef void (^BAAUserResultBlock)(BAAUser *currentUser, NSError *error);
 
 @interface BAAGlobals : NSObject
 
