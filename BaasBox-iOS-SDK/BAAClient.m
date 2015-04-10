@@ -593,29 +593,20 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                          if (completionBlock) {
                              
                              NSHTTPURLResponse *res = (NSHTTPURLResponse*)response;
-                             NSDictionary *d = [NSJSONSerialization JSONObjectWithData:data
-                                                                               options:kNilOptions
-                                                                                 error:nil];
                              
                              if (error == nil && res.statusCode <= 201) {
-                                 
+                               
+                                 NSDictionary *d = [NSJSONSerialization JSONObjectWithData:data
+                                                                                   options:kNilOptions
+                                                                                     error:nil];
                                  id c = [file class];
                                  id newObject = [[c alloc] initWithDictionary:d[@"data"]];
                                  completionBlock(newObject, nil);
                                  
                              } else {
-                                 
-                                 NSDictionary *userInfo = @{
-                                                            NSLocalizedDescriptionKey: d[@"message"],
-                                                            NSLocalizedFailureReasonErrorKey: d[@"message"],
-                                                            NSLocalizedRecoverySuggestionErrorKey: @"Make sure that ACL roles and usernames exist on the backend."
-                                                            };
-                                 NSError *error = [NSError errorWithDomain:[BaasBox errorDomain]
-                                                                      code:[BaasBox errorCode]
-                                                                  userInfo:userInfo];
-                                 
+                                                              
                                  completionBlock(nil, error);
-                                 
+                               
                              }
                          }
                          
