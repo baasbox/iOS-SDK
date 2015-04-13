@@ -28,7 +28,6 @@ Read documentation here: [http://www.baasbox.com/documentation](http://www.baasb
 #Example 
 
 [Download BaasBox](http://www.baasbox.com/download/), start it, login to the console as an admin and create a collection named "memos". 
-Then start the iOS app inside example folder and signup/login.
 
 #License
 
