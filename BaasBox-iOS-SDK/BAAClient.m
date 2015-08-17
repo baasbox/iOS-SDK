@@ -40,13 +40,11 @@ static NSString * const boundary = @"BAASBOX_BOUNDARY_STRING";
 static NSString * const kBAACharactersToBeEscapedInQuery = @"@/:?&=$;+!#()',*";
 
 static NSString * BAAPercentEscapedQueryStringKeyFromStringWithEncoding(NSString *string, NSStringEncoding encoding) {
-    static NSString * const kBAACharactersToLeaveUnescapedInQueryStringPairKey = @"[].";
-    
-	return (__bridge_transfer  NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)string, (__bridge CFStringRef)kBAACharactersToLeaveUnescapedInQueryStringPairKey, (__bridge CFStringRef)kBAACharactersToBeEscapedInQuery, CFStringConvertNSStringEncodingToEncoding(encoding));
+		return [string stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"[]."]];
 }
 
 static NSString * BAAPercentEscapedQueryStringValueFromStringWithEncoding(NSString *string, NSStringEncoding encoding) {
-	return (__bridge_transfer  NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)string, NULL, (__bridge CFStringRef)kBAACharactersToBeEscapedInQuery, CFStringConvertNSStringEncodingToEncoding(encoding));
+	return [string stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@""]];
 }
 
 #pragma mark - URL Serialization borrowed from AFNetworking
