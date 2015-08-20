@@ -37,14 +37,14 @@ NSString * const kAuthenticationTokenExpiredNotification = @"com.baasbox.tokenEx
 
 static NSString * const boundary = @"BAASBOX_BOUNDARY_STRING";
 
-static NSString * const kBAACharactersToBeEscapedInQuery = @"@/:?&=$;+!#()',*";
-
 static NSString * BAAPercentEscapedQueryStringKeyFromStringWithEncoding(NSString *string, NSStringEncoding encoding) {
-		return [string stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"[]."]];
+	NSMutableCharacterSet * allowedSet = [[NSMutableCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
+	[allowedSet addCharactersInString:@"[]."];
+	return [string stringByAddingPercentEncodingWithAllowedCharacters:allowedSet];
 }
 
 static NSString * BAAPercentEscapedQueryStringValueFromStringWithEncoding(NSString *string, NSStringEncoding encoding) {
-	return [string stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@""]];
+	return [string stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 }
 
 #pragma mark - URL Serialization borrowed from AFNetworking
