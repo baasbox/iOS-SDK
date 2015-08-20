@@ -38,6 +38,7 @@ NSString * const kAuthenticationTokenExpiredNotification = @"com.baasbox.tokenEx
 static NSString * const boundary = @"BAASBOX_BOUNDARY_STRING";
 
 static NSString * BAAPercentEscapedQueryStringKeyFromStringWithEncoding(NSString *string, NSStringEncoding encoding) {
+	//Since we're percent-encoding the query URL component, we can use that character set to begin with.
 	NSMutableCharacterSet * allowedSet = [[NSMutableCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
 	[allowedSet addCharactersInString:@"[]."];
 	return [string stringByAddingPercentEncodingWithAllowedCharacters:allowedSet];
