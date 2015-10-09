@@ -1480,10 +1480,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     
     [[self.session dataTaskWithRequest:request
                      completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                         if(response == nil){
-                         	failure(error);
-                         	return;
-                         }
+                         
                          NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
                          NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
                                                                                     options:kNilOptions
@@ -1533,10 +1530,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
     
 	[[self.session dataTaskWithRequest:request
                      completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                         if(response == nil){
-                         	failure(error);
-                         	return;
-                         }                         
+                         
                          NSHTTPURLResponse *r = (NSHTTPURLResponse*)response;
                          NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
                                                                                     options:kNilOptions
@@ -1576,10 +1570,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                                                  parameters:parameters];
     [[self.session dataTaskWithRequest:request
                      completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                         if(response == nil){
-                         	failure(error);
-                         	return;
-                         }                         
+                         
                          NSHTTPURLResponse *r = (NSHTTPURLResponse*)response;
                          NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
                                                                                     options:kNilOptions
@@ -1619,10 +1610,7 @@ NSString* const BAAUserKeyForUserDefaults = @"com.baaxbox.user";
                                                  parameters:parameters];
     [[self.session dataTaskWithRequest:request
                      completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                         if(response == nil){
-                         	failure(error);
-                         	return;
-                         }                         
+                         
                          NSHTTPURLResponse *r = (NSHTTPURLResponse*)response;
                          NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
                                                                                     options:kNilOptions
