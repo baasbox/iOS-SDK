@@ -5,7 +5,7 @@ This is the official iOS SDK for [BaasBox](http://www.baasbox.com)
 
 #Installation
 
-## Cocoapods
+## CocoaPods
 
 Add the following to your Podfile
 
