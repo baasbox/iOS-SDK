@@ -26,6 +26,12 @@
 
 @implementation BAAObject
 
+// This gets rid of the "Method override for the designated initializer of the superlass '-init' not found" warning in Xcode 7 (Issue #42)
+- (instancetype) init {
+	self = [self initWithDictionary:nil];
+	return nil;
+}
+
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary {
     
     self = [super init];
